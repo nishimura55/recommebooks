@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_22_122707) do
+ActiveRecord::Schema.define(version: 2020_02_27_120633) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 2020_02_22_122707) do
     t.string "email", null: false
     t.string "profile"
     t.string "password_digest"
+    t.string "favorite_genre"
+    t.integer "recomme_point", default: 0, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
