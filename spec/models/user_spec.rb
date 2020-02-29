@@ -103,7 +103,7 @@ RSpec.describe User, type: :model do
 
     context '正しいパスワードの場合' do
       it '正常に認証される' do
-        expect(!!user.authenticate("password")).to eq(true)  #!!により論理値に変換
+        expect(user.authenticate("password")).to be_truthy
       end
     end
 
