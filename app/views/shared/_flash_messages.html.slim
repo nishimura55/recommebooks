@@ -1,0 +1,5 @@
+-flash.each do |message_type, message|
+        =content_tag :div, class: "alert alert-#{message_type} alert-dismissible" 
+          button.close[data-dismiss="alert" type="button" aria-label="Close"]
+            span[aria-hidden="true"] &times;
+          = message

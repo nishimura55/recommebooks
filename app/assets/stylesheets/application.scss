@@ -13,14 +13,5 @@
 
  */
 
- @import "bootstrap";
-
-//ユーザー登録画面
- #users_new {
-     padding-top: 50px;
-     .btn {
-         margin-top: 30px;
-     }
- }
-
-
+@import "bootstrap";
+@import "custom";

@@ -16,6 +16,7 @@ RSpec.describe User, type: :model do
       it '登録ができない' do
         user.name = nil
         expect(user.valid?).to eq(false)
+        expect(user.errors[:name]).to include("を入力してください")
       end
     end
 
@@ -23,6 +24,7 @@ RSpec.describe User, type: :model do
       it '登録ができない' do
         user.name = "a" * 46
         expect(user.valid?).to eq(false)
+        expect(user.errors[:name]).to include("は45文字以内で入力してください")
       end
     end
 
@@ -30,6 +32,7 @@ RSpec.describe User, type: :model do
       it '登録ができない' do
         user.email = nil
         expect(user.valid?).to eq(false)
+        expect(user.errors[:email]).to include("を入力してください")
       end
     end
 
@@ -37,6 +40,7 @@ RSpec.describe User, type: :model do
       it '登録ができない' do
         user.email = "#{"a" * 256}@example.com"
         expect(user.valid?).to eq(false)
+        expect(user.errors[:email]).to include("は255文字以内で入力してください")
       end
     end
 
@@ -44,6 +48,7 @@ RSpec.describe User, type: :model do
       it '登録ができない' do
         user.email = "testexample.com"
         expect(user.valid?).to eq(false)
+        expect(user.errors[:email]).to include("は不正な値です")
       end
     end
 
@@ -52,6 +57,7 @@ RSpec.describe User, type: :model do
         user.save
         other_user.email = user.email
         expect(other_user.valid?).to eq(false)
+        expect(other_user.errors[:email]).to include("はすでに存在します")
       end
     end
 
@@ -59,6 +65,7 @@ RSpec.describe User, type: :model do
       it '登録ができない' do
         user.password = nil
         expect(user.valid?).to eq(false)
+        expect(user.errors[:password]).to include("を入力してください")
       end
     end
 
@@ -66,6 +73,7 @@ RSpec.describe User, type: :model do
       it '登録ができない' do
         user.password_confirmation = nil
         expect(user.valid?).to eq(false)
+        expect(user.errors[:password_confirmation]).to include("を入力してください")
       end
     end
 
@@ -73,6 +81,7 @@ RSpec.describe User, type: :model do
       it '登録ができない' do
         user.password = "a" * 5
         expect(user.valid?).to eq(false)
+        expect(user.errors[:password]).to include("は6文字以上で入力してください")
       end
     end
 
@@ -80,6 +89,7 @@ RSpec.describe User, type: :model do
       it '登録ができない' do
         user.password_confirmation = "invalid_password"
         expect(user.valid?).to eq(false)
+        expect(user.errors.full_messages.to_s).to include("が一致しません")
       end
     end
 
