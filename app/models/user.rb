@@ -8,6 +8,6 @@ class User < ApplicationRecord
     validates :favorite_genre, length: { maximum: 45 }
     validates :profile, length: { maximum: 255 }
     has_secure_password
-    validates :password, presence: true, length: { minimum: 6 }
-    validates :password_confirmation, presence: true, length: { minimum: 6 }
+    validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+    validates :password_confirmation, presence: true
 end

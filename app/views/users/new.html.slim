@@ -5,7 +5,9 @@
         .card-header
           h4.text-center 新規登録
         .card-body
-          =form_with model: @user, local: true do |f|
+          = form_with model: @user, local: true do |f|
+            = render 'shared/error_messages', object: f.object
+
             .form-group
               = f.label :name, 'ユーザー名'
               = f.text_field :name, class: 'form-control'

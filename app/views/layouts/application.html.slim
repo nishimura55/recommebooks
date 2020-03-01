@@ -8,11 +8,9 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    = render 'layouts/header'
     .container
-      -flash.each do |message_type, message|
-        =content_tag :div, class: "alert alert-#{message_type} alert-dismissible" do
-          button.close[data-dismiss="alert" type="button" aria-label="Close"]
-            span[aria-hidden="true"] &times;
-          = message
+      = render 'shared/flash_messages'
 
     = yield
+    = render 'layouts/footer'
