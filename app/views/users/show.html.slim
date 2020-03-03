@@ -1,1 +1,10 @@
-| showページだよ
+.container
+  .row
+    .offset-md-2.col-md-2
+      =image_tag 'userlogo.png', size: '150x150'
+    .col-md-6
+        h5 自己紹介
+        p = @user.profile
+        h5 好きなジャンル・本
+        p = @user.favorite_genre
+        

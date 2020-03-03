@@ -1,0 +1,31 @@
+nav.navbar.navbar-expand-lg.navbar-light
+  .container#header
+    =link_to root_path
+      .row
+        .col-md-2
+          =image_tag 'booklogo2.png', size: '50x50'
+        .col-md-4
+          .navbar-brand.logo-main RecommeBooks
+          .navbar-brand.logo-sub レコメブックス
+    button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+      span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      .navbar-nav
+        li.nav-item.active
+          =link_to root_path, class: 'nav-link' do
+            |  本一覧
+        li.nav-item.active
+          =link_to root_path, class: 'nav-link' do
+            |  著者一覧
+        li.nav-item.active
+          =link_to root_path, class: 'nav-link' do
+            |  ユーザー一覧
+        li.nav-item.active
+          =link_to root_path, class: 'nav-link' do
+            |  口コミ一覧
+    form.form-inline
+      input.form-control.mr-sm-2 type="search" placeholder="本のタイトル、著者名" aria-label="Search"
+      button.btn.btn-outline-primary.my-2.my-sm-o type="submit" 
+        |  検索
+          
+    
