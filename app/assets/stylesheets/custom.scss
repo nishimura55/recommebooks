@@ -44,3 +44,45 @@
       }
   }
 
+  //ユーザー詳細画面
+
+  #usershow{
+      margin-top: 50px;
+      .user-title-recomme-point{
+          padding-left: 0px;
+      }
+      .user-name{
+          font-size: 40px;
+      }
+      .user-title{
+          font-size: 30px;
+          margin-bottom: 0px;
+          margin-top: 7px;
+      }
+      .user-recomme-point{
+          font-size: 20px;
+          margin-bottom: 0px;
+          margin-top: 20px;
+      }
+
+      #user-show-line p{
+          border-bottom: solid;
+          margin-bottom: 20px;
+          color: silver;
+      }
+
+      .profile-favorite-genre{
+          p{
+              border: solid;
+              border-color: silver
+          }
+          .user-profile{
+              height: 90px;
+              padding: 5px;
+          }
+          .user-favorirte-genre{
+              height: 60px;
+              padding: 5px;
+          }
+      }
+  }
