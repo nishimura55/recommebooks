@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe 'ユーザーモデルのテスト', type: :model do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
   
-  describe 'ユーザー登録のバリデーションの確認' do
+  describe 'ユーザー登録のバリデーションのテスト' do
     
     context '全てのカラムが正しい場合' do
       it '正常に登録できる' do
@@ -109,7 +109,7 @@ RSpec.describe User, type: :model do
 
   end
 
-  describe '認証機能の確認' do
+  describe '認証機能のテスト' do
 
     context '正しいパスワードの場合' do
       it '正常に認証される' do
