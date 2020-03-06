@@ -1,18 +1,18 @@
 .container#usershow
   .row.user-show-top
-    .offset-lg-1.col-lg-3.user-name
+    .col-lg-3.user-name
       = @user.name
     .col-lg-4.user-title-recomme-point
       p.user-title  称号「レコメニスト」
-    .col-lg-3.user-title-recomme-point
+    .col-lg-5.user-title-recomme-point
       p.user-recomme-point  #{@user.recomme_point}レコメポイント
   .row#user-show-line
-    .offset-lg-1.col-lg-10
+    .col-lg-12
       p
   .row
-    .offset-lg-1.col-lg-3
-      =image_tag 'sample.jpeg', size: '230x230', class: "user-image"
-    .col-lg-7.profile-favorite-genre
+    .col-lg-3
+      =image_tag 'sample.jpeg', size: '270x270', class: "user-image"
+    .col-lg-9.profile-favorite-genre
         h5 自己紹介
         p.user-profile = @user.profile
         h5 好きなジャンル・本
