@@ -1,0 +1,19 @@
+.container#sessions_new
+  .row
+    .offset-md-2.col-md-8.offset-lg-3.col-lg-6.offset-md-2.col-md-8
+      .card
+        .card-header
+          h4.text-center ログイン
+        .card-body
+          = form_with scope: :session, url: login_path, local: true do |f|
+
+            .form-group
+              = f.label :email, 'メールアドレス'
+              = f.email_field :email, class: 'form-control'
+            .form-group
+              = f.label :password, 'パスワード'
+              = f.password_field :password, class: 'form-control'
+                    
+              = f.submit 'ログイン', class: 'btn btn-success btn-block'
+              
+            p.guidance-signup  ユーザー登録されていない方は#{link_to 'こちらから新規登録', signup_path}してください
