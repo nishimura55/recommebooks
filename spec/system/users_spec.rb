@@ -3,13 +3,19 @@ require 'rails_helper'
 RSpec.describe 'ユーザーのシステムテスト', type: :system do
 
     describe 'ユーザーの新規登録のテスト' do
+
+        before do
+            visit root_path
+            find(".navbar-toggler-icon").click
+            click_on '新規登録'
+        end
+
+        it '新規登録ページが正しく表示される' do
+            expect(page).to have_content '新規登録'
+        end
         
         context '入力内容が正しいユーザーの場合' do
             it '正常に登録ができる' do
-                visit root_path
-                find(".navbar-toggler-icon").click
-                click_on '新規登録'
-                expect(page).to have_content '新規登録'
                 expect do
                   fill_in 'ユーザー名', with: '新規テストユーザー'
                   fill_in 'メールアドレス', with: 'test@example.com'
@@ -24,12 +30,8 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
         end
 
         context '入力内容が無効なユーザーの場合' do
-            it '登録失敗となりフラッシュが表示される' do
-                visit root_path
-                find(".navbar-toggler-icon").click
-                click_on '新規登録'
-                expect(page).to have_content '新規登録'
-                expect do
+            it '登録失敗となる' do                
+                  expect do
                   fill_in 'ユーザー名', with: '新規テストユーザー'
                   fill_in 'メールアドレス', with: 'test@example.com'
                   fill_in 'パスワード', with: 'password'
