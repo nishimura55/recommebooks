@@ -69,14 +69,6 @@ RSpec.describe 'ユーザーモデルのテスト', type: :model do
       end
     end
 
-    context 'パスワード確認がない場合' do
-      it '登録ができない' do
-        user.password_confirmation = nil
-        expect(user.valid?).to eq(false)
-        expect(user.errors[:password_confirmation]).to include("を入力してください")
-      end
-    end
-
     context 'パスワードが6文字より少ない場合' do
       it '登録ができない' do
         user.password = "a" * 5
