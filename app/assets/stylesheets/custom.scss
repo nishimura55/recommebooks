@@ -23,6 +23,20 @@
     }
 }
 
+//ユーザー編集画面
+#users_edit {
+    padding-top: 100px;
+    margin-bottom: 100px;
+    .btn {
+        margin-top: 30px;
+    }
+    #user-edit-line p{
+        border-bottom: solid;
+        margin-bottom: 20px;
+        color: silver;
+    }
+}
+
 //エラー文
 #error_explanation {
     color: red;
