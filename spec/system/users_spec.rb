@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'ユーザーのシステムテスト', type: :system do
     let!(:user) { create(:user) }
+    let!(:other_user) { create(:user) }
 
     describe 'ユーザーの新規登録のテスト' do
 
@@ -47,6 +48,83 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
 
     describe 'ユーザーの編集のテスト' do
 
+        before do
+            log_in_as(user)
+            visit user_path(user)
+            click_on 'プロフィールの編集'
+        end
+
+        it 'プロフィール編集ページが正しく表示される' do
+            expect(page).to have_content 'プロフィール編集'
+            expect(page).to have_field 'ユーザー名', with: user.name
+            expect(page).to have_field 'メールアドレス', with: user.email
+        end
+
+        context '有効な入力内容の場合' do
+            it '正常に更新ができる' do
+                attach_file 'ユーザー画像', "#{Rails.root}/spec/factories/test_image.jpg"
+                fill_in '好きなジャンル・本', with: 'ミステリー系が好き'
+                fill_in '自己紹介', with: '旅好きの大学生です'
+                fill_in 'ユーザー名', with: 'Eテストユーザー'
+                fill_in 'メールアドレス', with: 'Etest@example.com'
+                click_button '更新する'
+                expect(page).to have_selector("img[src$='test_image.jpg']")
+                expect(page).to have_content 'プロフィールを更新しました'
+                expect(page).to have_content 'ミステリー系が好き'
+                expect(page).to have_content '旅好きの大学生です'
+                expect(page).to have_content 'Eテストユーザー'
+            end
+        end
+
+        context '無効な入力内容の場合' do
+            context 'ユーザー名とメールアドレスが空欄の場合' do
+                it '更新失敗となる' do
+                    fill_in '好きなジャンル・本', with: 'ミステリー系が好き'
+                    fill_in '自己紹介', with: '旅好きの大学生です'
+                    fill_in 'ユーザー名', with: ''
+                    fill_in 'メールアドレス', with: ''
+                    click_button '更新する'
+                    expect(page).to have_content 'ユーザー名を入力してください'
+                    expect(page).to have_content 'メールアドレスを入力してください'
+                    expect(page).to have_content 'メールアドレスは不正な値です'
+                end
+            end
+
+            context 'パスワードとパスワードの確認が一致しない場合' do
+                it '更新失敗となる' do
+                    fill_in '好きなジャンル・本', with: 'ミステリー系が好き'
+                    fill_in '自己紹介', with: '旅好きの大学生です'
+                    fill_in 'ユーザー名', with: 'Eテストユーザー'
+                    fill_in 'メールアドレス', with: 'Etest@example.com'
+                    fill_in 'パスワード', with: 'Epassword'
+                    fill_in 'パスワードの確認', with: 'invalid-Epassword'
+                    click_button '更新する'
+                    expect(page).to have_content 'パスワードの確認とパスワードの入力が一致しません'
+                end
+            end
+        end
+
+        context 'ログアウトしている状態でプロフィールを編集しようとした場合' do
+            it 'ログインページに誘導され、ログインすると編集ページにとぶ（フレンドリーフォワーディング機能）' do
+                log_out
+                visit edit_user_path(user)
+                expect(page).to have_content 'ログインが必要です'
+                expect(page).to have_button 'ログイン'
+                fill_in 'メールアドレス', with: user.email
+                fill_in 'パスワード', with: user.password
+                click_button 'ログイン'
+                expect(page).to have_title 'プロフィール編集 | Recommebooks'
+                expect(page).to have_content user.name
+            end
+        end
+
+        context '別のユーザーのプロフィールを編集しようとした場合' do
+            it '処理が拒絶されルートページにとばされる' do
+                visit edit_user_path(other_user)
+                expect(page).to have_content '無効な処理です'
+                expect(page).to have_title 'ホーム | Recommebooks'
+            end
+        end
     end
 
 
