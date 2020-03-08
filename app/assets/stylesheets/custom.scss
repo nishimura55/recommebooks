@@ -1,4 +1,3 @@
-
 //ユーザー登録画面
 #users_new {
     padding-top: 100px;
@@ -76,7 +75,11 @@
 
 }
 
-  //ユーザー詳細画面
+.footer{
+    margin-top: 150px;
+}
+
+//ユーザー詳細画面
 
 #usershow{
     margin-top: 50px;
@@ -124,4 +127,55 @@
         margin-top: 10px;
     }
 
+}
+
+//ユーザー一覧画面
+#userindex{
+    h2{
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .users-thumb{
+        display: inline-block;
+        width: 100%;  //横幅がcol-6のいっぱいまで広がる。高さは画像に合わせて押し広げられている。
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #C0C0C0;
+        #users-thumb-image{
+            float: left;
+            width: 130px;
+        }
+        #users-thumb-overview{
+            float: left;
+            height: 135px;
+            width: 73%;
+            .thumb-user-name{
+                font-size: 20px;
+                .thumb-recomme-point{
+                    padding-left: 20px;
+                    font-size: 15px;
+                }
+            }
+            .thumb-follow-recomme{
+                padding: 5px 0px;
+                position: absolute;
+                bottom: 23px;
+                width: 69%;
+                #thmb-follow-btn{
+                    margin-left: 10px;
+                    width: 48%;
+                }
+                #btn{
+                    padding: 5px;
+                }
+                #thmb-recomme-btn{
+                    width: 48%;
+                }
+            }
+            p{
+                margin: 0px;
+            }
+        }
+    }
 }

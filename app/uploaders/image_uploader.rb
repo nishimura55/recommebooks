@@ -26,9 +26,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :create_thumb => [240, 260]
   end
 
-  #version :thumb1 do
-  #  process :resize_to_fill => [250, 270, gravity = ::Magick::CenterGravity]
-  #end
+  version :thumb2 do
+    process :create_thumb => [120, 135]
+  end
+
+  
 
   process :convert => 'jpg'
 
