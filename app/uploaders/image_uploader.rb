@@ -23,7 +23,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb1 do
-    process :create_thumb => [250, 270]
+    process :create_thumb => [240, 260]
   end
 
   #version :thumb1 do

@@ -14,10 +14,14 @@
       - if @user.image?
         =image_tag @user.image_url(:thumb1), class: "user-image"
       - else
-        =image_tag 'userlogo.png', size: '250x250', class: "user-image"
+        =image_tag 'userlogo.png', size: '240x260', class: "user-image"
     .col-lg-9.profile-favorite-genre
         h5 自己紹介
         p.user-profile = @user.profile
         h5 好きなジャンル・本
         p.user-favorirte-genre = @user.favorite_genre
+  .row
+    .col-lg-3
+      - if current_user == @user
+        = link_to 'プロフィールの編集', edit_user_path(current_user), class: "btn btn-success", id: "user-edit-button"
         
