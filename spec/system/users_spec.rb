@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'ユーザーのシステムテスト', type: :system do
+    let!(:user) { create(:user) }
 
     describe 'ユーザーの新規登録のテスト' do
 
@@ -42,6 +43,9 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
             end
         end
 
+    end
+
+    describe 'ユーザーの編集のテスト' do
 
     end
 
