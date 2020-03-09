@@ -1,6 +1,8 @@
 - provide(:title, "ユーザー一覧")
 .container#userindex
   h2  ユーザー一覧
-
+  
+  = will_paginate(@users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
   .row.users
     = render @users
+  = will_paginate(@users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
