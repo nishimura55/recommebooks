@@ -6,5 +6,11 @@ FactoryBot.define do
     password_confirmation { 'password' }
     favorite_genre { 'ミステリーが好きです' }
     profile { '大学生です。ハラハラ系のミステリーに目がありません。' }
+    admin { false }
   end
+
+  trait :admin_user do
+    admin { true }
+  end
+  
 end

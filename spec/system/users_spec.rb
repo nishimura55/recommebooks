@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'ユーザーのシステムテスト', type: :system do
     let(:user) { create(:user) }
     let(:other_user) { create(:user) }
+    let(:admin_user) { create(:user, :admin_user) }
 
     describe 'ユーザー一覧のテスト' do
 
@@ -17,7 +18,26 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
                 expect(page).to have_selector '.pagination'
                 User.paginate(page: 1).each do |user|
                     expect(page).to have_link user.name, href: user_path(user)
+                    expect(page).not_to have_link '削除', href: user_path(user)
                 end
+            end
+        end
+
+        context '管理ユーザーの場合' do
+            it '削除リンクつきのユーザー一覧ページが表示されユーザー削除が可能' do
+                log_in_as(admin_user)
+                visit users_path
+                expect(page).to have_title 'ユーザー一覧 | Recommebooks'
+                expect(page).to have_selector '.pagination'
+                User.paginate(page: 1).each do |user|
+                    expect(page).to have_link user.name, href: user_path(user)
+                    expect(page).to have_link '削除', href: user_path(user)
+                end
+                expect do
+                  page.all('#delete')[0].click
+                  page.accept_confirm
+                  expect(page).to have_content '削除しました'
+                end.to change {User.count}.by(-1)
             end
         end
     end
@@ -51,7 +71,7 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
 
         context '入力内容が無効なユーザーの場合' do
             it '登録失敗となる' do                
-                  expect do
+                expect do
                   fill_in 'ユーザー名', with: '新規テストユーザー'
                   fill_in 'メールアドレス', with: 'test@example.com'
                   fill_in 'パスワード', with: 'password'
