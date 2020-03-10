@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
-    before_action :logged_in_user, only: [:edit, :update]
+    before_action :logged_in_user, only: [:edit, :update, :destroy]
     before_action :correct_user, only: [:edit, :update]
+
+    def index
+        @users = User.paginate(page: params[:page])
+    end
     
     def show
         @user = User.find(params[:id])
@@ -35,6 +39,12 @@ class UsersController < ApplicationController
         end
     end
 
+    def destroy
+        User.find(params[:id]).destroy
+        flash[:success] = "削除しました"
+        redirect_to users_url
+    end
+
     private
 
         def user_params
@@ -56,6 +66,10 @@ class UsersController < ApplicationController
                 flash[:danger] = "無効な処理です"
                 redirect_to(root_url)                      
             end
+        end
+
+        def admin_user
+            redirect_to(root_url) unless current_user.admin? 
         end
 
 end

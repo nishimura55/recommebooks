@@ -1,0 +1,20 @@
+.col-xl-6 
+  .users-thumb
+    #users-thumb-image
+      = link_to user_path(user)
+        - if user.image?
+          = image_tag user.image_url(:thumb2), class: "user-image"
+        - else
+          =image_tag 'userlogo.png', size: '120x135', class: "user-image"
+    #users-thumb-overview
+      .thumb-user-name
+        = link_to user_path(user)
+          = user.name
+        a.thumb-recomme-point #{user.recomme_point}RP(レコメニスト)
+        - if !current_user.nil? && current_user.admin? && !current_user?(user)
+          = link_to '削除', user, method: :delete, data: { confirm: '削除しますか？' }, id: "delete", class: "btn btn-danger"
+      .thumb-user-favorite-genre.d-none.d-sm-block
+        = user.favorite_genre
+      .thumb-follow-recomme
+        = link_to 'レコメンドする', root_path, class: "btn btn-primary", id: "thmb-recomme-btn"
+        = link_to 'フォローする', root_path, class: "btn btn-success", id: "thmb-follow-btn"
