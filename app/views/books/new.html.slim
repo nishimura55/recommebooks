@@ -1,0 +1,29 @@
+- provide(:title, "本を投稿")
+.container#books_post
+  .row
+    .offset-md-2.col-md-8.offset-lg-3.col-lg-6.offset-md-2.col-md-8
+      .card
+        .card-header
+          h4.text-center 感想を入力して本を投稿
+        .card-body
+          = form_with model: @book, local: true do |f| 
+            = f.hidden_field :rakuten_url, :value => @book.rakuten_url
+            = f.hidden_field :image, :value => @book.image
+            .form-group
+              = f.label :contributor_review, '投稿者の感想'
+              = f.text_area :contributor_review, class: 'form-control', placeholder: "あなたの感想を入力してください"
+            .row#book-post-line
+              .col-lg-12
+                p
+            = image_tag @book.image
+            .form-group
+              = f.label :title, '題名'
+              = f.text_field :title, value: @book.title, class: 'form-control', readonly: true   
+            .form-group
+              = f.label :author, '著者'
+              = f.text_field :author, value: @book.author, class: 'form-control', readonly: true 
+            .form-group
+              = f.label :story, '内容紹介'
+              = f.text_area :story, value: @book.story, class: 'form-control', readonly: true 
+                   
+              = f.submit '投稿する', class: 'btn btn-success btn-block'

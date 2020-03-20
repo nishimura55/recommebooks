@@ -1,3 +1,14 @@
+.debug_dump{
+    clear: both;
+    float: left;
+    width: 100%;
+    margin-top: 45px;
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:         border-box;
+    background-color: #eaeaea;
+  }
+
 //ユーザー登録画面
 #users_new {
     padding-top: 100px;
@@ -123,6 +134,10 @@
         display: block;
         width: 242px;
     }
+    #book-post-button{
+        margin-top: 10px;
+        width: 242px;
+    }
     .user-image{
         margin-top: 10px;
     }
@@ -180,5 +195,85 @@
                 float: right;
             }
         }
+    }
+}
+
+//本検索画面
+#books_serch{
+    h2{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .book_list{
+        margin-top: 50px;
+    }
+    .search-box{
+        form{
+            width: 500px;
+            display: block;
+            margin: 0 auto;
+            .btn{
+                margin-top: 10px;
+            }
+        }
+    }
+    .books-thumb{
+        display: inline-block;
+        width: 100%;  //横幅がcol-12のいっぱいまで広がる。高さは画像に合わせて押し広げられている。
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #C0C0C0;
+        #bookss-thumb-image{
+            float: left;
+        }
+        #books-thumb-overview{
+            float: left;
+            //height: 135px;
+            .thumb-book-title{
+                font-size: 20px;
+                .thumb-book-author{
+                    padding-left: 20px;
+                    font-size: 15px;
+                }
+            }
+        }
+        #books-thumb-recomme{
+            margin: auto;
+            .thumb-book-recomme{
+                p{
+                    width: 100%;
+                    height: 205px;
+                    line-height:205px;
+                    text-align: center;
+                    font-size: 20px;
+                    border: 1px solid #C0C0C0;
+                    background-color: #C0C0C0;
+                }
+                #thmb-recomme-btn{
+                    display: inline-block;
+                    width: 100%;
+                    height: 205px;
+                    line-height:205px;
+                }
+            }
+        }
+    }
+    
+}
+
+//本投稿画面
+#books_post {
+    padding-top: 100px;
+    margin-bottom: 100px;
+    .btn {
+        margin-top: 30px;
+    }
+    #book-post-line p{
+        border-bottom: solid;
+        margin-bottom: 20px;
+        color: silver;
+    }
+    #book_story{
+        height: 120px;
     }
 }
