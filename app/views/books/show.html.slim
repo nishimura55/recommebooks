@@ -1,7 +1,28 @@
-.container#bookshow
-  .row.book-show-top
-    .col-lg-3.book-name
-      = @book.title
-    .col-lg-4.book-title-recomme-point
-      p.book-title  #{@book.recomme_evaluation_point}レコメポイント
+.container
+  .row
+    .col-xl-9#bookshow
+      .row
+        .col-lg-12.book-title
+          P 「#{@book.title}」
+      .row
+        .col-xl-3
+          =image_tag @book.image, size: '200x284', class: "book-image"
+          = link_to '楽天で詳しくみる', @book.rakuten_url, class: "btn btn-success", id: "rakuten-url-button"
+          = link_to 'お気に入り登録', root_path, class: "btn btn-success", id: "book-fav-button"
+          = link_to 'レコメンドする', root_path, class: "btn btn-success", id: "book-recomme-button"
+        .col-xl-9.book-overview
+          p.book-author #{@book.author}  著
+          .book-recomme-evaluation-point-fav
+            a.book-recomme-evaluation-point  #{@book.recomme_evaluation_point}レコメ評価ポイント
+            a.book-fav 0お気に入り
+          .book-story-contributor-review
+            h5 内容紹介
+            p.book-story = @book.story
+            h5
+              a 投稿者(
+              = link_to @book.user.name, user_path(@book.user)
+              a )の感想
+            p.book-contributor-review = @book.contributor_review
     
+    .col-xl-3
+      = render 'shared/right_side'

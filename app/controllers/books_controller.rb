@@ -10,7 +10,8 @@ class BooksController < ApplicationController
           author: item.author,
           story: item.item_caption,
           image: item.large_image_url,
-          rakuten_url: item.item_url
+          rakuten_url: item.item_url,
+          rakuten_isbn: item.isbn
         )
         @books << book
       end

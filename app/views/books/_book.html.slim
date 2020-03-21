@@ -15,7 +15,7 @@
       .col-xl-2
         #books-thumb-recomme
           .thumb-book-recomme
-            - if book.persisted? 
+            - if posted?(book) 
               p.already-posted 投稿済み
             - else
               = form_with model: book, url: books_new_path, method: :get, local: true do |f|
@@ -24,5 +24,6 @@
                 = f.hidden_field :story, :value => book.story
                 = f.hidden_field :image, :value => book.image
                 = f.hidden_field :rakuten_url, :value => book.rakuten_url
+                = f.hidden_field :rakuten_isbn, :value => book.rakuten_isbn
                 .form-group
                   = f.submit 'この本を投稿する', class: "form-control btn btn-primary", id: "thmb-recomme-btn"
