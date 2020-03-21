@@ -19,9 +19,9 @@
             p.user-recomme-point  #{@user.recomme_point}レコメポイント
             .user-profile-favorirte-genre
               p.heading 自己紹介
-              p.user-profile = @user.profile
+              p.user-profile.table-bordered = @user.profile
               p.heading 好きなジャンル・本
-              p.user-favorirte-genre = @user.favorite_genre
+              p.user-favorirte-genre.table-bordered = @user.favorite_genre
 
     .col-xl-3
       = render 'shared/right_side'        

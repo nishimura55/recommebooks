@@ -1,5 +1,8 @@
 class BooksController < ApplicationController
 
+  before_action :logged_in_user, only: [:search, :new, :create]
+  before_action :admin_user,     only: :destroy
+
   def search
     if params[:keyword]
       books = RakutenWebService::Books::Book.search(title: params[:keyword])
@@ -10,8 +13,7 @@ class BooksController < ApplicationController
           author: item.author,
           story: item.item_caption,
           image: item.large_image_url,
-          rakuten_url: item.item_url,
-          rakuten_isbn: item.isbn
+          rakuten_url: item.item_url
         )
         @books << book
       end
@@ -28,12 +30,19 @@ class BooksController < ApplicationController
       flash[:success] = "本を投稿しました"
       redirect_to book_path(@book.id)
     else
+      flash.now[:danger] = "感想を入力してください"
       render 'new'
-    end      
+    end
   end
 
   def show
     @book = Book.find(params[:id])
+  end
+
+  def destroy
+    Book.find(params[:id]).destroy
+    flash[:success] = "削除しました"
+    redirect_to root_path    #books_urlに変更
   end
 
   private
