@@ -9,7 +9,6 @@
           = form_with model: @book, local: true do |f| 
             = f.hidden_field :rakuten_url, :value => @book.rakuten_url
             = f.hidden_field :image, :value => @book.image
-            = f.hidden_field :rakuten_isbn, :value => @book.rakuten_isbn
             .form-group
               = f.label :contributor_review, '投稿者の感想'
               = f.text_area :contributor_review, class: 'form-control', placeholder: "あなたの感想を入力してください"

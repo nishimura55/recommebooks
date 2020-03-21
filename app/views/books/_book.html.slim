@@ -24,6 +24,5 @@
                 = f.hidden_field :story, :value => book.story
                 = f.hidden_field :image, :value => book.image
                 = f.hidden_field :rakuten_url, :value => book.rakuten_url
-                = f.hidden_field :rakuten_isbn, :value => book.rakuten_isbn
                 .form-group
-                  = f.submit 'この本を投稿する', class: "form-control btn btn-primary", id: "thmb-recomme-btn"
+                  = f.submit 'この本を投稿する', class: "form-control btn btn-primary", id: "thmb-book-btn"

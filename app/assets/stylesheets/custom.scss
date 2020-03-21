@@ -113,13 +113,9 @@
                 margin-bottom: 0px;
             }
             .user-profile{
-                border: solid;
-                border-color: silver;
                 padding: 5px;
             }
             .user-favorirte-genre{
-                border: solid;
-                border-color: silver;
                 padding: 5px;
             }
         }
@@ -240,7 +236,7 @@
                     border: 1px solid #C0C0C0;
                     background-color: #C0C0C0;
                 }
-                #thmb-recomme-btn{
+                #thmb-book-btn{
                     display: inline-block;
                     width: 100%;
                     height: 205px;
@@ -293,13 +289,9 @@
             margin-bottom: 0px;
         }
         .book-story{
-            border: solid;
-            border-color: silver;
             padding: 5px;
         }
         .book-contributor-review{
-            border: solid;
-            border-color: silver;
             padding: 5px;
         }   
     }
@@ -319,8 +311,6 @@
     margin-top: 30px;
     .twitter{
         width: 255px;
-        border: solid;
-        border-color:  #e3f2fd;
         .twitter-timeline{
             display: block;
         }

@@ -10,19 +10,22 @@
           = link_to '楽天で詳しくみる', @book.rakuten_url, class: "btn btn-success", id: "rakuten-url-button"
           = link_to 'お気に入り登録', root_path, class: "btn btn-success", id: "book-fav-button"
           = link_to 'レコメンドする', root_path, class: "btn btn-success", id: "book-recomme-button"
+          - if current_user.admin?
+            = link_to '削除', @book, method: :delete, data: { confirm: '削除しますか？' }, id: "delete", class: "btn btn-danger"
         .col-xl-8.book-overview
           p.book-author #{@book.author}  著
           .book-recomme-evaluation-point-fav
             a.book-recomme-evaluation-point  #{@book.recomme_evaluation_point}レコメ評価ポイント
             a.book-fav 0お気に入り
           .book-story-contributor-review
-            p.heading 内容紹介
-            p.book-story = @book.story
+            - if !@book.story.empty?
+              p.heading 内容紹介
+              p.book-story.table-bordered = @book.story
             p.heading
               a 投稿者(
               = link_to @book.user.name, user_path(@book.user)
               a )の感想
-            p.book-contributor-review = @book.contributor_review
+            p.book-contributor-review.table-bordered = @book.contributor_review
     
     .col-xl-3
       = render 'shared/right_side'
