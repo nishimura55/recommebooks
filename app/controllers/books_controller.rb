@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def search
-    if params[:keyword]
+    if !params[:keyword].to_s.empty?
       books = RakutenWebService::Books::Book.search(title: params[:keyword])
       @books = []
       books.each do |item|
@@ -42,7 +42,11 @@ class BooksController < ApplicationController
   def destroy
     Book.find(params[:id]).destroy
     flash[:success] = "削除しました"
-    redirect_to root_path    #books_urlに変更
+    redirect_to books_path
+  end
+
+  def index
+    @books = Book.paginate(page: params[:page])
   end
 
   private

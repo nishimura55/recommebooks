@@ -5,7 +5,6 @@ FactoryBot.define do
     story { "伝説の男の物語" }
     contributor_review { "稀代の名作" }
     recomme_evaluation_point { 0 }
-    image { "MyString" }
     sequence(:rakuten_url, 1) { |n| "https://www.rakuten.co.jp/#{n}" }
     association :user
   end
