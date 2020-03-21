@@ -1,11 +1,15 @@
 - provide(:title, "本を投稿")
-.container#books_serch
-  h2.text-center 本を投稿
-  .search-box.text-center
-    = form_with url: books_search_path, method: :get, local: true do |f|
-      .form-group
-        = f.search_field :keyword, value: params[:keyword], id: "book_search", class: "form-control", placeholder: "題名を入力してください"
-        = f.submit '本の題名を検索', class: "form-control btn btn-success"
-  .book_list
-    - if @books.present?
-      = render 'books/book'
+.container
+  .row
+    .col-xl-9#books_serch
+      h2.text-center 本を投稿
+      .search-box.text-center
+        = form_with url: books_search_path, method: :get, local: true do |f|
+          .form-group
+            = f.search_field :keyword, value: params[:keyword], id: "book_search", class: "form-control", placeholder: "題名を入力してください"
+            = f.submit '本の題名を検索', class: "form-control btn btn-success"
+      .book_list
+        - if @books.present?
+          = render 'books/book'
+    .col-xl-3
+      = render 'shared/right_side'       

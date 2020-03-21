@@ -1,28 +1,32 @@
 - provide(:title, "新規登録")
-.container#users_new
+.container
   .row
-    .offset-md-2.col-md-8.offset-lg-3.col-lg-6.offset-md-2.col-md-8
-      .card
-        .card-header
-          h4.text-center 新規登録
-        .card-body
-          = form_with model: @user, local: true do |f|
-            = render 'shared/error_messages', object: f.object
-
-            .form-group
-              = f.label :name, 'ユーザー名'
-              = f.text_field :name, class: 'form-control'
-            .form-group
-              = f.label :email, 'メールアドレス'
-              = f.email_field :email, class: 'form-control'
-            .form-group
-              = f.label :password, 'パスワード'
-              = f.password_field :password, class: 'form-control'
-            .form-group
-              = f.label :password_confirmation, 'パスワードの確認'
-              = f.password_field :password_confirmation, class: 'form-control' 
-                    
-              = f.submit '登録', class: 'btn btn-success btn-block'
-
-            p.guidance-login  ユーザー登録されてる方は#{link_to 'こちらからログイン', login_path}してください
+    .col-xl-9#users_new
+      .row
+        .offset-md-1.col-md-10.offset-lg-2.col-lg-8
+          .card
+            .card-header
+              h4.text-center 新規登録
+            .card-body
+              = form_with model: @user, local: true do |f|
+                = render 'shared/error_messages', object: f.object
+    
+                .form-group
+                  = f.label :name, 'ユーザー名'
+                  = f.text_field :name, class: 'form-control'
+                .form-group
+                  = f.label :email, 'メールアドレス'
+                  = f.email_field :email, class: 'form-control'
+                .form-group
+                  = f.label :password, 'パスワード'
+                  = f.password_field :password, class: 'form-control'
+                .form-group
+                  = f.label :password_confirmation, 'パスワードの確認'
+                  = f.password_field :password_confirmation, class: 'form-control' 
+                        
+                  = f.submit '登録', class: 'btn btn-success btn-block'
+    
+                p.guidance-login  ユーザー登録されてる方は#{link_to 'こちらからログイン', login_path}してください
+    .col-xl-3
+      = render 'shared/right_side'  
     

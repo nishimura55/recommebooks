@@ -11,7 +11,7 @@
 
 //ユーザー登録画面
 #users_new {
-    padding-top: 100px;
+    margin-top: 30px;
     margin-bottom: 100px;
     .btn {
         margin-top: 30px;
@@ -23,7 +23,7 @@
 
 //ログイン画面
 #sessions_new {
-    padding-top: 100px;
+    margin-top: 30px;
     margin-bottom: 100px;
     .btn {
         margin-top: 30px;
@@ -35,7 +35,7 @@
 
 //ユーザー編集画面
 #users_edit {
-    padding-top: 100px;
+    margin-top: 30px;
     margin-bottom: 100px;
     .btn {
         margin-top: 30px;
@@ -93,55 +93,42 @@
 //ユーザー詳細画面
 
 #usershow{
-    margin-top: 50px;
-    .user-title-recomme-point{
-        padding-left: 0px;
-    }
+    margin-top: 30px;
     .user-name{
-        font-size: 40px;
-    }
-    .user-title{
         font-size: 30px;
-        margin-bottom: 0px;
-        margin-top: 7px;
-        margin-left: 15px;
+        margin-bottom: 10px;
     }
-    .user-recomme-point{
-        font-size: 20px;
-        margin-bottom: 0px;
-        margin-top: 20px;
-    }
-    #user-show-line p{
-        border-bottom: solid;
-        margin-bottom: 20px;
-        color: silver;
-    }
-    .profile-favorite-genre{
-        p{
-            border: solid;
-            border-color: silver
+    .user-overview{
+        .user-title{
+            font-size: 25px;
+            margin-bottom: 0px;
         }
-        .user-profile{
-            height: 120px;
-            padding: 5px;
+        .user-recomme-point{
+            font-size: 20px;
+            margin-bottom: 20px;
         }
-        .user-favorirte-genre{
-            height: 70px;
-            padding: 5px;
-        }   
+        .user-profile-favorirte-genre{
+            .heading{
+                font-size: 20px;
+                margin-bottom: 0px;
+            }
+            .user-profile{
+                border: solid;
+                border-color: silver;
+                padding: 5px;
+            }
+            .user-favorirte-genre{
+                border: solid;
+                border-color: silver;
+                padding: 5px;
+            }
+        }
     }
-    #user-edit-button{
+    .btn{
         display: block;
-        width: 242px;
-    }
-    #book-post-button{
         margin-top: 10px;
         width: 242px;
     }
-    .user-image{
-        margin-top: 10px;
-    }
-
 }
 
 //ユーザー一覧画面
@@ -228,13 +215,17 @@
         }
         #books-thumb-overview{
             float: left;
-            //height: 135px;
             .thumb-book-title{
                 font-size: 20px;
                 .thumb-book-author{
                     padding-left: 20px;
                     font-size: 15px;
                 }
+            }
+            .thumb-book-story{
+                padding: 3px;
+                height: 150px;
+                overflow: scroll;
             }
         }
         #books-thumb-recomme{
@@ -281,10 +272,6 @@
 //本詳細画面
 #bookshow{
     margin-top: 30px;
-    .book-overview{
-        //margin-right: 0px;
-        //padding-right: 0px;
-    }
     .book-title{
         font-size: 30px;
         margin-bottom: 10px;
@@ -301,34 +288,25 @@
     }
     .book-story-contributor-review{
         margin-top: 15px;
-        p{
-            border: solid;
-            border-color: silver
+        .heading{
+            font-size: 20px;
+            margin-bottom: 0px;
         }
         .book-story{
-            height: 195px;
+            border: solid;
+            border-color: silver;
             padding: 5px;
-            overflow: scroll;
         }
         .book-contributor-review{
-            height: 70px;
+            border: solid;
+            border-color: silver;
             padding: 5px;
         }   
     }
-    #rakuten-url-button{
+    .btn{
         display: block;
         margin-top: 10px;
-        width: 200px;
-    }
-    #book-fav-button{
-        display: block;
-        margin-top: 10px;
-        width: 200px;
-    }
-    #book-recomme-button{
-        display: block;
-        margin-top: 10px;
-        width: 200px;
+        width: 240px;
     }
     .user-image{
         margin-top: 10px;

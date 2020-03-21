@@ -15,7 +15,7 @@
           = link_to '削除', user, method: :delete, data: { confirm: '削除しますか？' }, id: "delete", class: "btn btn-danger"
       .thumb-user-favorite-genre.d-none.d-sm-block
         = user.favorite_genre
-      - if !current_user?(user)
+      - if logged_in? && !current_user?(user)
         .thumb-follow-recomme
           = link_to 'レコメンドする', root_path, class: "btn btn-primary", id: "thmb-recomme-btn"
           = link_to 'フォローする', root_path, class: "btn btn-success", id: "thmb-follow-btn"

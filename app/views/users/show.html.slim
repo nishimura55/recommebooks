@@ -1,28 +1,27 @@
-.container#usershow
-  .row.user-show-top
-    .col-lg-3.user-name
-      = @user.name
-    .col-lg-4.user-title-recomme-point
-      p.user-title  称号「レコメニスト」
-    .col-lg-5.user-title-recomme-point
-      p.user-recomme-point  #{@user.recomme_point}レコメポイント
-  .row#user-show-line
-    .col-lg-12
-      p
+.container
   .row
-    .col-lg-3
-      - if @user.image?
-        =image_tag @user.image_url(:thumb1), class: "user-image"
-      - else
-        =image_tag 'userlogo.png', size: '240x260', class: "user-image"
-    .col-lg-9.profile-favorite-genre
-        h5 自己紹介
-        p.user-profile = @user.profile
-        h5 好きなジャンル・本
-        p.user-favorirte-genre = @user.favorite_genre
-  .row
-    .col-lg-3
-      - if current_user == @user
-        = link_to 'プロフィールの編集', edit_user_path(current_user), class: "btn btn-success", id: "user-edit-button"
-        = link_to '本を投稿', books_search_path, class: "btn btn-info", id: "book-post-button"
-        
+    .col-xl-9#usershow
+      .row.user-show-top
+        .col-lg-12.user-name
+          = @user.name
+      .row
+        .col-lg-4
+          - if @user.image?
+            =image_tag @user.image_url(:thumb1), class: "user-image"
+          - else
+            =image_tag 'userlogo.png', size: '240x260', class: "user-image"
+          - if current_user == @user
+            = link_to 'プロフィールの編集', edit_user_path(current_user), class: "btn btn-success", id: "user-edit-button"
+            = link_to '本を投稿', books_search_path, class: "btn btn-success", id: "book-post-button"
+            = link_to 'レコメンド状況を確認', books_search_path, class: "btn btn-success", id: "user-recomme-button"
+        .col-lg-8.user-overview
+            p.user-title  称号「レコメニスト」
+            p.user-recomme-point  #{@user.recomme_point}レコメポイント
+            .user-profile-favorirte-genre
+              p.heading 自己紹介
+              p.user-profile = @user.profile
+              p.heading 好きなジャンル・本
+              p.user-favorirte-genre = @user.favorite_genre
+
+    .col-xl-3
+      = render 'shared/right_side'        
