@@ -155,11 +155,13 @@
                     font-size: 15px;
                 }
             }
+            .thumb-user-favorite-genre{
+                overflow: scroll;
+                height: 50px;
+            }
             .thumb-follow-recomme{
                 padding: 5px 0px;
-                position: absolute;
-                bottom: 23px;
-                width: 69%;
+                margin-top: 10px;
                 #thmb-follow-btn{
                     margin-left: 10px;
                     width: 48%;
@@ -176,6 +178,58 @@
             }
             #delete{
                 float: right;
+            }
+        }
+    }
+}
+
+//本一覧画面
+#bookindex{
+    h2{
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .book-thumb{
+        display: inline-block;
+        width: 100%;  //横幅がcol-6のいっぱいまで広がる。高さは画像に合わせて押し広げられている。
+        min-height: 220px; 
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #C0C0C0;
+        #book-thumb-image{
+            float: left;
+            width: 140px;
+        }
+        #book-thumb-overview{
+            float: left;
+            width: 71%;
+            margin-left: 10px;
+            .thumb-book-title{
+                font-size: 20px;
+                #delete{
+                    float: right;
+                }
+            }
+            .thumb-book-author{
+                font-size: 18px;
+            }
+            .book-fav{
+                margin-left: 10px;
+            }
+            .thumb-book-story{
+                height: 70px;
+                overflow: scroll;
+            }
+            .thumb-book-recomme-fav{
+                margin-top: 10px;
+                #thmb-recomme-btn{
+                    width: 48%;
+                }
+                #thmb-fav-btn{
+                    width: 48%;
+                    margin-left: 10px;
+                }
             }
         }
     }
