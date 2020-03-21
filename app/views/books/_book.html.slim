@@ -1,10 +1,10 @@
 - @books.each do |book|
   .books-thumb
     .row
-      .col-xl-2
+      .col-xl-3
         #books-thumb-image
           = link_to (image_tag(book.image, width:'150px')), book.rakuten_url
-      .col-xl-8
+      .col-xl-6
         #books-thumb-overview
           .thumb-book-title
             = link_to  book.title, book.rakuten_url
@@ -12,7 +12,7 @@
             = book.author
           .thumb-book-story.d-none.d-sm-block
             = book.story
-      .col-xl-2
+      .col-xl-3
         #books-thumb-recomme
           .thumb-book-recomme
             - if posted?(book) 
