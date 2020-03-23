@@ -4,5 +4,7 @@
   
   = will_paginate(@users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
   .row.users
-    = render @users
+    - @users.each do |user|
+      .col-xl-6 
+        = render 'users/user', { user: user }
   = will_paginate(@users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)

@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     
     def show
         @user = User.find(params[:id])
+        @post_feed_books = @user.books.paginate(page: params[:page])
+        if logged_in? && current_user?(@user)
+            @time_line_feed_books = current_user.time_line_feed_books.paginate(page: params[:page]) 
+        end
     end
 
     def new

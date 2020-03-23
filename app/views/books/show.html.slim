@@ -8,9 +8,10 @@
         .col-xl-4
           =image_tag @book.image, size: '240x341', class: "book-image"
           = link_to '楽天で詳しくみる', @book.rakuten_url, class: "btn btn-success", id: "rakuten-url-button"
-          = link_to 'お気に入り登録', root_path, class: "btn btn-success", id: "book-fav-button"
-          = link_to 'レコメンドする', root_path, class: "btn btn-success", id: "book-recomme-button"
-          - if current_user.admin?
+          - if logged_in?
+            = link_to 'お気に入り登録', root_path, class: "btn btn-success", id: "book-fav-button"
+            = link_to 'レコメンドする', root_path, class: "btn btn-success", id: "book-recomme-button"
+          - if !current_user.nil? && current_user.admin?
             = link_to '削除', @book, method: :delete, data: { confirm: '削除しますか？' }, id: "delete", class: "btn btn-danger"
         .col-xl-8.book-overview
           p.book-author
@@ -20,7 +21,7 @@
             a.book-recomme-evaluation-point  #{@book.recomme_evaluation_point}レコメ評価ポイント
             a.book-fav 0お気に入り
           .book-story-contributor-review
-            - if !@book.story.empty?
+            - if @book.story?
               p.heading 内容紹介
               p.book-story.table-bordered = @book.story
             p.heading

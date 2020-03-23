@@ -6,15 +6,18 @@
       - else
         =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
   #book-thumb-overview
+    .thumb-book-post-user
+      = link_to book.user.name, user_path(book.user)
+      a さんの投稿 
+      - if !current_user.nil? && current_user.admin?
+        = link_to '削除', book, method: :delete, data: { confirm: '削除しますか？' }, id: "delete-nallow"
     .thumb-book-title
       = link_to book.title, book_path(book)
-      - if !current_user.nil? && current_user.admin?
-        = link_to '削除', book, method: :delete, data: { confirm: '削除しますか？' }, id: "delete", class: "btn btn-danger"
-    .thumb-book-author
+    .thumb-book-author-rep-fav
       = link_to book.author, root_path
-    .thumb-book-rep-fav
-      a.book-rep  #{book.recomme_evaluation_point}REP
-      a.book-fav 0お気に入り
+      a.thumb-book-rep-fav
+        a.book-rep  #{book.recomme_evaluation_point}REP
+        a.book-fav 0お気に入り
     .thumb-book-story #{book.story}
     .thumb-book-recomme-fav
       - if logged_in?
