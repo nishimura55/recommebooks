@@ -30,6 +30,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :create_thumb => [120, 135]
   end
 
+  version :thumb3 do
+    process :create_thumb => [40, 40]
+  end
+
   
 
   process :convert => 'jpg'

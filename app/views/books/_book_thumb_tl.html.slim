@@ -1,0 +1,33 @@
+.book-thumb-tl.card
+  #book-thumb-post-user.card-header
+    .thumb-book-post-user
+      - if book.user.image?
+        = image_tag book.user.image_url(:thumb3), class: "user-image"
+      - else
+        = image_tag 'userlogo.png', size: '30x30', class: "user-image"
+      = link_to book.user.name, user_path(book.user), class: "post-user-name"
+      a さんが本を投稿しました(
+      = time_ago_in_words(book.created_at)
+      a 前)
+  .card-body
+    #book-thumb-image
+      = link_to book_path(book)
+        - if book.image?
+          = image_tag book.image, class: "book-image", width: '140px'
+        - else
+          =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
+    #book-thumb-overview 
+      .thumb-book-title
+        = link_to book.title, book_path(book)
+        - if !current_user.nil? && current_user.admin?
+          = link_to '削除', book, method: :delete, data: { confirm: '削除しますか？' }, id: "delete-nallow"
+      .thumb-book-author-rep-fav
+        = link_to book.author, root_path
+        a.thumb-book-rep-fav
+          a.book-rep  #{book.recomme_evaluation_point}REP
+          a.book-fav 0お気に入り
+      .thumb-book-story #{book.story}
+      .thumb-book-recomme-fav
+        - if logged_in?
+          = link_to 'レコメンドする', root_path, class: "btn btn-primary", id: "thmb-recomme-btn"
+          = link_to 'お気に入り登録', root_path, class: "btn btn-success", id: "thmb-fav-btn"

@@ -11,4 +11,9 @@ class User < ApplicationRecord
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
     mount_uploader :image, ImageUploader
+
+    def time_line_feed_books
+        Book.where("user_id = ?", id)    #これから編集して、フォローしているユーザーの投稿も入れるようにする
+    end
+
 end

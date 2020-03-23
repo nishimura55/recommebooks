@@ -34,7 +34,7 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
                     expect(page).to have_link '削除', href: user_path(user)
                 end
                 expect do
-                  page.all('#delete')[0].click
+                  page.all('#delete-nallow')[0].click
                   page.accept_confirm
                   expect(page).to have_content '削除しました'
                 end.to change {User.count}.by(-1)
