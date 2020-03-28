@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     has_many :books
+    has_many :favorites
+    has_many :favorite_books, through: :favorites, source: :book
     before_save { self.email = email.downcase }
     validates :name, presence: true, length: { maximum: 45 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

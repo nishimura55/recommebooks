@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
+  get 'favorites/create'
+  get 'favorites/destroy'
   root 'static_pages#home'
+
   get 'static_pages/about'
 
   get '/signup', to: 'users#new'
@@ -9,9 +10,12 @@ Rails.application.routes.draw do
 
   resources :users
 
-  get 'books/search'
-  get 'books/new'
-  resources :books
+  resources :books do
+    collection do
+      get :search
+    end
+    resource :favorites, only: [:create, :destroy]
+  end
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

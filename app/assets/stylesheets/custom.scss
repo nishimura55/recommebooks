@@ -1,3 +1,4 @@
+//開発画面用
 .debug_dump{
     clear: both;
     float: left;
@@ -9,41 +10,177 @@
     background-color: #eaeaea;
   }
 
-//ユーザー登録画面
-#users_new {
-    margin-top: 30px;
-    margin-bottom: 100px;
-    .btn {
-        margin-top: 30px;
+//ミックスイン
+@mixin book-thumb-tl{
+    display: inline-block;
+    width: 100%;  //横幅がcol-6のいっぱいまで広がる。高さは画像に合わせて押し広げられている。
+    min-height: 220px; 
+    padding-bottom: 10px;
+    margin: 10px 0;
+    border: 1px solid #C0C0C0;
+    #book-thumb-post-user{
+        font-size: 18px;
+        .post-user-name{
+            margin-left: 10px;
+        }
     }
-    .guidance-login{
-        padding-top: 10px;
+    #book-thumb-image{
+        float: left;
+        width: 140px;
+    }
+    #book-thumb-overview{
+        float: left;
+        width: 69%;
+        margin-left: 10px;
+        .thumb-book-post-user{
+            margin-bottom: 3px;
+        }
+        .thumb-book-title{
+            font-size: 20px;
+            #delete-nallow{
+                float: right;
+                padding: 0px 5px;
+                height: 30px;
+                font-size: 15px;
+            }
+        }
+        .thumb-book-author-rep-fav{
+            font-size: 18px;
+            .thumb-book-rep-fav{
+                margin-left: 10px;
+            }
+        }
+        .book-fav{
+            margin-left: 10px;
+        }
+        .thumb-book-story{
+            height: 95px;
+            overflow: scroll;
+        }
+        .thumb-book-recomme-fav{
+            margin-top: 10px;
+            #thmb-recomme-btn{
+                width: 48%;
+            }
+            .fav-btn{
+                display: inline-block;
+                width: 48%;
+                margin-left: 10px;
+                #thmb-fav-btn{
+                    width: 100%;
+                }
+            }
+            
+        }
     }
 }
 
-//ログイン画面
-#sessions_new {
-    margin-top: 30px;
-    margin-bottom: 100px;
-    .btn {
-        margin-top: 30px;
-    .guidance-signup{
-        padding-top: 10px;
+@mixin book-thumb{
+    display: inline-block;
+    width: 100%;  //横幅がcol-6のいっぱいまで広がる。高さは画像に合わせて押し広げられている。
+    min-height: 220px; 
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #C0C0C0;
+    #book-thumb-image{
+        float: left;
+        width: 140px;
     }
+    #book-thumb-overview{
+        float: left;
+        width: 71%;
+        margin-left: 10px;
+        .thumb-book-post-user{
+            margin-bottom: 3px;
+            #delete-nallow{
+                float: right;
+                padding: 0px 5px;
+                height: 30px;
+                font-size: 15px;
+            }
+        }
+        .thumb-book-title{
+            font-size: 20px;
+        }
+        .thumb-book-author-rep-fav{
+            font-size: 18px;
+            .thumb-book-rep-fav{
+                margin-left: 10px;
+            }
+        }
+        .book-fav{
+            margin-left: 10px;
+        }
+        .thumb-book-story{
+            height: 70px;
+            overflow: scroll;
+        }
+        .thumb-book-recomme-fav{
+            margin-top: 10px;
+            #thmb-recomme-btn{
+                width: 48%;
+            }
+            .fav-btn{
+                display: inline-block;
+                width: 48%;
+                margin-left: 10px;
+                #thmb-fav-btn{
+                    width: 100%;
+                }
+            }
+        }
     }
-}
+} 
 
-//ユーザー編集画面
-#users_edit {
-    margin-top: 30px;
-    margin-bottom: 100px;
-    .btn {
-        margin-top: 30px;
+@mixin users-thumb{
+    display: inline-block;
+    width: 100%;  //横幅がcol-6のいっぱいまで広がる。高さは画像に合わせて押し広げられている。
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #C0C0C0;
+    #users-thumb-image{
+        float: left;
+        width: 130px;
     }
-    #user-edit-line p{
-        border-bottom: solid;
-        margin-bottom: 20px;
-        color: silver;
+    #users-thumb-overview{
+        float: left;
+        height: 135px;
+        width: 73%;
+        .thumb-user-name{
+            font-size: 20px;
+            .thumb-recomme-point{
+                padding-left: 20px;
+                font-size: 15px;
+            }
+            #delete-nallow{
+                float: right;
+                padding: 0px 5px;
+                height: 30px;
+                font-size: 15px;
+            }
+        }
+        .thumb-user-favorite-genre{
+            overflow: scroll;
+            height: 50px;
+        }
+        .thumb-follow-recomme{
+            padding: 5px 0px;
+            margin-top: 10px;
+            #thmb-follow-btn{
+                margin-left: 10px;
+                width: 48%;
+            }
+            #btn{
+                padding: 5px;
+            }
+            #thmb-recomme-btn{
+                width: 48%;
+            }
+        }
+        p{
+            margin: 0px;
+        }
+
     }
 }
 
@@ -90,6 +227,44 @@
     margin-top: 150px;
 }
 
+//ユーザー登録画面
+#users_new {
+    margin-top: 30px;
+    margin-bottom: 100px;
+    .btn {
+        margin-top: 30px;
+    }
+    .guidance-login{
+        padding-top: 10px;
+    }
+}
+
+//ログイン画面
+#sessions_new {
+    margin-top: 30px;
+    margin-bottom: 100px;
+    .btn {
+        margin-top: 30px;
+    .guidance-signup{
+        padding-top: 10px;
+    }
+    }
+}
+
+//ユーザー編集画面
+#users_edit {
+    margin-top: 30px;
+    margin-bottom: 100px;
+    .btn {
+        margin-top: 30px;
+    }
+    #user-edit-line p{
+        border-bottom: solid;
+        margin-bottom: 20px;
+        color: silver;
+    }
+}
+
 //ユーザー詳細画面
 
 #usershow{
@@ -128,9 +303,14 @@
         }
         .nav-tabs{
             margin-bottom: 8px;
+            display: table;
+            table-layout: fixed;
+            text-align: center;
+            width: 100%;
             .nav-item{
-                width: 25%;
-                padding-bottom: 0px;
+                display: table-cell;
+                vertical-align: middle;
+                padding-bottom: 5px;
                 p{
                     text-align: center;
                     margin-bottom: 0px;
@@ -143,63 +323,12 @@
             }
         }
         .book-thumb-tl{
-            display: inline-block;
-            width: 100%;  //横幅がcol-6のいっぱいまで広がる。高さは画像に合わせて押し広げられている。
-            min-height: 220px; 
-            padding-bottom: 10px;
-            margin: 10px 0;
-            border: 1px solid #C0C0C0;
-            #book-thumb-post-user{
-                font-size: 18px;
-                .post-user-name{
-                    margin-left: 10px;
-                }
-            }
-            #book-thumb-image{
-                float: left;
-                width: 140px;
-            }
-            #book-thumb-overview{
-                float: left;
-                width: 69%;
-                margin-left: 10px;
-                .thumb-book-post-user{
-                    margin-bottom: 3px;
-                }
-                .thumb-book-title{
-                    font-size: 20px;
-                    #delete-nallow{
-                        float: right;
-                        padding: 0px 5px;
-                        height: 30px;
-                        font-size: 15px;
-                    }
-                }
-                .thumb-book-author-rep-fav{
-                    font-size: 18px;
-                    .thumb-book-rep-fav{
-                        margin-left: 10px;
-                    }
-                }
-                .book-fav{
-                    margin-left: 10px;
-                }
-                .thumb-book-story{
-                    height: 95px;
-                    overflow: scroll;
-                }
-                .thumb-book-recomme-fav{
-                    margin-top: 10px;
-                    #thmb-recomme-btn{
-                        width: 48%;
-                    }
-                    #thmb-fav-btn{
-                        width: 48%;
-                        margin-left: 10px;
-                    }
-                }
-            }
+            @include book-thumb-tl;
         }
+        .book-thumb{
+            @include book-thumb;
+        }
+        
     }
 }
 
@@ -211,56 +340,9 @@
         margin-bottom: 30px;
     }
     .users-thumb{
-        display: inline-block;
-        width: 100%;  //横幅がcol-6のいっぱいまで広がる。高さは画像に合わせて押し広げられている。
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #C0C0C0;
-        #users-thumb-image{
-            float: left;
-            width: 130px;
-        }
-        #users-thumb-overview{
-            float: left;
-            height: 135px;
-            width: 73%;
-            .thumb-user-name{
-                font-size: 20px;
-                .thumb-recomme-point{
-                    padding-left: 20px;
-                    font-size: 15px;
-                }
-                #delete-nallow{
-                    float: right;
-                    padding: 0px 5px;
-                    height: 30px;
-                    font-size: 15px;
-                }
-            }
-            .thumb-user-favorite-genre{
-                overflow: scroll;
-                height: 50px;
-            }
-            .thumb-follow-recomme{
-                padding: 5px 0px;
-                margin-top: 10px;
-                #thmb-follow-btn{
-                    margin-left: 10px;
-                    width: 48%;
-                }
-                #btn{
-                    padding: 5px;
-                }
-                #thmb-recomme-btn{
-                    width: 48%;
-                }
-            }
-            p{
-                margin: 0px;
-            }
-
-        }
+        @include users-thumb;
     }
+    
 }
 
 //本一覧画面
@@ -271,56 +353,7 @@
         margin-bottom: 30px;
     }
     .book-thumb{
-        display: inline-block;
-        width: 100%;  //横幅がcol-6のいっぱいまで広がる。高さは画像に合わせて押し広げられている。
-        min-height: 220px; 
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #C0C0C0;
-        #book-thumb-image{
-            float: left;
-            width: 140px;
-        }
-        #book-thumb-overview{
-            float: left;
-            width: 71%;
-            margin-left: 10px;
-            .thumb-book-post-user{
-                margin-bottom: 3px;
-                #delete-nallow{
-                    float: right;
-                    padding: 0px 5px;
-                    height: 30px;
-                    font-size: 15px;
-                }
-            }
-            .thumb-book-title{
-                font-size: 20px;
-            }
-            .thumb-book-author-rep-fav{
-                font-size: 18px;
-                .thumb-book-rep-fav{
-                    margin-left: 10px;
-                }
-            }
-            .book-fav{
-                margin-left: 10px;
-            }
-            .thumb-book-story{
-                height: 70px;
-                overflow: scroll;
-            }
-            .thumb-book-recomme-fav{
-                margin-top: 10px;
-                #thmb-recomme-btn{
-                    width: 48%;
-                }
-                #thmb-fav-btn{
-                    width: 48%;
-                    margin-left: 10px;
-                }
-            }
-        }
+        @include book-thumb;
     }
 }
 
