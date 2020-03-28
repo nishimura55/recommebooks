@@ -15,11 +15,12 @@
       = link_to book.title, book_path(book)
     .thumb-book-author-rep-fav
       = link_to book.author, root_path
+      a 著
       a.thumb-book-rep-fav
         a.book-rep  #{book.recomme_evaluation_point}REP
-        a.book-fav 0お気に入り
     .thumb-book-story #{book.story}
     .thumb-book-recomme-fav
       - if logged_in?
         = link_to 'レコメンドする', root_path, class: "btn btn-primary", id: "thmb-recomme-btn"
-        = link_to 'お気に入り登録', root_path, class: "btn btn-success", id: "thmb-fav-btn"
+        div id = "favorite-button-#{book.id}" class = "fav-btn" 
+            = render 'favorites/favorite', book: book

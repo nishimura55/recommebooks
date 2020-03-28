@@ -1,0 +1,4 @@
+- if book.favorited_by?(current_user)
+  = link_to 'つんどく本解除', book_favorites_path(book.id), method: :delete, remote: true, class: "btn btn-info", id: "thmb-fav-btn"
+- else
+  = link_to 'つんどく本登録', book_favorites_path(book.id), method: :post, remote: true, class: "btn btn-success", id: "thmb-fav-btn"

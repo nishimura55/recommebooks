@@ -18,7 +18,7 @@
             - if posted?(book) 
               p.already-posted 投稿済み
             - else
-              = form_with model: book, url: books_new_path, method: :get, local: true do |f|
+              = form_with model: book, url: new_book_path, method: :get, local: true do |f|
                 = f.hidden_field :title, :value => book.title
                 = f.hidden_field :author, :value => book.author
                 = f.hidden_field :story, :value => book.story

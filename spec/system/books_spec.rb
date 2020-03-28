@@ -57,7 +57,7 @@ RSpec.describe '本のシステムテスト', type: :system do
         end
 
         context '正しく入力した場合' do 
-            it '正常に投稿ができる' do
+            it '正常に投稿ができ、ユーザー詳細ページに表示される' do
                 expect do
                     fill_in 'book_search', with: '山'
                     click_on '本の題名を検索'
@@ -69,6 +69,9 @@ RSpec.describe '本のシステムテスト', type: :system do
                 expect(page).to have_content '山'
                 expect(page).to have_content 'そうとう面白かった！'
                 expect(page).to have_content user.name
+                find(".dropdown-toggle").click
+                click_on 'マイページ'
+                expect(page).to have_content '山'
             end
         end
 

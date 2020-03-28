@@ -9,7 +9,8 @@
           =image_tag @book.image, size: '240x341', class: "book-image"
           = link_to '楽天で詳しくみる', @book.rakuten_url, class: "btn btn-success", id: "rakuten-url-button"
           - if logged_in?
-            = link_to 'お気に入り登録', root_path, class: "btn btn-success", id: "book-fav-button"
+            div id = "favorite-button-#{@book.id}"
+              = render 'favorites/favorite', book: @book
             = link_to 'レコメンドする', root_path, class: "btn btn-success", id: "book-recomme-button"
           - if !current_user.nil? && current_user.admin?
             = link_to '削除', @book, method: :delete, data: { confirm: '削除しますか？' }, id: "delete", class: "btn btn-danger"
@@ -19,7 +20,6 @@
             a 著
           .book-recomme-evaluation-point-fav
             a.book-recomme-evaluation-point  #{@book.recomme_evaluation_point}レコメ評価ポイント
-            a.book-fav 0お気に入り
           .book-story-contributor-review
             - if @book.story?
               p.heading 内容紹介
