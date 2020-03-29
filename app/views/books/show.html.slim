@@ -6,7 +6,10 @@
           P 「#{@book.title}」
       .row
         .col-xl-4
-          =image_tag @book.image, size: '240x341', class: "book-image"
+          - if @book.image?
+            =image_tag @book.image, size: '240x341', class: "book-image"
+          - else
+            =image_tag 'booklogo.jpg', size: '240x341', class: "book-image"
           = link_to '楽天で詳しくみる', @book.rakuten_url, class: "btn btn-success", id: "rakuten-url-button"
           - if logged_in?
             div id = "favorite-button-#{@book.id}"

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
     before_action :logged_in_user, only: [:edit, :update, :destroy]
     before_action :correct_user, only: [:edit, :update]
     before_action :admin_user,     only: :destroy
+    require 'will_paginate/array'
 
     def index
         @users = User.paginate(page: params[:page])
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
         @post_feed_books = @user.books.paginate(page: params[:page])
         if logged_in? && current_user?(@user)
             @time_line_feed_books = current_user.time_line_feed_books.paginate(page: params[:page]) 
-            @favorite_books = @user.favorite_books.paginate(page: params[:page])
+            @favorite_books = @user.favorites.order(created_at: "DESC").map{|favorite| favorite.book}.paginate(page: params[:page])
         end
         
     end

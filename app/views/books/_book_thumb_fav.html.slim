@@ -1,0 +1,28 @@
+.book-thumb-fav.card
+  #book-thumb-post-user.card-header
+    .thumb-book-post-user
+      = time_ago_in_words(book.when_favorited_by?(current_user))
+      a つんどく継続中
+  .card-body
+    #book-thumb-image
+      = link_to book_path(book)
+        - if book.image?
+          = image_tag book.image, class: "book-image", width: '140px'
+        - else
+          =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
+    #book-thumb-overview 
+      .thumb-book-title
+        = link_to book.title, book_path(book)
+        - if !current_user.nil? && current_user.admin?
+          = link_to '削除', book, method: :delete, data: { confirm: '削除しますか？' }, id: "delete-nallow"
+      .thumb-book-author-rep-fav
+        = link_to book.author, root_path
+        a 著
+        a.thumb-book-rep-fav
+          a.book-rep  #{book.recomme_evaluation_point}REP
+      .thumb-book-story #{book.story}
+      .thumb-book-recomme-fav
+        - if logged_in?
+          = link_to 'レコメンドする', root_path, class: "btn btn-primary", id: "thmb-recomme-btn"
+          div id = "favorite-button-tl-#{book.id}" class = "fav-btn" 
+            = render 'favorites/favorite', book: book

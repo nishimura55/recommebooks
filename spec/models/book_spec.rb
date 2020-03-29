@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'ブックモデルのテスト', type: :model do
   let(:book) { create(:book) }
   let(:other_book) { create(:book) }
+  let(:user) { create(:user) }
 
   describe '本投稿のバリデーションのテスト' do
 
@@ -54,8 +55,6 @@ RSpec.describe 'ブックモデルのテスト', type: :model do
         expect(other_book.valid?).to eq(false)
       end
     end
-
-
 
   end
   
