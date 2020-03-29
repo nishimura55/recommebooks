@@ -69,7 +69,7 @@
               .tab-pane.fade#fav role="tabpanel" aria-labelledby="fav-tab"
                 - if @favorite_books.any?
                     - @favorite_books.each do |book|
-                      = render 'books/book_thumb', { book: book }
+                      = render 'books/book_thumb_fav', { book: book }
                     = will_paginate(@favorite_books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
                 - else
                     p つんどく本がありません
