@@ -294,10 +294,13 @@
         .thumb-follow-recomme{
             padding: 5px 0px;
             margin-top: 10px;
-            #user-follow-button{
+            .follow-btn{
                 display: inline-block;
                 margin-left: 10px;
                 width: 48%;
+                #user-follow-button{
+                    width: 100%;
+                }
             }
             #btn{
                 padding: 5px;

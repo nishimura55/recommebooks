@@ -86,14 +86,14 @@
             .tab-pane.fade#follow role="tabpanel" aria-labelledby="follow-tab"
               - if @following.any?
                 - @following.each do |user|
-                  = render 'users/user', { user: user }
+                  = render 'users/user_following', { user: user }
                 = will_paginate(@following, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
               - else
                 p フォローしているユーザーがいません
             .tab-pane.fade#follower role="tabpanel" aria-labelledby="follower-tab"
               - if @followers.any?
                 - @followers.each do |user|
-                  = render 'users/user', { user: user }
+                  = render 'users/user_followers', { user: user }
                 = will_paginate(@followers, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
               - else
                 p フォロワーがいません

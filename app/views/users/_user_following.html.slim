@@ -17,5 +17,5 @@
     - if logged_in? && !current_user?(user)
       .thumb-follow-recomme
         = link_to 'レコメンドする', root_path, class: "btn btn-primary", id: "thmb-recomme-btn"
-        div id = "follow-button-thumb-#{user.id}" class= "follow-btn"
+        div id = "follow-button-thumb-following-#{user.id}" class= "follow-btn"
           = render 'follow_form', user: user
