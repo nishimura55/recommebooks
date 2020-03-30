@@ -1,2 +1,4 @@
 | $("#favorite-button-tl-#{@book.id}").html(" #{j(render partial: 'favorites/favorite', locals: {book: @book})} ");
+| $("#favorite-button-fav-#{@book.id}").html(" #{j(render partial: 'favorites/favorite', locals: {book: @book})} ");
+| $("#favorite-button-post-#{@book.id}").html(" #{j(render partial: 'favorites/favorite', locals: {book: @book})} ");
 | $("#favorite-button-#{@book.id}").html(" #{j(render partial: 'favorites/favorite', locals: {book: @book})} ");

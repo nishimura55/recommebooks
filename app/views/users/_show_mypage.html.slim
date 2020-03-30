@@ -1,0 +1,102 @@
+.container
+  .row
+    .col-xl-9#usershow
+      .row.user-show-top
+        .col-lg-12.user-name
+          = @user.name
+      .row
+        .col-lg-4.user-image-btn
+          - if @user.image?
+            =image_tag @user.image_url(:thumb1), class: "user-image"
+          - else
+            =image_tag 'userlogo.png', size: '240x260', class: "user-image"
+          = link_to 'プロフィールの編集', edit_user_path(current_user), class: "btn btn-success", id: "user-edit-button"
+          = link_to '本を投稿', search_books_path, class: "btn btn-success", id: "book-post-button"
+          = link_to 'レコメンド状況を確認', root_path, class: "btn btn-success", id: "user-recomme-button"
+        .col-lg-8.user-overview
+          p.user-title  称号「レコメニスト」
+          p.user-recomme-point  #{@user.recomme_point}レコメポイント
+          .user-profile-favorirte-genre
+            - if @user.profile?
+              p.heading 自己紹介
+              p.user-profile.table-bordered = @user.profile
+            - if @user.favorite_genre?
+              p.heading 好きなジャンル・本
+              p.user-favorirte-genre.table-bordered = @user.favorite_genre
+          ul.nav.nav-tabs.justify-content-center role = "tablist"         
+            li.nav-item
+              a.nav-link.active#time-line-tab data-toggle="tab" href="#time-line" role="tab" aria-controls="time-line" aria-selected="true"
+                p タイムライン  
+            li.nav-item
+              a.nav-link#fav-tab data-toggle="tab" href="#fav" role="tab" aria-controls="fav" aria-selected="false"
+                p つんどく本
+            li.nav-item
+              a.nav-link#post-tab data-toggle="tab" href="#post" role="tab" aria-controls="post" aria-selected="true"
+                p 投稿
+            li.nav-item
+              a.nav-link#follow-tab data-toggle="tab" href="#follow" role="tab" aria-controls="follow" aria-selected="false"
+                p フォロー
+            li.nav-item
+              a.nav-link#follower-tab data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false"
+                p フォロワー
+          .tab-content
+            .tab-pane.fade.show.active#time-line role="tabpanel" aria-labelledby="time-line-tab"
+              ul.nav.nav-tabs.justify-content-center role = "tablist" 
+                li.nav-item.under-nav
+                  a.nav-link.active#time-line-books-tab data-toggle="tab" href="#time-line-books" role="tab" aria-controls="time-line-books" aria-selected="true"
+                    p 本
+                li.nav-item.under-nav
+                  a.nav-link#time-line-comments-tab data-toggle="tab" href="#time-line-comments" role="tab" aria-controls="time-line-comments" aria-selected="true"
+                    p 口コミ
+              .tab-content
+                .tab-pane.fade.show.active#time-line-books role="tabpanel" aria-labelledby="time-line-books-tab"
+                  - if @time_line_feed_books.any?
+                    - @time_line_feed_books.each do |book|
+                      = render 'books/book_thumb_tl', { book: book }
+                    = will_paginate(@time_line_feed_books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+                  - else
+                    p 表示する投稿がありません
+                .tab-pane.fade.show#time-line-comments role="tabpanel" aria-labelledby="time-line-comments-tab"
+                  p ここに口コミのタイムラインを表示！
+            .tab-pane.fade#fav role="tabpanel" aria-labelledby="fav-tab"
+              - if @favorite_books.any?
+                  - @favorite_books.each do |book|
+                    = render 'books/book_thumb_fav', { book: book }
+                  = will_paginate(@favorite_books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+              - else
+                  p つんどく本がありません
+            .tab-pane.fade.show#post role="tabpanel" aria-labelledby="post-tab"
+              ul.nav.nav-tabs.justify-content-center role = "tablist" 
+                li.nav-item.under-nav
+                  a.nav-link.active#post-books-tab data-toggle="tab" href="#post-books" role="tab" aria-controls="post-books" aria-selected="true"
+                    p 本
+                li.nav-item.under-nav
+                  a.nav-link#post-comments-tab data-toggle="tab" href="#post-comments" role="tab" aria-controls="post-comments" aria-selected="true"
+                    p 口コミ
+              .tab-content
+                .tab-pane.fade.show.active#post-books role="tabpanel" aria-labelledby="post-books-tab"
+                  - if @post_feed_books.any?
+                    - @post_feed_books.each do |book|
+                      = render 'books/book_thumb_post', { book: book }
+                    = will_paginate(@post_feed_books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+                  - else
+                    p 表示する投稿がありません
+                .tab-pane.fade.show#post-comments role="tabpanel" aria-labelledby="post-comments-tab"
+                  p ここに口コミの投稿を表示！
+            .tab-pane.fade#follow role="tabpanel" aria-labelledby="follow-tab"
+              - if @following.any?
+                - @following.each do |user|
+                  = render 'users/user_following', { user: user }
+                = will_paginate(@following, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+              - else
+                p フォローしているユーザーがいません
+            .tab-pane.fade#follower role="tabpanel" aria-labelledby="follower-tab"
+              - if @followers.any?
+                - @followers.each do |user|
+                  = render 'users/user_followers', { user: user }
+                = will_paginate(@followers, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+              - else
+                p フォロワーがいません
+              
+    .col-xl-3
+      = render 'shared/right_side'        

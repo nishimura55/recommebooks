@@ -1,8 +1,13 @@
-.book-thumb-fav.card
+.book-thumb-post.card
   #book-thumb-post-user.card-header
     .thumb-book-post-user
-      = time_ago_in_words(book.when_favorited_by?(current_user))
-      a つんどく継続中
+      - if book.user.image?
+        = image_tag book.user.image_url(:thumb3), class: "user-image"
+      - else
+        = image_tag 'userlogo.png', size: '30x30', class: "user-image"
+      a あなたの投稿(
+      = time_ago_in_words(book.created_at)
+      a 前)
   .card-body
     #book-thumb-image
       = link_to book_path(book)
@@ -24,5 +29,5 @@
       .thumb-book-recomme-fav
         - if logged_in?
           = link_to 'レコメンドする', root_path, class: "btn btn-primary", id: "thmb-recomme-btn"
-          div id = "favorite-button-fav-#{book.id}" class = "fav-btn" 
+          div id = "favorite-button-post-#{book.id}" class = "fav-btn" 
             = render 'favorites/favorite', book: book
