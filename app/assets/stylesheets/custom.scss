@@ -139,6 +139,70 @@
     }
 }
 
+@mixin book-thumb-post{
+    display: inline-block;
+    width: 100%;  //横幅がcol-6のいっぱいまで広がる。高さは画像に合わせて押し広げられている。
+    min-height: 220px; 
+    padding-bottom: 10px;
+    margin: 10px 0;
+    border: 1px solid #C0C0C0;
+    #book-thumb-post-user{
+        font-size: 18px;
+        .user-image{
+            margin-right: 10px;
+        }
+    }
+    #book-thumb-image{
+        float: left;
+        width: 140px;
+    }
+    #book-thumb-overview{
+        float: left;
+        width: 69%;
+        margin-left: 10px;
+        .thumb-book-post-user{
+            margin-bottom: 3px;
+        }
+        .thumb-book-title{
+            font-size: 20px;
+            #delete-nallow{
+                float: right;
+                padding: 0px 5px;
+                height: 30px;
+                font-size: 15px;
+            }
+        }
+        .thumb-book-author-rep-fav{
+            font-size: 18px;
+            .thumb-book-rep-fav{
+                margin-left: 10px;
+            }
+        }
+        .book-fav{
+            margin-left: 10px;
+        }
+        .thumb-book-story{
+            height: 95px;
+            overflow: scroll;
+        }
+        .thumb-book-recomme-fav{
+            margin-top: 10px;
+            #thmb-recomme-btn{
+                width: 48%;
+            }
+            .fav-btn{
+                display: inline-block;
+                width: 48%;
+                margin-left: 10px;
+                #thmb-fav-btn{
+                    width: 100%;
+                }
+            }
+            
+        }
+    }
+}
+
 @mixin book-thumb{
     display: inline-block;
     width: 100%;  //横幅がcol-6のいっぱいまで広がる。高さは画像に合わせて押し広げられている。
@@ -230,7 +294,8 @@
         .thumb-follow-recomme{
             padding: 5px 0px;
             margin-top: 10px;
-            #thmb-follow-btn{
+            #user-follow-button{
+                display: inline-block;
                 margin-left: 10px;
                 width: 48%;
             }
@@ -364,6 +429,7 @@
             .user-favorirte-genre{
                 padding: 5px;
             }
+            margin-bottom: 50px;
         }
         .nav-tabs{
             margin-bottom: 8px;
@@ -375,6 +441,9 @@
                 display: table-cell;
                 vertical-align: middle;
                 padding-bottom: 5px;
+                .nav-link{
+                    padding: 2px;
+                }
                 p{
                     text-align: center;
                     margin-bottom: 0px;
@@ -395,7 +464,12 @@
         .book-thumb{
             @include book-thumb;
         }
-        
+        .users-thumb{
+            @include users-thumb;
+        }
+        .book-thumb-post{
+            @include book-thumb-post;
+        }
     }
 }
 

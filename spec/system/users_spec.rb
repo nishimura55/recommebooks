@@ -16,7 +16,7 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
             it 'ユーザー一覧ページが表示される' do
                 expect(page).to have_title 'ユーザー一覧 | Recommebooks'
                 expect(page).to have_selector '.pagination'
-                User.paginate(page: 1).each do |user|
+                User.order(created_at: "DESC").paginate(page: 1).each do |user|
                     expect(page).to have_link user.name, href: user_path(user)
                     expect(page).not_to have_link '削除', href: user_path(user)
                 end
@@ -29,9 +29,9 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
                 visit users_path
                 expect(page).to have_title 'ユーザー一覧 | Recommebooks'
                 expect(page).to have_selector '.pagination'
-                User.paginate(page: 1).each do |user|
+                expect(page).to have_link '削除'
+                User.order(created_at: "DESC").paginate(page: 1).each do |user|
                     expect(page).to have_link user.name, href: user_path(user)
-                    expect(page).to have_link '削除', href: user_path(user)
                 end
                 expect do
                   page.all('#delete-nallow')[0].click

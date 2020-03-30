@@ -1,7 +1,19 @@
 class User < ApplicationRecord
     has_many :books
+
     has_many :favorites, dependent: :destroy
     has_many :favorite_books, through: :favorites, source: :book
+
+    has_many :active_relationships, class_name:  "Relationship",
+                                    foreign_key: "follower_id",
+                                    dependent:   :destroy
+    has_many :following, through: :active_relationships, source: :followed
+
+    has_many :passive_relationships, class_name:  "Relationship",
+                                     foreign_key: "followed_id",
+                                     dependent:   :destroy
+    has_many :followers, through: :passive_relationships, source: :follower
+
     before_save { self.email = email.downcase }
     validates :name, presence: true, length: { maximum: 45 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -15,7 +27,20 @@ class User < ApplicationRecord
     mount_uploader :image, ImageUploader
 
     def time_line_feed_books
-        Book.where("user_id = ?", id)    #これから編集して、フォローしているユーザーの投稿も入れるようにする
+        following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+        Book.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
+    end
+
+    def follow(other_user)
+        following << other_user
+    end
+
+    def unfollow(other_user)
+        active_relationships.find_by(followed_id: other_user.id).destroy
+    end
+
+    def following?(other_user)
+        following.include?(other_user)
     end
 
 end

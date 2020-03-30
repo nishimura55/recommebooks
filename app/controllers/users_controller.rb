@@ -5,12 +5,14 @@ class UsersController < ApplicationController
     require 'will_paginate/array'
 
     def index
-        @users = User.paginate(page: params[:page])
+        @users = User.order(created_at: "DESC").paginate(page: params[:page])
     end
     
     def show
         @user = User.find(params[:id])
         @post_feed_books = @user.books.paginate(page: params[:page])
+        @following = @user.active_relationships.order(created_at: "DESC").map{|active_relationship| active_relationship.followed}.paginate(page: params[:page])
+        @followers = @user.passive_relationships.order(created_at: "DESC").map{|passive_relationship| passive_relationship.follower}.paginate(page: params[:page])
         if logged_in? && current_user?(@user)
             @time_line_feed_books = current_user.time_line_feed_books.paginate(page: params[:page]) 
             @favorite_books = @user.favorites.order(created_at: "DESC").map{|favorite| favorite.book}.paginate(page: params[:page])
