@@ -8,4 +8,9 @@ FactoryBot.define do
     sequence(:rakuten_url, 1) { |n| "https://www.rakuten.co.jp/#{n}" }
     association :user
   end
+
+  trait :invalid_book do
+    contributor_review { nil }
+  end
+
 end
