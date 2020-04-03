@@ -4,12 +4,22 @@ class FavoritesController < ApplicationController
 
   def create
     favorite = current_user.favorites.build(book_id: params[:book_id])
+    @book = Book.find(params[:book_id])
     favorite.save
+    respond_to do |format|
+        format.html { redirect_to @book }
+        format.js
+    end
   end
 
   def destroy
     favorite = current_user.favorites.find_by(book_id: params[:book_id])
+    @book = Book.find(params[:book_id])
     favorite.destroy
+    respond_to do |format|
+        format.html { redirect_to @book }
+        format.js
+    end
   end
 
   private

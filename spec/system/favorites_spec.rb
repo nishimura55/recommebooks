@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'つんどくのシステムテスト', type: :system do
+RSpec.describe 'つんどく機能のシステムテスト', type: :system do
     let(:favorite) { create(:favorite) }
     let(:user) { create(:user) }
     let(:book) { create(:book) }

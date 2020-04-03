@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  get 'favorites/create'
-  get 'favorites/destroy'
   root 'static_pages#home'
 
   get 'static_pages/about'
 
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
+
+  get 'favorites/create'
+  get 'favorites/destroy'
 
   resources :users
 

@@ -15,7 +15,8 @@
             .row#book-post-line
               .col-lg-12
                 p
-            = image_tag @book.image
+            - if @book.image
+              = image_tag @book.image
             .form-group
               = f.label :title, '題名'
               = f.text_field :title, value: @book.title, class: 'form-control', readonly: true   

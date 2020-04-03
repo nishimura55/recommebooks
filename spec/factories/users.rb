@@ -12,5 +12,13 @@ FactoryBot.define do
   trait :admin_user do
     admin { true }
   end
+
+  trait :invalid do
+    name { nil }
+  end
+
+  trait :update do
+    name { "アップデイトユーザー" }
+  end
   
 end

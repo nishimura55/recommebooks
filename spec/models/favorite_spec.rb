@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe 'つんどくモデルのテスト', type: :model do
+RSpec.describe 'つんどくのテスト', type: :model do
   let(:favorite) { create(:favorite) }
   let(:user) { create(:user) }
   let(:book) { create(:book) }
 
-  describe 'つんどくのバリデーションのテスト' do
+  describe 'バリデーションのテスト' do
     context 'バリデーションを通過した場合' do
       it '有効となる' do
         expect(favorite).to be_valid
