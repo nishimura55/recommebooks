@@ -1,0 +1,16 @@
+.card.review-post-form
+  button.card-header.button
+    a レビューを編集する
+  div class = 'card-body'
+    = form_with url: book_reviews_path, model: [@book, @review], local: true do |f|
+      = render 'shared/error_messages', object: f.object
+      .form-group
+        = f.label :title, 'タイトル'
+        = f.text_field :title, class: 'form-control'
+      .form-group
+        = f.label :content, 'レビュー'
+        a.spoiler-check ※ネタバレあり
+        = f.check_box :spoiler
+        = f.text_area :content, class: 'form-control', id: 'review-content'
+    
+        = f.submit '更新', class: 'btn btn-success', id: 'review-post-btn'

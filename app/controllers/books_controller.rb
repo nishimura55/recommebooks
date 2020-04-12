@@ -37,6 +37,13 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @review = Review.new
+    if logged_in?
+      @my_review = current_user.reviews.find_by(book_id: params[:id])
+      @reviews = @book.reviews.where.not(user_id: current_user.id).paginate(page: params[:page])
+    else
+      @reviews = @book.reviews.paginate(page: params[:page])
+    end
   end
 
   def destroy

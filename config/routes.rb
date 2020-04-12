@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get :search
     end
     resource :favorites, only: [:create, :destroy]
+    resource :reviews, only: [:create, :edit, :update, :destroy]
   end
 
   get '/login', to: 'sessions#new'

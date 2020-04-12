@@ -5,6 +5,7 @@ RSpec.describe 'ユーザー編集のリクエストテスト', type: :request d
 
     context 'ユーザーがログインしていない場合' do
         it 'ログインページに移行する' do
+            user.save
             put user_path(user), params: { user: FactoryBot.attributes_for(:user, :update) }
             expect(response.status).to eq 302
             expect(response).to redirect_to login_path

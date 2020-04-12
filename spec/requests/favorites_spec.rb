@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'お気に入りについてのリクエストテスト', type: :request do
     let(:user) { create(:user) }
+    let(:other_user) { create(:user) }
     let(:book) { create(:book) }
 
     describe 'お気に入り登録' do
@@ -40,6 +41,7 @@ RSpec.describe 'お気に入りについてのリクエストテスト', type: :
             log_in_by_post_request_as(user)
             post book_favorites_path(book)
         end
+
         context 'ログインしているとき' do
             it 'お気に入り解除できる' do
                 expect do

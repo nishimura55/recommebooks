@@ -8,6 +8,15 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワードの確認
+      book:
+        title: 題名
+        story: 内容紹介
+        contributor_review: 投稿者の感想
+        recomme_evaluation_point: レコメ評価ポイント
+        author: 著者
+      review:
+        title: タイトル
+        content: レビュー
   errors:
     messages:
       carrierwave_processing_error: 処理できませんでした

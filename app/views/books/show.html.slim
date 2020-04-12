@@ -1,6 +1,6 @@
 .container
   .row
-    .col-xl-9#bookshow
+    .col-xl-9#book-show
       .row
         .col-lg-12.book-title
           P 「#{@book.title}」
@@ -32,6 +32,15 @@
               = link_to @book.user.name, user_path(@book.user)
               a )の感想
             p.book-contributor-review.table-bordered = @book.contributor_review
+          - if @my_review.present?
+            = render 'reviews/review', { review: @my_review }
+          - else
+            = render 'reviews/post_form' 
+          - if @reviews.present?
+            - @reviews.each do |review|
+              = render 'reviews/review', { review: review }
+            = will_paginate(@reviews, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+              
     
     .col-xl-3
       = render 'shared/right_side'
