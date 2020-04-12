@@ -14,7 +14,7 @@ RSpec.describe 'レビューのシステムテスト', type: :system do
         end
 
         context '正しく入力してレビューを投稿した場合' do
-            it 'レビューが本詳細ページで表示される' do
+            it 'レビューが本詳細ページとマイページで表示される' do
                 expect(page).not_to have_content 'あなたのレビュー'
                 expect do
                     click_on 'レビューを投稿する'
@@ -26,6 +26,11 @@ RSpec.describe 'レビューのシステムテスト', type: :system do
                 expect(page).to have_content 'とてもためになった'
                 expect(page).to have_content '万人にオススメしたい'
                 expect(page).to have_content 'あなたのレビュー'
+                visit user_path(user)
+                click_on 'レビュー'
+                expect(page).to have_content book.title
+                expect(page).to have_content 'とてもためになった'
+                expect(page).to have_content '万人にオススメしたい'
             end
         end
 
@@ -80,7 +85,7 @@ RSpec.describe 'レビューのシステムテスト', type: :system do
         end
 
         context '正しく入力してレビューを編集した場合' do
-            it '編集後のレビューが本詳細ページで表示される' do
+            it '編集後のレビューが本詳細ページとマイページで表示される' do
                 click_on '編集'
                 fill_in 'タイトル', with: 'とても更新ためになった'
                 fill_in 'review-content', with: '万人に更新オススメしたい'
@@ -89,10 +94,17 @@ RSpec.describe 'レビューのシステムテスト', type: :system do
                 expect(page).to have_content 'とても更新ためになった'
                 expect(page).to have_content '万人に更新オススメしたい'
                 expect(page).to have_content 'あなたのレビュー'
+                visit user_path(user)
+                click_on 'レビュー'
+                expect(page).to have_content book.title
+                expect(page).to have_content 'とても更新ためになった'
+                expect(page).to have_content '万人に更新オススメしたい'
+                expect(page).to have_link '編集', href: edit_book_reviews_path(book)
+                expect(page).to have_link '削除', href: book_reviews_path(book)
             end
         end
 
-        context '正しく入力してレビューを編集した場合' do
+        context 'レビューの中身を空欄にしてレビューを編集した場合' do
             it '編集に失敗する' do
                 click_on '編集'
                 fill_in 'タイトル', with: 'とても更新ためになった'

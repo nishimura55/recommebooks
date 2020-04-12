@@ -52,7 +52,12 @@
                   - else
                     p 表示する投稿がありません
                 .tab-pane.fade.show#post-comments role="tabpanel" aria-labelledby="post-comments-tab"
-                  p ここに口コミの投稿を表示！
+                  - if @post_feed_reviews.any?
+                    - @post_feed_reviews.each do |review|
+                      = render 'reviews/review_thumb_tl', { review: review }
+                    = will_paginate(@post_feed_reviews, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+                  - else
+                    p 表示する投稿がありません
             .tab-pane.fade#follow role="tabpanel" aria-labelledby="follow-tab"
               - if @following.any?
                 - @following.each do |user|

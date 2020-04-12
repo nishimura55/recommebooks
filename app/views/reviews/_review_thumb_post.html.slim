@@ -1,0 +1,31 @@
+.review-thumb-post.card
+  #review-thumb-post-user.card-header
+    .thumb-review-post-user
+      - if review.user.image?
+        = image_tag review.user.image_url(:thumb3), class: "user-image"
+      - else
+        = image_tag 'userlogo.png', size: '30x30', class: "user-image"
+      a あなたの投稿(
+      = time_ago_in_words(review.created_at)
+      a 前)
+  .card-body
+    #book-thumb-image
+      = link_to book_path(review.book)
+        - if review.book.image?
+          = image_tag review.book.image, class: "book-image", width: '140px'
+        - else
+          =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
+    #review-thumb-overview
+      .thumb-book-title
+        = link_to review.book.title, book_path(review.book)
+        - if !current_user.nil? && current_user.admin?
+          = link_to '削除', book_reviews_path(review.book.id), method: :delete, data: { confirm: '削除しますか？' }, id: "delete-nallow"
+      - if review.title?
+        a.thumb-review-title 「#{review.title}」
+      - if review.spoiler?
+        a.spoiler-mark.bg-danger ネタバレ
+      .thumb-review-content #{review.content}
+      - if review.user == current_user
+        .thumb-review-edit-delete
+          = link_to '編集', edit_book_reviews_path(review.book), class: "btn btn-primary", id: "review-edit"
+          = link_to '削除', book_reviews_path(review.book), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-primary",  id: "review-delete"
