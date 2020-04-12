@@ -1,0 +1,29 @@
+.card.review-post-form
+  button.card-header.button
+    a レビューを投稿する
+  div class = 'card-body target is-hidden' target = "_blank"
+    = form_with model: [@book, @review], local: true do |f|
+      = render 'shared/error_messages', object: f.object
+
+      .form-group
+        = f.label :title, 'タイトル'
+        = f.text_field :title, class: 'form-control'
+      .form-group
+        = f.label :content, 'レビュー'
+        a.spoiler-check ※ネタバレあり
+        = f.check_box :spoiler, id: 'spoiler-check'
+        = f.text_area :content, class: 'form-control', id: 'review-content'
+    
+        = f.submit '投稿', class: 'btn btn-success', id: 'review-post-btn'
+
+
+
+/アセットファイル下に移動することが課題（現状アセットファイル下に移すと機能しない）
+javascript:
+  var $target = document.querySelector('.target')
+  var $button = document.querySelector('.button')
+  $button.addEventListener('click', function() {
+    $target.classList.toggle('is-hidden')
+  })
+
+  

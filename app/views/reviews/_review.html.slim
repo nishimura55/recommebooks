@@ -1,0 +1,31 @@
+.book-review.card
+  .card-header
+    .thumb-review-post-user
+      - if review.user == current_user
+        a あなたのレビュー
+        - if review.title?
+          a.review-title 「#{review.title}」
+        - if review.spoiler?
+          a.spoiler-mark.bg-danger ネタバレ
+      - else
+        - if review.user.image?
+          = image_tag review.user.image_url(:thumb3), class: "thumb-user-image"
+        - else
+          = image_tag 'userlogo.png', size: '30x30', class: "thumb-user-image"
+        = link_to review.user.name, user_path(review.user), class: "post-user-name"
+        a さん
+        - if review.title?
+          a.review-title 「#{review.title}」
+        - if review.spoiler?
+          a.spoiler-mark.bg-danger ネタバレ
+  - if review.user == current_user
+    .card-body
+      .review-content #{review.content}
+      .review-updated_time #{review.updated_at.strftime("%Y年%m月%d日")}
+      = link_to '編集', edit_book_reviews_path(review.book), class: "btn btn-primary", id: "review-edit"
+      = link_to '削除', book_reviews_path(review.book), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-primary",  id: "review-delete"
+  - else
+    div class= (review.spoiler? ? "card-body spoiler-review" : "card-body")
+      .review-content #{review.content}
+      .review-updated_time #{review.updated_at.strftime("%Y年%m月%d日")}
+      

@@ -1,6 +1,8 @@
 class Book < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  
   default_scope -> { order(created_at: :desc) }
   validates :title, presence: true
   validates :contributor_review, presence: true, length: { maximum: 255 }

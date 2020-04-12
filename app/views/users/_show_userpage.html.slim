@@ -27,7 +27,7 @@
           ul.nav.nav-tabs.justify-content-center role = "tablist" 
             li.nav-item
               a.nav-link.active#post-tab data-toggle="tab" href="#post" role="tab" aria-controls="post" aria-selected="true"
-                p 投稿(#{@post_feed_books.count})
+                p 投稿
             li.nav-item
               a.nav-link#follow-tab data-toggle="tab" href="#follow" role="tab" aria-controls="follow" aria-selected="false"
                 p フォロー
@@ -42,7 +42,7 @@
                     p 本
                 li.nav-item.under-nav
                   a.nav-link#post-comments-tab data-toggle="tab" href="#post-comments" role="tab" aria-controls="post-comments" aria-selected="true"
-                    p 口コミ
+                    p レビュー
               .tab-content
                 .tab-pane.fade.show.active#post-books role="tabpanel" aria-labelledby="post-books-tab"
                   - if @post_feed_books.any?

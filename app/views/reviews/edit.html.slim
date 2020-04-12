@@ -1,0 +1,43 @@
+.container
+  .row
+    .col-xl-9#book-show
+      .row
+        .col-lg-12.book-title
+          P 「#{@book.title}」
+      .row
+        .col-xl-4
+          - if @book.image?
+            =image_tag @book.image, size: '240x341', class: "book-image"
+          - else
+            =image_tag 'booklogo.jpg', size: '240x341', class: "book-image"
+          = link_to '楽天で詳しくみる', @book.rakuten_url, class: "btn btn-success", id: "rakuten-url-button"
+          - if logged_in?
+            div id = "favorite-button-#{@book.id}"
+              = render 'favorites/favorite', book: @book
+            = link_to 'レコメンドする', root_path, class: "btn btn-success", id: "book-recomme-button"
+          - if !current_user.nil? && current_user.admin?
+            = link_to '削除', @book, method: :delete, data: { confirm: '削除しますか？' }, id: "delete", class: "btn btn-danger"
+        .col-xl-8.book-overview
+          p.book-author
+            = link_to @book.author, root_path
+            a 著
+          .book-recomme-evaluation-point-fav
+            a.book-recomme-evaluation-point  #{@book.recomme_evaluation_point}レコメ評価ポイント
+          .book-story-contributor-review
+            - if @book.story?
+              p.heading 内容紹介
+              p.book-story.table-bordered = @book.story
+            p.heading
+              a 投稿者(
+              = link_to @book.user.name, user_path(@book.user)
+              a )の感想
+            p.book-contributor-review.table-bordered = @book.contributor_review
+          = render 'reviews/edit_form' 
+          - if @reviews.present?
+            - @reviews.each do |review|
+              = render 'reviews/review', { review: review }
+            = will_paginate(@reviews, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+              
+    
+    .col-xl-3
+      = render 'shared/right_side'
