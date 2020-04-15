@@ -3,26 +3,26 @@
     .row
       .col-xl-3
         #books-thumb-image
-          = link_to (image_tag(book.image, width:'150px')), book.rakuten_url
+          = link_to (image_tag(book[:image], width:'150px')), book[:rakuten_url]
       .col-xl-6
         #books-thumb-overview
           .thumb-book-title
-            = link_to  book.title, book.rakuten_url
+            = link_to  book[:title], book[:rakuten_url]
             .thumb-book-author.d-none.d-sm-block
-            = book.author
+            = book[:author]
           .thumb-book-story.d-none.d-sm-block
-            = book.story
+            = book[:story]
       .col-xl-3
         #books-thumb-recomme
           .thumb-book-recomme
-            - if posted?(book) 
+            - if posted?(book[:rakuten_url]) 
               p.already-posted 投稿済み
             - else
-              = form_with model: book, url: new_book_path, method: :get, local: true do |f|
-                = f.hidden_field :title, :value => book.title
-                = f.hidden_field :author, :value => book.author
-                = f.hidden_field :story, :value => book.story
-                = f.hidden_field :image, :value => book.image
-                = f.hidden_field :rakuten_url, :value => book.rakuten_url
+              = form_with model: Book, url: new_book_path, method: :get, local: true do |f|
+                = f.hidden_field :title, :value => book[:title]
+                = f.hidden_field :author, :value => book[:author]
+                = f.hidden_field :story, :value => book[:story]
+                = f.hidden_field :image, :value => book[:image]
+                = f.hidden_field :rakuten_url, :value => book[:rakuten_url]
                 .form-group
                   = f.submit 'この本を投稿する', class: "form-control btn btn-primary", id: "thmb-book-btn"

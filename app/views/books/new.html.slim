@@ -7,6 +7,7 @@
           h4.text-center 感想を入力して本を投稿
         .card-body
           = form_with model: @book, local: true do |f| 
+            = render 'shared/error_messages', object: f.object
             = f.hidden_field :rakuten_url, :value => @book.rakuten_url
             = f.hidden_field :image, :value => @book.image
             .form-group
@@ -22,7 +23,7 @@
               = f.text_field :title, value: @book.title, class: 'form-control', readonly: true   
             .form-group
               = f.label :author, '著者'
-              = f.text_field :author, value: @book.author, class: 'form-control', readonly: true 
+              = f.text_field :author, value: @author_name, class: 'form-control', readonly: true 
             .form-group
               = f.label :story, '内容紹介'
               = f.text_area :story, value: @book.story, class: 'form-control', readonly: true 

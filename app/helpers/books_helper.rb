@@ -1,7 +1,7 @@
 module BooksHelper
 
-    def posted?(book)
-        !Book.find_by(rakuten_url: book.rakuten_url).nil?
+    def posted?(book_rakuten_url)
+        !Book.find_by(rakuten_url: book_rakuten_url).nil?
     end
 
 end

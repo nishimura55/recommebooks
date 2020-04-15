@@ -1,0 +1,9 @@
+.container#authorshow
+  h2  「#{@author.name}」の本
+  
+  = will_paginate(@books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+  .row.books
+    - @books.each do |book|
+      .col-xl-6 
+        = render 'books/book_thumb', { book: book }
+  = will_paginate(@books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)

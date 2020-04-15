@@ -50,14 +50,14 @@
                     p レビュー
               .tab-content
                 .tab-pane.fade.show.active#time-line-books role="tabpanel" aria-labelledby="time-line-books-tab"
-                  - if @time_line_feed_books.any?
+                  - if @time_line_feed_books.present?
                     - @time_line_feed_books.each do |book|
                       = render 'books/book_thumb_tl', { book: book }
                     = will_paginate(@time_line_feed_books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
                   - else
                     p 表示する投稿がありません
                 .tab-pane.fade.show#time-line-comments role="tabpanel" aria-labelledby="time-line-comments-tab"
-                  - if @time_line_feed_reviews.any?
+                  - if @time_line_feed_reviews.present?
                     - @time_line_feed_reviews.each do |review|
                       = render 'reviews/review_thumb_tl', { review: review }
                     = will_paginate(@time_line_feed_reviews, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)

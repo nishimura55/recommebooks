@@ -19,7 +19,7 @@
             = link_to '削除', @book, method: :delete, data: { confirm: '削除しますか？' }, id: "delete", class: "btn btn-danger"
         .col-xl-8.book-overview
           p.book-author
-            = link_to @book.author, root_path
+            = link_to @book.author.name, author_path(@book.author)
             a 著
           .book-recomme-evaluation-point-fav
             a.book-recomme-evaluation-point  #{@book.recomme_evaluation_point}レコメ評価ポイント

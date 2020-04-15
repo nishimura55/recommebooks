@@ -21,8 +21,4 @@ RSpec.describe 'ユーザー詳細ページのリクエストテスト', type: :
         end
     end
 
-    context 'ユーザーが存在しない場合' do
-        subject { -> { get user_path(1) } }
-        it { is_expected.to raise_error ActiveRecord::RecordNotFound }
-    end
 end

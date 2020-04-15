@@ -16,7 +16,7 @@
         - if !current_user.nil? && current_user.admin?
           = link_to '削除', book, method: :delete, data: { confirm: '削除しますか？' }, id: "delete-nallow"
       .thumb-book-author-rep-fav
-        = link_to book.author, root_path
+        = link_to book.author.name, author_path(book.author)
         a 著
         a.thumb-book-rep-fav
           a.book-rep  #{book.recomme_evaluation_point}REP
