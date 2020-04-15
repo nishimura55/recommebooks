@@ -777,6 +777,44 @@
 
 }
 
+//著者一覧画面
+#authorindex{
+    h2{
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .author-thumb{
+        border: 1px solid #C0C0C0;
+        margin-bottom: 30px;
+        padding: 10px;
+        .thumb-author-name{
+            font-size: 30px;
+            margin-bottom: 10px;
+            .author-books-count{
+                margin-left: 30px;
+                font-size: 25px;
+            }
+        }
+        .book-image{
+            margin-right: 10px;
+        }
+    }
+}
+
+//著者詳細画面
+#authorshow{
+    h2{
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .book-thumb{
+        @include book-thumb;
+    }
+}
+
+
 //右サイドメニュー
 .right-side{
     margin-top: 30px;

@@ -1,0 +1,10 @@
+- provide(:title, "著者一覧")
+.container#authorindex
+  h2  著者一覧
+  
+  = will_paginate(@authors, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+  .row.authors
+    - @authors.each do |author|
+      .col-xl-12
+        = render 'authors/author', { author: author }
+  = will_paginate(@authors, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)

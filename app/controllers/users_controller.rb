@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     end
     
     def show
-        @user = User.find(params[:id])
+        @user = User.find_by(id: params[:id])
         @post_feed_books = @user.books.paginate(page: params[:page])
         @post_feed_reviews = @user.reviews.paginate(page: params[:page])
         @following = @user.active_relationships.order(created_at: "DESC").map{|active_relationship| active_relationship.followed}.paginate(page: params[:page])
@@ -19,8 +19,6 @@ class UsersController < ApplicationController
             @time_line_feed_reviews = current_user.time_line_feed_reviews.paginate(page: params[:page]) 
             @favorite_books = @user.favorites.order(created_at: "DESC").map{|favorite| favorite.book}.paginate(page: params[:page])
         end
-        
-        
     end
 
     def new

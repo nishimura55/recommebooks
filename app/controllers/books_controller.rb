@@ -8,13 +8,13 @@ class BooksController < ApplicationController
       books = RakutenWebService::Books::Book.search(title: params[:keyword])
       @books = []
       books.each do |item|
-        book = Book.new(
+        book = {
           title: item.title,
           author: item.author,
           story: item.item_caption,
           image: item.large_image_url,
           rakuten_url: item.item_url
-        )
+        }
         @books << book
       end
     end
@@ -22,14 +22,26 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new(book_params)
+    @author_name = params[:book][:author].gsub(" ", "") 
   end
 
   def create
     @book = current_user.books.build(book_params)
+    if Author.find_by(name: params[:book][:author]).present?
+      author_id_for_book = Author.find_by(name: params[:book][:author]).id
+    else
+      new_author = Author.new(name: params[:book][:author])
+    end
     if @book.save
+      unless new_author.nil?
+        new_author.save
+        author_id_for_book = new_author.id
+      end
+      @book.update( author_id: author_id_for_book )
       flash[:success] = "本を投稿しました"
       redirect_to book_path(@book.id)
     else
+      @author_name = params[:book][:author]
       flash.now[:danger] = "感想を入力してください"
       render 'new'
     end
@@ -59,7 +71,7 @@ class BooksController < ApplicationController
   private
 
         def book_params
-            params.require(:book).permit(:title, :author, :story, :image,
+            params.require(:book).permit(:title, :story, :image,
                                          :rakuten_url, :contributor_review)
         end
 
