@@ -22,7 +22,11 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new(book_params)
-    @author_name = params[:book][:author].gsub(" ", "") 
+    unless params[:book][:author].empty?
+      @author_name = params[:book][:author].gsub(" ", "")
+    else
+      @author_name = "作者不明"
+    end 
   end
 
   def create

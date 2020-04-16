@@ -4,6 +4,7 @@ RSpec.describe '本のシステムテスト', type: :system do
     let(:user) { create(:user) }
     let(:other_user) { create(:user) }
     let(:admin_user) { create(:user, :admin_user) }
+    let!(:author) { create(:author) }
 
     describe '本一覧のテスト' do
 
