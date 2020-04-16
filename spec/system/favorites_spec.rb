@@ -4,6 +4,7 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
     let(:favorite) { create(:favorite) }
     let(:user) { create(:user) }
     let(:book) { create(:book) }
+    let!(:author) { create(:author) }
 
     describe 'つんどく登録のテスト' do
 
