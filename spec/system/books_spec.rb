@@ -5,6 +5,7 @@ RSpec.describe '本のシステムテスト', type: :system do
     let(:other_user) { create(:user) }
     let(:admin_user) { create(:user, :admin_user) }
     let!(:author) { create(:author) }
+    let!(:genre) { create(:genre) }
 
     describe '本一覧のテスト' do
 
@@ -63,11 +64,14 @@ RSpec.describe '本のシステムテスト', type: :system do
                     fill_in 'book_search', with: '山'
                     click_on '本の題名を検索'
                     page.all('#thmb-book-btn')[0].click
+                    click_on '文学・小説'
+                    check 'テストジャンル'
                     fill_in '投稿者の感想', with: 'そうとう面白かった！'
                     click_on '投稿する'
                 end.to change {Book.count}.by(+1)
                 expect(page).to have_content '本を投稿しました'
                 expect(page).to have_content '山'
+                expect(page).to have_content 'テストジャンル'
                 expect(page).to have_content 'そうとう面白かった！'
                 expect(page).to have_content user.name
                 find(".dropdown-toggle").click
@@ -81,6 +85,8 @@ RSpec.describe '本のシステムテスト', type: :system do
                 fill_in 'book_search', with: '山'
                 click_on '本の題名を検索'
                 page.all('#thmb-book-btn')[1].click
+                click_on '文学・小説'
+                check 'テストジャンル'
                 fill_in '投稿者の感想', with: 'そうとう面白かった！'
                 click_on '投稿する'
                 visit user_path(user)
@@ -97,9 +103,24 @@ RSpec.describe '本のシステムテスト', type: :system do
                     fill_in 'book_search', with: '山'
                     click_on '本の題名を検索'
                     page.all('#thmb-book-btn')[1].click
+                    click_on '文学・小説'
+                    check 'テストジャンル'
                     click_on '投稿する'
                 end.to change {Book.count}.by(0)
                 expect(page).to have_content '感想を入力してください'             
+            end
+        end
+
+        context 'ジャンルを入力しなかった場合' do 
+            it '投稿失敗となる' do
+                expect do
+                    fill_in 'book_search', with: '山'
+                    click_on '本の題名を検索'
+                    page.all('#thmb-book-btn')[1].click
+                    fill_in '投稿者の感想', with: 'そうとう面白かった！'
+                    click_on '投稿する'
+                end.to change {Book.count}.by(0)
+                expect(page).to have_content '投稿に失敗しました'             
             end
         end
 

@@ -21,6 +21,9 @@
           p.book-author
             = link_to @book.author.name, author_path(@book.author)
             a 著
+          - @book.genres.each do |genre|
+              .genre-tag-mark.bg-warning
+                = link_to genre.name, books_path(genre_id: genre.id), id: "genre-tag-text"
           .book-recomme-evaluation-point-fav
             a.book-recomme-evaluation-point  #{@book.recomme_evaluation_point}レコメ評価ポイント
           .book-story-contributor-review
@@ -31,6 +34,9 @@
               a 投稿者(
               = link_to @book.user.name, user_path(@book.user)
               a )の感想
+            - @book.feelings.each do |feeling|
+              .feeling-tag-mark.bg-info
+                = link_to "#{feeling.situation}に", books_path(feeling_id: feeling.id), id: "feeling-tag-text"
             p.book-contributor-review.table-bordered = @book.contributor_review
           - if @my_review.present?
             = render 'reviews/review', { review: @my_review }

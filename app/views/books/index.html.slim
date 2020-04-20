@@ -1,6 +1,11 @@
 - provide(:title, "本一覧")
 .container#bookindex
-  h2  本一覧
+  - if @feeling.present?
+    h2 「#{@feeling.situation}」に読みたい本一覧
+  - elsif @genre.present?
+    h2 ジャンル「#{@genre.name}」の本一覧
+  - else
+    h2  本一覧
   
   = will_paginate(@books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
   .row.books

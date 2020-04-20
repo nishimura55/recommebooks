@@ -4,6 +4,7 @@ RSpec.describe '本投稿ページのリクエストテスト', type: :request d
     let(:user) { create(:user) }
     let(:author) { create(:author) }
     let(:book) { create(:book) }
+    let!(:genre) { create(:genre, id: 1) }
 
     context 'ユーザーがログインしていないとき' do
         it '302レスポンスが返されログイン画面に移行する' do
@@ -11,7 +12,8 @@ RSpec.describe '本投稿ページのリクエストテスト', type: :request d
                                                title: "テスト本",
                                                story: "伝説の男の物語",
                                                contributor_review: "稀代の名作",
-                                               author: "田中太郎" 
+                                               author: "田中太郎" ,
+                                               genre_ids: [ "1" ]
                                               } 
                                       }
             expect(response.status).to eq 302
@@ -27,7 +29,8 @@ RSpec.describe '本投稿ページのリクエストテスト', type: :request d
                                                  title: "テスト本",
                                                  story: "伝説の男の物語",
                                                  contributor_review: "稀代の名作",
-                                                 author: "田中太郎" 
+                                                 author: "田中太郎",
+                                                 genre_ids: [ "1" ]
                                                 } 
                                         }
               expect(response.status).to eq 302
@@ -46,7 +49,8 @@ RSpec.describe '本投稿ページのリクエストテスト', type: :request d
                                                  title: "テスト本",
                                                  story: "伝説の男の物語",
                                                  contributor_review: "稀代の名作",
-                                                 author: "田中太郎" 
+                                                 author: "田中太郎" ,
+                                                 genre_ids: [ "1" ]
                                                 } 
                                         }
               expect(response.status).to eq 200

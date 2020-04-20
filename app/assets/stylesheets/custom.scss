@@ -510,6 +510,33 @@
         margin-bottom: 20px;
         color: silver;
     }
+    .check-box-title{
+        display: block;
+    }
+    .check-box{
+        display: inline-block;
+        margin-left: 17px;
+    }
+    .nav-pills{
+        margin-bottom: 20px;
+        .nav-link{
+            border: solid silver;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            color: black;
+            .nav-text{
+                margin-bottom: 0px;  
+            }
+        }
+        .nav-link.active{
+            color: white;
+        }
+    }
+    #pale-line{
+        border-bottom: solid;
+        margin-bottom: 20px;
+        color: whitesmoke;
+    }
 }
 
 //ユーザー詳細画面
@@ -543,6 +570,18 @@
             }
             .user-profile{
                 padding: 5px;
+            }
+            .genre-tag-mark{
+                display: inline-block;
+                text-align: center;
+                font-size: 15px;
+                padding: 5px;
+                border-radius: 10px;
+                margin-right: 10px;
+                margin-bottom: 7px;
+                #genre-tag-text{
+                    color: white;
+                }
             }
             .user-favorirte-genre{
                 padding: 5px;
@@ -702,13 +741,55 @@
     .btn {
         margin-top: 30px;
     }
+    .check-box-title{
+        display: block;
+    }
+    .check-box{
+        display: inline-block;
+        margin-left: 17px;
+    }
+    .nav-pills{
+        margin-top: 10px;
+        margin-bottom: 20px;
+        .nav-link{
+            border: solid silver;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            color: black;
+            .nav-text{
+                margin-bottom: 0px;  
+            }
+        }
+        .nav-link.active{
+            color: white;
+        }
+    }
     #book-post-line p{
         border-bottom: solid;
         margin-bottom: 20px;
         color: silver;
     }
+    .book-image-center{
+        display: block;
+        margin: auto;
+    }
     #book_story{
         height: 120px;
+    }
+    #pale-line{
+        border-bottom: solid;
+        margin-bottom: 20px;
+        color: whitesmoke;
+    }
+    .must-mark{
+        display: inline-block;
+        text-align: center;
+        font-size: 15px;
+        color: white;
+        width: 50px;
+        padding: 0px;
+        border-radius: 10px;
+        margin-left: 10px;
     }
 }
 
@@ -722,6 +803,18 @@
     .book-author{
         font-size: 25px;
         margin-bottom: 0px;
+    }
+    .genre-tag-mark{
+        display: inline-block;
+        text-align: center;
+        font-size: 15px;
+        padding: 5px;
+        border-radius: 10px;
+        margin-right: 10px;
+        margin-bottom: 7px;
+        #genre-tag-text{
+            color: white;
+        }
     }
     .book-recomme-evaluation-point-fav{
         font-size: 20px;
@@ -737,6 +830,18 @@
         }
         .book-story{
             padding: 5px;
+        }
+        .feeling-tag-mark{
+            display: inline-block;
+            text-align: center;
+            font-size: 15px;
+            padding: 5px;
+            border-radius: 10px;
+            margin-right: 10px;
+            margin-bottom: 7px;
+            #feeling-tag-text{
+                color: white;
+            }
         }
         .book-contributor-review{
             padding: 5px;
@@ -754,6 +859,7 @@
         @include review-thumb;
     }
     .review-post-form{
+        margin-top: 30px;
         .card-header{
             text-align: center;
         }

@@ -11,6 +11,8 @@ class User < ApplicationRecord
                                      foreign_key: "followed_id",
                                      dependent:   :destroy
     has_many :followers, through: :passive_relationships, source: :follower
+    has_many :user_genres, dependent: :destroy
+    has_many :genres, through: :user_genres
 
     before_save { self.email = email.downcase }
     validates :name, presence: true, length: { maximum: 45 }
@@ -45,6 +47,20 @@ class User < ApplicationRecord
 
     def following?(other_user)
         following.include?(other_user)
+    end
+
+    def save_genres(tag_ids)
+        current_tag_ids = self.genres.pluck(:id) unless self.genres.nil?
+        old_tag_ids = current_tag_ids - tag_ids
+        new_tag_ids = tag_ids - current_tag_ids
+    
+        old_tag_ids.each do |old_tag_id|
+          self.user_genres.find_by(genre_id: old_tag_id).delete
+        end
+    
+        new_tag_ids.each do |new_tag_id|
+          self.genres << Genre.find_by(id: new_tag_id)
+        end
     end
 
 end
