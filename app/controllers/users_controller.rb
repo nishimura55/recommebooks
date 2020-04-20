@@ -2,6 +2,7 @@ class UsersController < ApplicationController
     before_action :logged_in_user, only: [:edit, :update, :destroy]
     before_action :correct_user, only: [:edit, :update]
     before_action :admin_user,     only: :destroy
+    before_action :set_genre,     only: [:edit, :update]
     require 'will_paginate/array'
 
     def index
@@ -43,6 +44,11 @@ class UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         if @user.update_attributes(user_params)
+            unless params[:user][:genre_ids].nil?
+                @user.save_genres(params[:user][:genre_ids].map(&:to_i)) #配列にstring型でidが格納されているため、integer型に変換して配列化
+            else
+                @user.save_genres([])
+            end
             flash[:success] = "プロフィールを更新しました"
             redirect_to @user
         else
@@ -69,6 +75,11 @@ class UsersController < ApplicationController
                 flash[:danger] = "無効な処理です"
                 redirect_to(root_url)                      
             end
+        end
+
+        def set_genre
+            @genre = { "1": "文学・小説", "2": "社会・ビジネス", "3": "趣味・実用", "4": "芸術・教養・エンタメ",
+                       "5": "旅行・地図", "6": "暮らし・健康", "7": "図鑑・百科事典", "8": "こども", "9": "コミック" } 
         end
 
 end

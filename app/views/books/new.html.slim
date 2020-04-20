@@ -4,20 +4,50 @@
     .offset-md-2.col-md-8.offset-lg-3.col-lg-6.offset-md-2.col-md-8
       .card
         .card-header
-          h4.text-center 感想を入力して本を投稿
+          h4.text-center ジャンルと感想を入力して本を投稿
         .card-body
           = form_with model: @book, local: true do |f| 
             = render 'shared/error_messages', object: f.object
             = f.hidden_field :rakuten_url, :value => @book.rakuten_url
             = f.hidden_field :image, :value => @book.image
             .form-group
+              a ジャンル
+              a.must-mark.bg-danger 必須
+              ul.nav.nav-pills.nav-stacked role = "tablist" 
+                - @genre.each do |id, name|
+                  li.nav-item
+                    a.nav-link id="t#{id}-tab" data-toggle="tab" href="#t#{id}" role="tab" aria-controls="t#{id}" aria-selected="false"
+                      p.nav-text #{name}
+              .tab-content
+                - for n in 1..9 do
+                  .tab-pane.fade.show role="tabpanel" aria-labelledby="t#{n}" id="t#{n}"
+                    .form-group
+                      = f.collection_check_boxes :genre_ids, Genre.where(division: n), :id, :name, include_hidden: false do |b|
+                        .check-box
+                          = b.check_box
+                          = b.label { b.text }
+            .row#pale-line
+              .col-lg-12
+                p
+            .form-group
+              = f.label :feeling_ids, 'どんな気分の時に', class: 'check-box-title'
+              = f.collection_check_boxes :feeling_ids, Feeling.all, :id, :situation, include_hidden: false do |b|
+                .check-box
+                  = b.check_box
+                  = b.label { b.text }
+            .row#pale-line
+              .col-lg-12
+                p
+            .form-group
               = f.label :contributor_review, '投稿者の感想'
+              a.must-mark.bg-danger 必須
               = f.text_area :contributor_review, class: 'form-control', placeholder: "あなたの感想を入力してください"
             .row#book-post-line
               .col-lg-12
                 p
             - if @book.image
-              = image_tag @book.image
+              .book-image
+                = image_tag @book.image, class: "book-image-center"
             .form-group
               = f.label :title, '題名'
               = f.text_field :title, value: @book.title, class: 'form-control', readonly: true   

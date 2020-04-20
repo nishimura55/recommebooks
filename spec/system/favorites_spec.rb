@@ -5,6 +5,7 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
     let(:user) { create(:user) }
     let(:book) { create(:book) }
     let!(:author) { create(:author) }
+    let!(:genre) { create(:genre) }
 
     describe 'つんどく登録のテスト' do
 
@@ -48,6 +49,8 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
                 fill_in 'book_search', with: '山'
                 click_on '本の題名を検索'
                 page.all('#thmb-book-btn')[0].click
+                click_on '文学・小説'
+                check 'テストジャンル'
                 fill_in '投稿者の感想', with: 'そうとう面白かった！'
                 click_on '投稿する'
             end
@@ -111,6 +114,8 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
                 fill_in 'book_search', with: '山'
                 click_on '本の題名を検索'
                 page.all('#thmb-book-btn')[0].click
+                click_on '文学・小説'
+                check 'テストジャンル'
                 fill_in '投稿者の感想', with: 'そうとう面白かった！'
                 click_on '投稿する'
                 click_on 'つんどく本登録'

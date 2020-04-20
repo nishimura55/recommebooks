@@ -21,8 +21,12 @@
             - if @user.profile?
               p.heading 自己紹介
               p.user-profile.table-bordered = @user.profile
-            - if @user.favorite_genre?
+            - if @user.favorite_genre? || @user.genres.present?
               p.heading 好きなジャンル・本
+              - @user.genres.each do |genre|
+                .genre-tag-mark.bg-warning
+                  = link_to genre.name, books_path(genre_id: genre.id), id: "genre-tag-text"
+            - if @user.favorite_genre?
               p.user-favorirte-genre.table-bordered = @user.favorite_genre
           ul.nav.nav-tabs.justify-content-center role = "tablist" 
             li.nav-item

@@ -4,6 +4,7 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
     let(:user) { create(:user) }
     let(:other_user) { create(:user) }
     let(:admin_user) { create(:user, :admin_user) }
+    let!(:genre) { create(:genre) }
 
     describe 'ユーザー一覧のテスト' do
 
@@ -101,13 +102,16 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
         context '有効な入力内容の場合' do
             it '正常に更新ができる' do
                 attach_file 'ユーザー画像', "#{Rails.root}/spec/factories/test_image.jpg"
-                fill_in '好きなジャンル・本', with: 'ミステリー系が好き'
+                click_on '文学・小説'
+                check 'テストジャンル'
+                fill_in 'どんなタイプの本が好き？', with: 'ミステリー系が好き'
                 fill_in '自己紹介', with: '旅好きの大学生です'
                 fill_in 'ユーザー名', with: 'Eテストユーザー'
                 fill_in 'メールアドレス', with: 'Etest@example.com'
                 click_button '更新する'
                 expect(page).to have_selector("img[src$='test_image.jpg']")
                 expect(page).to have_content 'プロフィールを更新しました'
+                expect(page).to have_content 'テストジャンル'
                 expect(page).to have_content 'ミステリー系が好き'
                 expect(page).to have_content '旅好きの大学生です'
                 expect(page).to have_content 'Eテストユーザー'
@@ -117,7 +121,9 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
         context '無効な入力内容の場合' do
             context 'ユーザー名とメールアドレスが空欄の場合' do
                 it '更新失敗となる' do
-                    fill_in '好きなジャンル・本', with: 'ミステリー系が好き'
+                    click_on '文学・小説'
+                    check 'テストジャンル'
+                    fill_in 'どんなタイプの本が好き？', with: 'ミステリー系が好き'
                     fill_in '自己紹介', with: '旅好きの大学生です'
                     fill_in 'ユーザー名', with: ''
                     fill_in 'メールアドレス', with: ''
@@ -130,7 +136,9 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
 
             context 'パスワードとパスワードの確認が一致しない場合' do
                 it '更新失敗となる' do
-                    fill_in '好きなジャンル・本', with: 'ミステリー系が好き'
+                    click_on '文学・小説'
+                    check 'テストジャンル'
+                    fill_in 'どんなタイプの本が好き？', with: 'ミステリー系が好き'
                     fill_in '自己紹介', with: '旅好きの大学生です'
                     fill_in 'ユーザー名', with: 'Eテストユーザー'
                     fill_in 'メールアドレス', with: 'Etest@example.com'
