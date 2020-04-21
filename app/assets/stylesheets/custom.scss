@@ -55,7 +55,8 @@
         }
         .thumb-book-story{
             height: 95px;
-            overflow: scroll;
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
         .thumb-book-recomme-fav{
             margin-top: 10px;
@@ -121,7 +122,8 @@
         .thumb-review-content{
             font-size: 16px;
             height: 95px;
-            overflow: scroll;
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
         .thumb-review-edit-delete{
             margin-top: 10px;
@@ -185,7 +187,8 @@
         }
         .thumb-book-story{
             height: 95px;
-            overflow: scroll;
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
         .thumb-book-recomme-fav{
             margin-top: 10px;
@@ -249,7 +252,8 @@
         }
         .thumb-book-story{
             height: 95px;
-            overflow: scroll;
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
         .thumb-book-recomme-fav{
             margin-top: 10px;
@@ -307,7 +311,8 @@
         }
         .thumb-book-story{
             height: 70px;
-            overflow: scroll;
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
         .thumb-book-recomme-fav{
             margin-top: 10px;
@@ -354,7 +359,8 @@
             }
         }
         .thumb-user-favorite-genre{
-            overflow: scroll;
+            overflow-y: scroll;
+            overflow-x: hidden;
             height: 50px;
         }
         .thumb-follow-recomme{
@@ -707,7 +713,8 @@
             .thumb-book-story{
                 padding: 3px;
                 height: 150px;
-                overflow: scroll;
+                overflow-y: scroll;
+                overflow-x: hidden;
             }
         }
         #books-thumb-recomme{

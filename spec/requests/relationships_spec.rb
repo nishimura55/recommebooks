@@ -8,7 +8,7 @@ RSpec.describe 'フォローについてのリクエストテスト', type: :req
         context 'ログインしていないとき' do
             it 'フォローできずログイン画面になる' do        
                 expect do
-                  post relationships_path, params: { relationship: { followed_id: other_user.id } }
+                  post user_relationships_path(user), params: { relationship: { followed_id: other_user.id } }
                 end.to change(user.following, :count).by(0)
                 expect(response.status).to eq 302
                 expect(response).to redirect_to login_path
@@ -19,14 +19,14 @@ RSpec.describe 'フォローについてのリクエストテスト', type: :req
             it 'フォローできる' do 
                 log_in_by_post_request_as(user)
                 expect do
-                  post relationships_path, params: { relationship: { followed_id: other_user.id } }
+                  post user_relationships_path(user), params: { relationship: { followed_id: other_user.id } }
                 end.to change(user.following, :count).by(1)
             end
 
             it 'Ajaxでフォローできる' do 
                 log_in_by_post_request_as(user)
                 expect do
-                  post relationships_path, params: { relationship: { followed_id: other_user.id } }, xhr: true
+                  post user_relationships_path(user), params: { relationship: { followed_id: other_user.id } }, xhr: true
                 end.to change(user.following, :count).by(1)
             end
         end
@@ -35,7 +35,7 @@ RSpec.describe 'フォローについてのリクエストテスト', type: :req
     describe 'フォロー解除' do
         before do
             log_in_by_post_request_as(user)
-            post relationships_path, params: { relationship: { followed_id: other_user.id } }
+            post user_relationships_path(user), params: { relationship: { followed_id: other_user.id } }
         end
         
         context 'ログインしていないとき' do
@@ -43,7 +43,7 @@ RSpec.describe 'フォローについてのリクエストテスト', type: :req
                 log_out_by_delete_request
                 relationship = user.active_relationships.find_by(followed_id: other_user.id)
                 expect do
-                  delete relationship_path(relationship)
+                  delete user_relationship_path(user, relationship)
                 end.to change(user.following, :count).by(0)
                 expect(response.status).to eq 302
                 expect(response).to redirect_to login_path
@@ -54,14 +54,14 @@ RSpec.describe 'フォローについてのリクエストテスト', type: :req
             it 'フォロー解除できる' do 
                 relationship = user.active_relationships.find_by(followed_id: other_user.id)
                 expect do
-                  delete relationship_path(relationship)
+                  delete user_relationship_path(user, relationship)
                 end.to change(user.following, :count).by(-1)
             end
 
             it 'Ajaxでフォロー解除できる' do 
                 relationship = user.active_relationships.find_by(followed_id: other_user.id)
                 expect do
-                  delete relationship_path(relationship), xhr: true
+                  delete user_relationship_path(user, relationship), xhr: true
                 end.to change(user.following, :count).by(-1)
             end
         end

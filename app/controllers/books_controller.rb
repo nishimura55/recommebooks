@@ -3,20 +3,19 @@ class BooksController < ApplicationController
   before_action :logged_in_user, only: [:search, :new, :create]
   before_action :admin_user,     only: :destroy
   before_action :set_genre,     only: [:new, :create]
+  before_action :set_book, only: [:show, :destroy]
 
   def search
     if !params[:keyword].to_s.empty?
       books = RakutenWebService::Books::Book.search(title: params[:keyword])
-      @books = []
-      books.each do |item|
-        book = {
+      @books = books.map do |item|
+        {
           title: item.title,
           author: item.author,
           story: item.item_caption,
           image: item.large_image_url,
           rakuten_url: item.item_url
         }
-        @books << book
       end
     end
   end
@@ -32,17 +31,9 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.build(book_params)
-    if Author.find_by(name: params[:book][:author]).present?
-      author_id_for_book = Author.find_by(name: params[:book][:author]).id
-    else
-      new_author = Author.new(name: params[:book][:author])
-    end
     if !params[:book][:genre_ids].nil? && @book.save
-      unless new_author.nil?
-        new_author.save
-        author_id_for_book = new_author.id
-      end
-      @book.update( author_id: author_id_for_book )
+      author = Author.find_or_create_by(name: params[:book][:author])
+      @book.update(author: author)
       @book.save_feelings(params[:book][:feeling_ids]) unless params[:book][:feeling_ids].nil?
       @book.save_genres(params[:book][:genre_ids])
       flash[:success] = "本を投稿しました"
@@ -55,10 +46,9 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
     @review = Review.new
     if logged_in?
-      @my_review = current_user.reviews.find_by(book_id: params[:id])
+      @my_review = current_user.reviews.find_by(book: @book)
       @reviews = @book.reviews.where.not(user_id: current_user.id).paginate(page: params[:page])
     else
       @reviews = @book.reviews.paginate(page: params[:page])
@@ -66,7 +56,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    Book.find(params[:id]).destroy
+    @book.destroy
     flash[:success] = "削除しました"
     redirect_to books_path
   end
@@ -94,4 +84,7 @@ class BooksController < ApplicationController
                      "5": "旅行・地図", "6": "暮らし・健康", "7": "図鑑・百科事典", "8": "こども", "9": "コミック" } 
         end
 
+        def set_book
+          @book = Book.find(params[:id])
+        end
 end
