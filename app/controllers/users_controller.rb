@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     require 'will_paginate/array'
 
     def index
-        @users = User.order(created_at: "DESC").paginate(page: params[:page])
+        @q = User.ransack(params[:q])
+        @users = @q.result(distinct: true).order(created_at: "DESC").paginate(page: params[:page])
     end
     
     def show

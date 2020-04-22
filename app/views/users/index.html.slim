@@ -1,6 +1,11 @@
 - provide(:title, "ユーザー一覧")
 .container#userindex
   h2  ユーザー一覧
+
+  = search_form_for @q do |f|
+    .form-group.search-form
+      = f.search_field :name_cont, class: 'form-control input-area', id: "user-index-search", placeholder: "ユーザー名で検索"
+      = f.submit "検索", class: "btn btn-success"
   
   = will_paginate(@users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
   .row.users

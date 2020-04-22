@@ -8,6 +8,7 @@ RSpec.describe '著者のシステムテスト', type: :system do
 
         before do
             create_list(:author, 31)
+            create(:author, name: "検索用テスト著者")
             visit authors_path
         end
 
@@ -17,6 +18,14 @@ RSpec.describe '著者のシステムテスト', type: :system do
             Author.paginate(page: 1).each do |author|
                 expect(page).to have_link author.name, href: author_path(author)
             end
+        end
+
+        it '検索ができる' do
+            expect(page).to have_content 'テスト著者', count: 30
+                fill_in 'author-index-search', with: '検索用'
+                click_on '検索'
+                expect(page).to have_content 'テスト著者', count: 1
+                expect(page).to have_content '検索用テスト著者'
         end
 
     end

@@ -1,6 +1,11 @@
 - provide(:title, "著者一覧")
 .container#authorindex
   h2  著者一覧
+
+  = search_form_for @q do |f|
+    .form-group.search-form
+      = f.search_field :name_cont, class: 'form-control input-area', id: "author-index-search", placeholder: "著者名で検索"
+      = f.submit "検索", class: "btn btn-success"
   
   = will_paginate(@authors, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
   .row.authors
