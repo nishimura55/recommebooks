@@ -7,10 +7,10 @@ nav.navbar.navbar-expand-lg.navbar-light
         .col-md-4
           .navbar-brand.logo-main RecommeBooks
           .navbar-brand.logo-sub レコメブックス
-    form.form-inline
-      input.form-control.mr-sm-2 type="search" placeholder="本のタイトル、著者名" aria-label="Search"
-      button.btn.btn-outline-primary.my-2.my-sm-o type="submit" 
-        |  検索
+    = search_form_for @q_header, url: books_path, local: true, class: "form-inline" do |f|
+      .form-group.search-form
+        = f.search_field :title_or_author_name_cont, class: 'form-control input-area', id: "header-search", placeholder: "題名・著者名"
+        = f.submit "本を検索", class: "btn btn-info"
     ul.navbar-nav
       - if logged_in?
         li.nav-item.active

@@ -62,14 +62,17 @@ class BooksController < ApplicationController
   end
 
   def index
+    @q = Book.ransack(params[:q])
+    @books = @q.result(distinct: true).paginate(page: params[:page])
+    if @q_header
+      @books = @q_header.result(distinct: true).paginate(page: params[:page])
+    end
     if params[:feeling_id]
       @feeling = Feeling.find(params[:feeling_id])
       @books = @feeling.books.paginate(page: params[:page])
     elsif params[:genre_id]
       @genre = Genre.find(params[:genre_id])
       @books = @genre.books.paginate(page: params[:page])
-    else
-      @books = Book.paginate(page: params[:page])
     end
   end
 

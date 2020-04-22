@@ -10,6 +10,7 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
 
         before do
             create_list(:user, 31)
+            create(:user, name: "検索用テストユーザー")
             visit users_path
         end
 
@@ -40,6 +41,14 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
                   expect(page).to have_content '削除しました'
                 end.to change {User.count}.by(-1)
             end
+        end
+
+        it '検索ができる' do
+            expect(page).to have_content 'テストユーザー', count: 30
+                fill_in 'user-index-search', with: '検索用'
+                click_on '検索'
+                expect(page).to have_content 'テストユーザー', count: 1
+                expect(page).to have_content '検索用テストユーザー'
         end
     end
 

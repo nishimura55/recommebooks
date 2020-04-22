@@ -437,6 +437,21 @@
     }
 }
 
+@mixin search-form{
+    .search-form{
+        .input-area{
+            display: inline-block;
+            width: 300px;
+        }
+        .btn{
+            display: inline-block;
+            margin-left: 5px;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+    }
+}
+
 //エラー文
 #error_explanation {
     color: red;
@@ -473,7 +488,17 @@
     .nav-item{
         padding: 0px 10px;
     }
-
+    .search-form{
+        .input-area{
+            display: inline-block;
+            width: 300px;
+        }
+        .btn{
+            display: inline-block;
+            margin-left: 5px;
+            
+        }
+    }
 }
 
 .footer{
@@ -649,6 +674,7 @@
         margin-top: 30px;
         margin-bottom: 30px;
     }
+    @include search-form;
     .users-thumb{
         @include users-thumb;
     }
@@ -662,6 +688,7 @@
         margin-top: 30px;
         margin-bottom: 30px;
     }
+    @include search-form;
     .book-thumb{
         @include book-thumb;
     }
@@ -897,6 +924,7 @@
         margin-top: 30px;
         margin-bottom: 30px;
     }
+    @include search-form;
     .author-thumb{
         border: 1px solid #C0C0C0;
         margin-bottom: 30px;

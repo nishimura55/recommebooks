@@ -126,4 +126,34 @@ RSpec.describe '本のシステムテスト', type: :system do
 
     end
 
+    describe '本一検索のテスト' do
+
+        before do
+            create_list(:book, 31)
+            create(:book, title: "検索用テスト本")
+            visit books_path
+        end
+
+        context '本一覧画面から検索した場合' do
+            it '検索した本が表示される' do
+                expect(page).to have_content 'テスト本', count: 30
+                fill_in 'book-index-search', with: '検索用'
+                click_on '検索'
+                expect(page).to have_content 'テスト本', count: 1
+                expect(page).to have_content '検索用テスト本'
+            end
+        end
+
+        context 'トップページからヘッダーで検索した場合' do
+            it '検索した本が表示される' do
+                expect(page).to have_content 'テスト本', count: 30
+                visit root_path
+                fill_in 'header-search', with: '検索用'
+                click_on '検索'
+                expect(page).to have_content 'テスト本', count: 1
+                expect(page).to have_content '検索用テスト本'
+            end
+        end
+    end
+
 end
