@@ -966,3 +966,30 @@
         }
     }
 }
+
+//レコメンドするユーザー選択画面
+#reco-user-index{
+    h2{
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    @include search-form;
+    .users-reco-choose{
+        @include users-thumb;
+    }
+
+}
+
+//レコメンドする本選択画面
+#reco-book-index{
+    h2{
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    @include search-form;
+    .book-reco-choose{
+        @include book-thumb;
+    }
+}

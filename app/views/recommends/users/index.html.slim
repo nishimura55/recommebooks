@@ -1,0 +1,28 @@
+- provide(:title, "ユーザー一覧")
+.container#reco-user-index
+  h2  レコメンドするユーザーを選ぶ
+
+  - if params[:book_id]
+    = search_form_for @q, url: recommends_users_path do |f|
+      .form-group.search-form
+        = f.hidden_field :book_id, :value => params[:book_id]
+        = f.search_field :name_cont, class: 'form-control input-area', id: "user-index-search", placeholder: "ユーザー名で検索"
+        = f.submit "検索", class: "btn btn-success"
+  - elsif params[:q]
+    = search_form_for @q, url: recommends_users_path do |f|
+      .form-group.search-form
+        = f.hidden_field :book_id, :value => params[:q][:book_id]
+        = f.search_field :name_cont, class: 'form-control input-area', id: "user-index-search", placeholder: "ユーザー名で検索"
+        = f.submit "検索", class: "btn btn-success"
+  - else
+    = search_form_for @q, url: recommends_users_path do |f|
+      .form-group.search-form
+        = f.search_field :name_cont, class: 'form-control input-area', id: "user-index-search", placeholder: "ユーザー名で検索"
+        = f.submit "検索", class: "btn btn-success"
+  
+  = will_paginate(@users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+  .row.users
+    - @users.each do |user|
+      .col-xl-6 
+        = render 'users/user_reco_choose', { user: user }
+  = will_paginate(@users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)

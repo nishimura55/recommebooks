@@ -1,8 +1,11 @@
 class User < ApplicationRecord
     has_many :books
+
     has_many :favorites, dependent: :destroy
     has_many :favorite_books, through: :favorites, source: :book
+
     has_many :reviews, dependent: :destroy
+
     has_many :active_relationships, class_name:  "Relationship",
                                     foreign_key: "follower_id",
                                     dependent:   :destroy
@@ -11,6 +14,16 @@ class User < ApplicationRecord
                                      foreign_key: "followed_id",
                                      dependent:   :destroy
     has_many :followers, through: :passive_relationships, source: :follower
+
+    has_many :active_recommends, class_name:  "Recommend",
+                                    foreign_key: "recommender_id",
+                                    dependent:   :destroy
+    has_many :recommending, through: :active_recommends, source: :recommended
+    has_many :passive_recommends, class_name:  "Recommend",
+                                     foreign_key: "recommended_id",
+                                     dependent:   :destroy
+    has_many :recommenders, through: :passive_recommends, source: :recommender
+
     has_many :user_genres, dependent: :destroy
     has_many :genres, through: :user_genres
 

@@ -12,7 +12,7 @@
             =image_tag 'userlogo.png', size: '240x260', class: "user-image"
           = link_to 'プロフィールの編集', edit_user_path(current_user), class: "btn btn-success", id: "user-edit-button"
           = link_to '本を投稿', search_books_path, class: "btn btn-success", id: "book-post-button"
-          = link_to 'レコメンド状況を確認', root_path, class: "btn btn-success", id: "user-recomme-button"
+          = link_to 'レコメンド状況', user_recommends_path(@user.id), class: "btn btn-success", id: "user-recomme-button"
         .col-lg-8.user-overview
           p.user-title  称号「レコメニスト」
           p.user-recomme-point  #{@user.recomme_point}レコメポイント

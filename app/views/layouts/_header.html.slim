@@ -7,7 +7,7 @@ nav.navbar.navbar-expand-lg.navbar-light
         .col-md-4
           .navbar-brand.logo-main RecommeBooks
           .navbar-brand.logo-sub レコメブックス
-    = search_form_for @q_header, url: books_path, local: true, class: "form-inline" do |f|
+    = search_form_for @q_header, url: books_path, class: "form-inline" do |f|
       .form-group.search-form
         = f.search_field :title_or_author_name_cont, class: 'form-control input-area', id: "header-search", placeholder: "題名・著者名"
         = f.submit "本を検索", class: "btn btn-info"
@@ -22,6 +22,8 @@ nav.navbar.navbar-expand-lg.navbar-light
           .dropdown-menu aria-labelledby="dropdownMenu1"
             = link_to current_user, class: "dropdown-item"
               | マイページ
+            = link_to user_recommends_path(current_user.id), class: "dropdown-item"
+              | レコメンド状況
             = link_to logout_path, method: :delete, class: "dropdown-item"
               | ログアウト
       - else

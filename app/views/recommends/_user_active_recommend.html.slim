@@ -1,0 +1,9 @@
+.user-active-recommend
+  #book-thumb-image
+    = link_to book_path(recommend.book)
+      - if recommend.book.image?
+        = image_tag recommend.book.image, class: "book-image", width: '140px'
+      - else
+        =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
+
+p -----------------------------------------------------------------------------

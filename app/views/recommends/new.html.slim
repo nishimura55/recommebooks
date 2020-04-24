@@ -1,0 +1,78 @@
+- provide(:title, "レコメンドする")
+.container#recommend
+  h2 レコメンド
+  p -----------------------------------------------------------------------------------------------
+
+  - if !@book.present? && @user.present?
+    = link_to 'レコメンドする本を選ぶ', recommends_books_path(user_id: @user.id), class: "btn btn-info"
+  - elsif !@book.present? && !@user.present?
+    = link_to 'レコメンドする本を選ぶ', recommends_books_path, class: "btn btn-info"
+  
+  p レコメンドする本
+  - if @book.present?
+    h4  「#{@book.title}」をレコメンド
+    #book-thumb-image
+      = link_to book_path(@book)
+        - if @book.image?
+          = image_tag @book.image, class: "book-image", width: '140px'
+        - else
+          =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
+    - if @user.present?
+      = link_to '本を選びなおす', recommends_books_path(user_id: @user.id), class: "btn btn-info"
+    - elsif !@user.present?
+      = link_to '本を選びなおす', recommends_books_path, class: "btn btn-info"
+    
+
+  p -----------------------------------------------------------------------------------------------
+
+  - if !@user.present? && @book.present?
+    = link_to 'レコメンドするユーザーを選ぶ', recommends_users_path(book_id: @book.id), class: "btn btn-success"
+  - elsif !@user.present? && !@book.present?
+    = link_to 'レコメンドするユーザーを選ぶ', recommends_users_path, class: "btn btn-success"
+
+  p レコメンドするユーザー
+  - if @user.present?
+    h4  「#{@user.name}」にレコメンド
+    #users-thumb-image
+      = link_to user_path(@user)
+        - if @user.image?
+          = image_tag @user.image_url(:thumb2), class: "user-image"
+        - else
+          =image_tag 'userlogo.png', size: '120x135', class: "user-image"
+    - if @book.present?
+      = link_to 'ユーザーを選びなおす', recommends_users_path(book_id: @book.id), class: "btn btn-success"
+    - elsif !@book.present?
+      = link_to 'ユーザーを選びなおす', recommends_users_path, class: "btn btn-success"
+  - else
+    p ユーザーが選択されていません
+
+  p -----------------------------------------------------------------------------------------------
+  
+  - if @user.present? && @book.present?
+    - if !Recommend.find_by(recommended_id: @user.id, book_id: @book.id).nil?
+      p #{@user.name}さんはすでに「#{@book.title}」のレコメンドを受けております。
+      p 本かユーザーを選びなおしてください。
+    - elsif !Recommend.find_by(recommender_id: @user.id, book_id: @book.id).nil?
+      p 「#{@book.title}」は#{@user.name}さんがレコメンドしたことのある本です。
+      p 本かユーザーを選びなおしてください。
+    - elsif !Book.find_by(id: @book.id, user_id: @user.id).nil?
+      p 「#{@book.title}」は#{@user.name}さんが投稿した本です。
+      p 本かユーザーを選びなおしてください。
+    - else
+      = form_with model: @recommend, local: true do |f|
+        = render 'shared/error_messages', object: f.object
+        .form-group
+          = f.hidden_field :recommender_id, :value => current_user.id
+          = f.hidden_field :recommended_id, :value => @user.id
+          = f.hidden_field :book_id, :value => @book.id
+          
+          = f.label :body, 'アピール文'
+          = f.text_field :body, class: 'form-control'
+                
+          = f.submit 'レコメンドする', class: 'btn btn-success btn-block'
+      
+
+
+
+
+
