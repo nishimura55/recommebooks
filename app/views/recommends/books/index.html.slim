@@ -1,0 +1,28 @@
+- provide(:title, "本一覧")
+.container#reco-book-index
+  h2  レコメンドする本を選ぶ
+  
+  - if params[:user_id]
+    = search_form_for @q, url: recommends_books_path do |f|
+      .form-group.search-form
+        = f.hidden_field :user_id, :value => params[:user_id]
+        = f.search_field :title_cont, class: 'form-control input-area', id: "book-index-search", placeholder: "本の題名で検索"
+        = f.submit "検索", class: "btn btn-success"
+  - elsif params[:q]
+    = search_form_for @q, url: recommends_books_path do |f|
+      .form-group.search-form
+        = f.hidden_field :user_id, :value => params[:q][:user_id]
+        = f.search_field :title_cont, class: 'form-control input-area', id: "book-index-search", placeholder: "本の題名で検索"
+        = f.submit "検索", class: "btn btn-success"
+  - else
+    = search_form_for @q, url: recommends_books_path do |f|
+      .form-group.search-form
+        = f.search_field :title_cont, class: 'form-control input-area', id: "book-index-search", placeholder: "本の題名で検索"
+        = f.submit "検索", class: "btn btn-success"
+
+  = will_paginate(@books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+  .row.books
+    - @books.each do |book|
+      .col-xl-6 
+        = render 'books/book_reco_choose', { book: book }
+  = will_paginate(@books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)

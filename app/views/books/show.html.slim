@@ -14,7 +14,7 @@
           - if logged_in?
             div id = "favorite-button-#{@book.id}"
               = render 'favorites/favorite', book: @book
-            = link_to 'レコメンドする', root_path, class: "btn btn-success", id: "book-recomme-button"
+            = link_to 'レコメンドする', new_recommend_path(book_id: @book.id), class: "btn btn-success", id: "book-recomme-button"
           - if !current_user.nil? && current_user.admin?
             = link_to '削除', @book, method: :delete, data: { confirm: '削除しますか？' }, id: "delete", class: "btn btn-danger"
         .col-xl-8.book-overview

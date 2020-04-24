@@ -1,0 +1,25 @@
+.book-reco-choose
+  #book-thumb-image
+    = link_to book_path(book)
+      - if book.image?
+        = image_tag book.image, class: "book-image", width: '140px'
+      - else
+        =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
+  #book-thumb-overview
+    .thumb-book-title
+      = link_to book.title, book_path(book)
+    .thumb-book-author-rep-fav
+      = link_to book.author.name, author_path(book.author)
+      a 著
+      a.thumb-book-rep-fav
+        a.book-rep  #{book.recomme_evaluation_point}REP
+    .thumb-book-story #{book.story}
+    .thumb-book-recomme-fav
+      - if params[:user_id]
+        = link_to 'レコメンドする', new_recommend_path(book_id: book.id, user_id: params[:user_id]),
+                                  class: "btn btn-primary", id: "thmb-recomme-btn"
+      - elsif params[:q]
+        = link_to 'レコメンドする', new_recommend_path(book_id: book.id, user_id: params[:q][:user_id]),
+                                  class: "btn btn-primary", id: "thmb-recomme-btn"
+      - else
+        = link_to 'レコメンドする', new_recommend_path(book_id: book.id), class: "btn btn-primary", id: "thmb-recomme-btn"

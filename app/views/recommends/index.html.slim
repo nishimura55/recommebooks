@@ -1,0 +1,41 @@
+.container
+  .row
+    .col-xl-9#usershow
+      - if current_user?(@user)
+        h2 あなたのレコメンド状況
+      - else
+        h2 #{@user.name}さんのレコメンド状況
+      ul.nav.nav-tabs.justify-content-center role = "tablist"         
+        li.nav-item
+          a.nav-link.active#active-reco-tab data-toggle="tab" href="#active-reco" role="tab" aria-controls="active-reco" aria-selected="true"
+            p レコメンドした本
+        li.nav-item
+          a.nav-link#passive-reco-tab data-toggle="tab" href="#passive-reco" role="tab" aria-controls="passive-reco" aria-selected="false"
+            p レコメンドされた本
+      .tab-content
+        .tab-pane.fade.show.active#active-reco role="tabpanel" aria-labelledby="active-reco-tab"
+          - if @active_recommends.present?
+            - @active_recommends.each do |active_recommend|
+              - if current_user?(@user)
+                = render 'recommends/my_active_recommend', { recommend: active_recommend }
+              - else
+                = render 'recommends/user_active_recommend', { recommend: active_recommend }
+            = will_paginate(@active_recommends, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+          - else
+            p 表示するレコメンドがありません
+        .tab-pane.fade#passive-reco role="tabpanel" aria-labelledby="passive-reco-tab"
+          - if @passive_recommends.present?
+            - @passive_recommends.each do |passive_recommend|
+              - if current_user?(@user)
+                = render 'recommends/my_passive_recommend', { recommend: passive_recommend }
+              - else
+                = render 'recommends/user_passive_recommend', { recommend: passive_recommend }
+            = will_paginate(@passive_recommends, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+          - else
+            p 表示するレコメンドがありません
+
+
+
+
+    .col-xl-3
+      = render 'shared/right_side'

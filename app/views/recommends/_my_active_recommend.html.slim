@@ -1,0 +1,21 @@
+.my-active-recommend
+  #book-thumb-image
+    = link_to book_path(recommend.book)
+      - if recommend.book.image?
+        = image_tag recommend.book.image, class: "book-image", width: '140px'
+      - else
+        =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
+  #user-thumb-image
+    = link_to user_path(recommend.recommended)
+      - if recommend.recommended.image?
+        = image_tag recommend.recommended.image_url(:thumb2), class: "user-image"
+      - else
+        =image_tag 'userlogo.png', size: '120x135', class: "user-image"
+  #recommend-body
+    - if recommend.body?
+      p #{recommend.body}
+  #recommend-status
+    = render 'recommends/active_recommend_status', { recommend: recommend }
+
+p -----------------------------------------------------------------------------
+    

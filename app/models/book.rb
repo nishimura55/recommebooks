@@ -7,6 +7,7 @@ class Book < ApplicationRecord
   has_many :feelings, through: :book_feelings
   has_many :book_genres, dependent: :destroy
   has_many :genres, through: :book_genres
+  has_many :recommends, dependent: :destroy
   
   default_scope -> { order(created_at: :desc) }
   validates :title, presence: true

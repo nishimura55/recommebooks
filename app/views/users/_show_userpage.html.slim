@@ -13,7 +13,8 @@
           - if logged_in?
             div id = "follow-button-show-#{@user.id}"
               = render 'follow_form', user: @user
-            = link_to 'レコメンドする', root_path, class: "btn btn-success", id: "user-recomme-button"
+            = link_to 'レコメンドする', new_recommend_path(user_id: @user.id), class: "btn btn-success", id: "user-recomme-button"
+            = link_to 'レコメンド状況', user_recommends_path(@user.id), class: "btn btn-success", id: "user-recomme-button"
         .col-lg-8.user-overview
           p.user-title  称号「レコメニスト」
           p.user-recomme-point  #{@user.recomme_point}レコメポイント

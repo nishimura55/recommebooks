@@ -5,3 +5,7 @@
   
   p
     | 本をおすすめしよう！
+  
+  - if logged_in?
+    = link_to 'レコメンドしてみる', new_recommend_path, class: "btn btn-success"
+    = link_to '本を投稿', search_books_path, class: "btn btn-info"

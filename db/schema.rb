@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_020459) do
+ActiveRecord::Schema.define(version: 2020_04_23_083927) do
 
   create_table "authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(version: 2020_04_19_020459) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "division"
     t.index ["name"], name: "index_genres_on_name", unique: true
+  end
+
+  create_table "recommends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "recommender_id"
+    t.integer "recommended_id"
+    t.integer "book_id"
+    t.string "body"
+    t.integer "status", default: 1
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|

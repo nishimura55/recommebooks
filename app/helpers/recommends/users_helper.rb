@@ -1,0 +1,2 @@
+module Recommends::UsersHelper
+end
