@@ -1,20 +1,43 @@
 .my-passive-recommend
-  #book-thumb-image
-    = link_to book_path(recommend.book)
-      - if recommend.book.image?
-        = image_tag recommend.book.image, class: "book-image", width: '140px'
-      - else
-        =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
-  #user-thumb-image
-    = link_to user_path(recommend.recommender)
-      - if recommend.recommender.image?
-        = image_tag recommend.recommender.image_url(:thumb2), class: "user-image"
-      - else
-        =image_tag 'userlogo.png', size: '120x135', class: "user-image"
-  #recommend-body
-    - if recommend.body?
-      p #{recommend.body}
-  #recommend-status
-    = render 'recommends/passive_recommend_status', { recommend: recommend }
-
-p -----------------------------------------------------------------------------
+  .card-header
+    .row
+      .col-xl-7
+        - if recommend.recommender.image?
+          = image_tag recommend.recommender.image_url(:thumb3), class: "user-image"
+        - else
+          = image_tag 'userlogo.png', size: '30x30', class: "user-image"
+        = link_to recommend.recommender.name, user_path(recommend.recommender), class: "user-name"
+        a さんからレコメンド
+      .col-xl-5
+        #recommend-status
+          = render 'recommends/passive_recommend_status', { recommend: recommend }
+  .card-body
+    .row
+      .col-xl-3
+        #book-thumb-image
+          = link_to book_path(recommend.book)
+            - if recommend.book.image?
+              = image_tag recommend.book.image, class: "book-image", height: '200px'
+            - else
+              =image_tag 'booklogo.jpg', class: "book-image", height: '200px'
+      .col-xl-９
+        p.book-title
+          = link_to recommend.book.title, book_path(recommend.book)
+        p.book-author
+          = link_to recommend.book.author.name, author_path(recommend.book.author)
+          a 著
+        #recommend-body
+          - if recommend.body?
+            p.heading アピール文
+            p.reco-apeal 「#{recommend.body}」
+  - if recommend.status == 1
+    .card-footer
+      = form_with model: recommend, local: true do |f|
+        = f.hidden_field :status, :value => 2
+        = f.submit '面白かった！', class: 'btn btn-success btn-block'
+      = form_with model: recommend, local: true do |f|
+        = f.hidden_field :status, :value => 3
+        = f.submit '合わなかったかも', class: 'btn btn-secondary btn-block'
+      = form_with model: recommend, local: true do |f|
+        = f.hidden_field :status, :value => 4
+        = f.submit '読んだことがある', class: 'btn btn-info btn-block'

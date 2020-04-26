@@ -1,9 +1,15 @@
 .user-passive-recommend
-  #book-thumb-image
-    = link_to book_path(recommend.book)
-      - if recommend.book.image?
-        = image_tag recommend.book.image, class: "book-image", width: '140px'
-      - else
-        =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
-
-p -----------------------------------------------------------------------------
+  .row
+    .col-xl-3
+      #book-thumb-image
+        = link_to book_path(recommend.book)
+          - if recommend.book.image?
+            = image_tag recommend.book.image, class: "book-image", height: '200px'
+          - else
+            =image_tag 'booklogo.jpg', class: "book-image", height: '200px'
+    .col-xl-９
+      p.book-title
+        = link_to recommend.book.title, book_path(recommend.book)
+      p.book-author
+        = link_to recommend.book.author.name, author_path(recommend.book.author)
+        a 著

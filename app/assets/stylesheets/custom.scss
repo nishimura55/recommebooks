@@ -926,9 +926,7 @@
     }
     @include search-form;
     .author-thumb{
-        border: 1px solid #C0C0C0;
         margin-bottom: 30px;
-        padding: 10px;
         .thumb-author-name{
             font-size: 30px;
             margin-bottom: 10px;
@@ -991,5 +989,287 @@
     @include search-form;
     .book-reco-choose{
         @include book-thumb;
+    }
+}
+
+//レコメンド画面
+#recommend{
+    h2{
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .arrow-space{
+        padding-top: 80px;
+        &.left{
+            padding-left: 20px;
+        }
+        &.right{
+            padding-left: 0px;
+        }
+    }
+    .reco-current{
+        .user-image{
+            display: block;
+            border: 1px solid;
+            margin: 0 auto;
+        }
+        h4{
+            text-align: center;
+            margin-top: 20px;
+        }
+    }
+    .reco-book{
+        #reco-book-btn{
+            display: block;
+            text-align: center;
+            padding-top: 73px;
+            width: 140px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        #reco-book-image{
+            display: block;
+            margin: 0 auto;
+            border: 1px solid;
+        }
+        h4{
+            text-align: center;
+            margin-top: 20px;
+        }
+        .rechose{
+            margin-top: 20px;
+            width: 184px;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    .reco-user{
+        .user-image{
+            display: block;
+            border: 1px solid;
+            margin: 0 auto;
+        }
+        #reco-user-btn{
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 73px;
+            width: 185px;
+            height: 200px;
+        }
+        h4{
+            text-align: center;
+            margin-top: 20px;
+        }
+        .rechose{
+            margin-top: 20px;
+            width: 184px;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    .reco-message-area{
+        margin-top: 50px;
+        #chose-message-line{
+            border-bottom: solid;
+            margin-bottom: 40px;
+            color: silver;
+        }
+        .alert-area{
+            background-color: rgba(255,0,0,0.2);
+            color: red;
+            padding: 20px;
+            p{
+                margin-bottom: 0px;
+                padding: 0px;
+            }
+        }
+        .must-mark{
+        display: inline-block;
+        text-align: center;
+        font-size: 15px;
+        color: white;
+        width: 50px;
+        padding: 0px;
+        border-radius: 10px;
+        margin-left: 10px;
+        }
+        #reco-message-field{
+            height: 90px;
+        }
+        .btn{
+            margin-top: 10px;
+        }
+    }
+}
+
+//レコメンド状況画面
+#reco-index{
+    h2{
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-tabs{
+        display: table;
+        table-layout: fixed;
+        text-align: center;
+        width: 100%;
+        .nav-item{
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+    .my-active-recommend{
+        margin-top: 20px;
+        border: 1px solid #C0C0C0;
+        .card-header{
+            font-size: 18px;
+            .user-name{
+                margin-left: 10px;
+            }
+            .status{
+                display: inline-block;
+                float: right;
+                margin-bottom: 0px;
+                padding: 6px 10px 6px 10px;
+                margin-right: 20px;
+                font-size: 19px;
+                border-radius: 8px;
+                &.i1{
+                    background-color: seagreen;
+                    color: white;
+                }
+                &.i2{
+                    background-color: #0000FF;
+                    color: white;
+                }
+                &.i3{
+                    background-color: #C0C0C0;
+                    color: black;
+                }
+                &.i4{
+                    background-color: #FFA07A;
+                    color: black;
+                }
+            }
+        }
+        .card-body{
+            .book-image{
+                display: block;
+                margin: 0 auto;
+                border: 1px solid;
+            }
+            .book-title{
+                font-size: 25px;
+                margin-bottom: 0px;
+            }
+            .book-author{
+                font-size: 20px;
+            }
+            #recommend-body{
+                font-size: 20px;
+                .heading{
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+    .my-passive-recommend{
+        margin-top: 20px;
+        border: 1px solid #C0C0C0;
+        .card-header{
+            font-size: 18px;
+            .user-name{
+                margin-left: 10px;
+            }
+            .status{
+                display: inline-block;
+                float: right;
+                margin-bottom: 0px;
+                padding: 6px 10px 6px 10px;
+                margin-right: 20px;
+                font-size: 19px;
+                border-radius: 8px;
+                &.i1{
+                    background-color: seagreen;
+                    color: white;
+                }
+                &.i2{
+                    background-color: #0000FF;
+                    color: white;
+                }
+                &.i3{
+                    background-color: #C0C0C0;
+                    color: black;
+                }
+                &.i4{
+                    background-color: #FFA07A;
+                    color: black;
+                }
+            }
+        }
+        .card-body{
+            .book-image{
+                display: block;
+                margin: 0 auto;
+                border: 1px solid;
+            }
+            .book-title{
+                font-size: 25px;
+                margin-bottom: 0px;
+            }
+            .book-author{
+                font-size: 20px;
+            }
+            #recommend-body{
+                font-size: 20px;
+                .heading{
+                    margin-bottom: 0px;
+                }
+            }
+        }
+        .card-footer{
+            form{
+                display: inline-block;
+                width: 31%;
+                margin-left: 10px;
+            }
+        }
+    }
+    .user-active-recommend{
+        margin-top: 20px;
+        border: 1px solid #C0C0C0;
+        padding: 10px;
+        .book-image{
+            display: block;
+            margin: 0 auto;
+            border: 1px solid;
+        }
+        .book-title{
+            font-size: 25px;
+            margin-bottom: 0px;
+        }
+        .book-author{
+            font-size: 20px;
+        }
+    }
+    .user-passive-recommend{
+        margin-top: 20px;
+        border: 1px solid #C0C0C0;
+        padding: 10px;
+        .book-image{
+            display: block;
+            margin: 0 auto;
+            border: 1px solid;
+        }
+        .book-title{
+            font-size: 25px;
+            margin-bottom: 0px;
+        }
+        .book-author{
+            font-size: 20px;
+        }
     }
 }
