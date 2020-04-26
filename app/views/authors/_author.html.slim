@@ -1,11 +1,12 @@
 .author-thumb
-  .thumb-author-name
-    = link_to author.name, author_path(author)
-    a.author-books-count 本#{author.books.count}冊
-  .thumb-author-book
-    - author.books.each do |book|
-      = link_to book_path(book)
-        - if book.image?
-          = image_tag book.image, class: "book-image", height: '200px'
-        - else
-          =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
+  .card
+    .card-header.thumb-author-name
+      = link_to author.name, author_path(author)
+      a.author-books-count 本#{author.books.count}冊
+    .card-body.thumb-author-book
+      - author.books.each do |book|
+        = link_to book_path(book)
+          - if book.image?
+            = image_tag book.image, class: "book-image", height: '200px'
+          - else
+            =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"

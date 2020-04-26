@@ -1,21 +1,32 @@
-.my-active-recommend
-  #book-thumb-image
-    = link_to book_path(recommend.book)
-      - if recommend.book.image?
-        = image_tag recommend.book.image, class: "book-image", width: '140px'
-      - else
-        =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
-  #user-thumb-image
-    = link_to user_path(recommend.recommended)
-      - if recommend.recommended.image?
-        = image_tag recommend.recommended.image_url(:thumb2), class: "user-image"
-      - else
-        =image_tag 'userlogo.png', size: '120x135', class: "user-image"
-  #recommend-body
-    - if recommend.body?
-      p #{recommend.body}
-  #recommend-status
-    = render 'recommends/active_recommend_status', { recommend: recommend }
-
-p -----------------------------------------------------------------------------
-    
+.my-active-recommend.card
+  .card-header
+    .row
+      .col-xl-7
+        - if recommend.recommended.image?
+          = image_tag recommend.recommended.image_url(:thumb3), class: "user-image"
+        - else
+          = image_tag 'userlogo.png', size: '30x30', class: "user-image"
+        = link_to recommend.recommended.name, user_path(recommend.recommended), class: "user-name"
+        a さんへのレコメンド
+      .col-xl-5
+        #recommend-status
+          = render 'recommends/active_recommend_status', { recommend: recommend }
+  .card-body
+    .row
+      .col-xl-3
+        #book-thumb-image
+          = link_to book_path(recommend.book)
+            - if recommend.book.image?
+              = image_tag recommend.book.image, class: "book-image", height: '200px'
+            - else
+              =image_tag 'booklogo.jpg', class: "book-image", height: '200px'
+      .col-xl-９
+        p.book-title
+          = link_to recommend.book.title, book_path(recommend.book)
+        p.book-author
+          = link_to recommend.book.author.name, author_path(recommend.book.author)
+          a 著
+        #recommend-body
+          - if recommend.body?
+            p.heading アピール文
+            p.reco-apeal 「#{recommend.body}」
