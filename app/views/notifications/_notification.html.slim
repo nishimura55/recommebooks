@@ -1,6 +1,6 @@
 - visitor = notification.visitor
 - visited = notification.visited
-.col-md-6.mx-auto
+.col-md-8.mx-auto
   .form-inline
     span
       = link_to user_path(visitor) do
@@ -8,21 +8,21 @@
           = image_tag visitor.image_url(:thumb3), class: "user-image"
         - else
           = image_tag 'userlogo.png', size: '30x30', class: "user-image"
-        strong
+        strong.user-name
           = visitor.name
       = 'さんが'
 
       - case notification.action
       - when 'follow' then
-        = "あなたをフォローしました"
+        = "あなたをフォローしました。"
       - when 'recommend' then
-        = "あなたに本をレコメンドしました"
-        p 「#{notification.recommend.book.title}」
+        = "あなたに本をレコメンドしました。"
+        p.book-name 「#{notification.recommend.book.title}」
       - when 'response' then
-        = "あなたのレコメンドに回答しました"
+        = "あなたのレコメンドに回答しました。"
         - if notification.recommend.status == 2
           p.status.i2 「面白かった！」
-          p あなたのレコメポイントが加算されました！
+          p.status.i2 あなたのレコメポイントが加算されました！
         - elsif notification.recommend.status == 3
           p.status.i3 「合わなかったかも」
         - elsif notification.recommend.status == 4

@@ -38,8 +38,10 @@
           - if !@user.present? && @book.present?
             = link_to "レコメンドするユーザーを選ぶ", recommends_users_path(book_id: @book.id), class: "btn btn-success", id: "reco-user-btn"
           - elsif !@user.present? && !@book.present?
-            = link_to "レコメンドするユーザーを選ぶ", recommends_users_path, class: "btn btn-success", id: "reco-user-btn"
-        
+            = link_to recommends_users_path, class: "btn btn-success", id: "reco-user-btn" do
+              span レコメンドする
+              br
+              span ユーザーを選ぶ
           - if @user.present?
             #users-thumb-image
               - if @user.image?

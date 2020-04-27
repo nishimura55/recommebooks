@@ -1,6 +1,14 @@
-- if @notifications.exists?
-  = render @notifications
-  = will_paginate(@notifications, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
-- else
-  p
-    | 通知はありません
+.container
+  .row
+    .col-xl-9#notice-index
+      h2  通知一覧
+
+      - if @notifications.exists?
+        = render @notifications
+        = will_paginate(@notifications, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+      - else
+        p
+          | 通知はありません
+
+    .col-xl-3
+          = render 'shared/right_side'

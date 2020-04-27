@@ -499,6 +499,23 @@
             
         }
     }
+    .notice{
+        .new{
+            padding-top: 10px;
+            padding-right: 5px;
+            color: blue;
+        }
+        .fa-circle{
+            padding-top: 15px;
+            padding-left: 20px;
+            color: orange;
+        }
+        .not-new{
+            padding-top: 10px;
+            padding-right: 5px;
+            color: #BBBBBB;
+        }
+    }
 }
 
 .footer{
@@ -1270,6 +1287,31 @@
         }
         .book-author{
             font-size: 20px;
+        }
+    }
+}
+
+//通知一覧画面
+#notice-index{
+    h2{
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .form-inline{
+        font-size: 18px;
+        .user-image{
+            margin-right: 8px;
+        }
+        .book-name{
+            font-size: 22px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .status{
+            font-size: 22px;
+            margin-top: 10px;
+            text-align: center;
         }
     }
 }

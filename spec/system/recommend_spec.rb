@@ -97,6 +97,44 @@ RSpec.describe 'レコメンド機能のシステムテスト', type: :system do
                 expect(page).to have_content '0レコメ評価ポイント'
             end
         end
+    end
+
+    describe 'レコメンドの通知のテスト' do
+        before do
+            log_in_as(user)
+            visit book_path(book)
+            click_on 'レコメンドする'
+            click_on 'レコメンドするユーザーを選ぶ'
+            click_on 'レコメンドする'
+            fill_in 'reco-message-field', with: 'とてもおすすめです！'
+            click_on 'レコメンドする'
+        end
+
+        context 'レコメンドされた場合' do
+            it '通知画面に表示される' do
+                log_out
+                log_in_as(other_user)
+                visit notifications_path
+                expect(page).to have_content user.name
+                expect(page).to have_content 'さんがあなたに本をレコメンドしました。'
+            end
+        end
+
+        context 'レコメンドの評価がされた場合' do
+            it '通知画面に表示される' do
+                log_out
+                log_in_as(other_user)
+                visit user_recommends_path(other_user)
+                click_on 'レコメンドされた本'
+                click_on '面白かった！'
+                log_out
+                log_in_as(user)
+                visit notifications_path
+                expect(page).to have_content other_user.name
+                expect(page).to have_content 'さんがあなたのレコメンドに回答しました。'
+                expect(page).to have_content '「面白かった！」'
+            end
+        end
 
     end
 end
