@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :recommend do
-    recommender_id { 1 }
-    recommended_id { 1 }
-    book_id { 1 }
-    body { "MyString" }
+    association :recommender, factory: :user    
+    association :recommended, factory: :user
+    association :book
+    body { "とてもおすすめです！" }
     status { 1 }
   end
 end

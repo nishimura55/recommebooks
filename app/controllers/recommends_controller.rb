@@ -39,8 +39,8 @@ class RecommendsController < ApplicationController
             flash[:success] = "レコメンドに対する回答を完了しました！"
             redirect_to user_recommends_path(current_user.id)
         else
-            flash.now[:danger] = "回答に失敗しました"
-            render 'edit'
+            flash[:danger] = "回答に失敗しました"
+            redirect_to user_recommends_path(current_user.id)
         end
     end
 
