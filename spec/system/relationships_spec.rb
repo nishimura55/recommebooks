@@ -53,5 +53,15 @@ RSpec.describe 'フォロー機能のシステムテスト', type: :system do
             expect(page).not_to have_link user1.name, href: user_path(user1)
         end
     end
+
+    describe 'フォロー通知のテスト' do
+        it 'フォローの通知がされる' do
+            log_out
+            log_in_as(user2)
+            visit notifications_path
+            expect(page).to have_content user1.name
+            expect(page).to have_content 'さんがあなたをフォローしました。'
+        end
+    end
     
 end
