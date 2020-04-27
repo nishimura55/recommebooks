@@ -15,6 +15,7 @@ class RecommendsController < ApplicationController
     def create
         @recommend = Recommend.new(recommend_params)
         if @recommend.save
+            @recommend.create_notification_recommend!
             flash[:success] = "レコメンドが完了しました！"
             redirect_to user_recommends_path(current_user.id)
         else
@@ -32,6 +33,7 @@ class RecommendsController < ApplicationController
     def update
         recommend = Recommend.find(params[:id])
         if recommend.update_attributes(recommend_params)
+            recommend.create_notification_response!
             if recommend.status == 2
                 recommend.recommender.increment!(:recomme_point, 1)
                 recommend.book.increment!(:recomme_evaluation_point, 1)
