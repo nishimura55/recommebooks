@@ -14,8 +14,13 @@ nav.navbar.navbar-expand-lg.navbar-light
     ul.navbar-nav
       - if logged_in?
         li.nav-item.active
-          = link_to '#', class: 'nav-link' do
-            | 通知
+          = link_to(notifications_path) do
+            - if unchecked_notifications.any?
+              span.fa-stack
+                i.fa.fa-bell.fa-lg.fa-stack-2x style="font-size: 1.5em;" 
+                i.fa.fa-circle.n-circle.fa-stack-1x
+            - else 
+              i.fa.fa-bell.fa-lg style="font-size: 1.5em;" 
         li.dropdown
           button.btn.btn-secondary.dropdown-toggle#dropdownMenu1 type="button" data-toggle='dropdown' aria-haspopup="true" aria-expanded="false"
             = current_user.name

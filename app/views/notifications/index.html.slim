@@ -1,0 +1,6 @@
+- if @notifications.exists?
+  = render @notifications
+  = will_paginate(@notifications, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+- else
+  p
+    | 通知はありません

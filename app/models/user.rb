@@ -24,6 +24,9 @@ class User < ApplicationRecord
                                      dependent:   :destroy
     has_many :recommenders, through: :passive_recommends, source: :recommender
 
+    has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+    has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
     has_many :user_genres, dependent: :destroy
     has_many :genres, through: :user_genres
 
@@ -73,6 +76,14 @@ class User < ApplicationRecord
     
         new_tag_ids.each do |new_tag_id|
           self.genres << Genre.find_by(id: new_tag_id)
+        end
+    end
+
+    def create_notification_follow!(current_user)
+        temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+        if temp.blank?
+            notification = current_user.active_notifications.new(visited_id: id, action: 'follow')
+            notification.save if notification.valid?
         end
     end
 
