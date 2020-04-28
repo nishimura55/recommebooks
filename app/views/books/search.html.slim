@@ -1,8 +1,11 @@
 - provide(:title, "本を投稿")
+- breadcrumb :book_search
 .container
+  == breadcrumbs separator:  "＞" , class: "breadcrumb"
+
   .row
     .col-xl-9#books_serch
-      h2.text-center 本を投稿
+      h2.text-center 投稿する本を検索
       .search-box.text-center
         = form_with url: search_books_path, method: :get, local: true do |f|
           .form-group

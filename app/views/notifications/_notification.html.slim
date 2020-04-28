@@ -22,7 +22,7 @@
         = "あなたのレコメンドに回答しました。"
         - if notification.recommend.status == 2
           p.status.i2 「面白かった！」
-          p.status.i2 あなたのレコメポイントが加算されました！
+          p.comment.i2 あなたのレコメポイントが加算されました！
         - elsif notification.recommend.status == 3
           p.status.i3 「合わなかったかも」
         - elsif notification.recommend.status == 4

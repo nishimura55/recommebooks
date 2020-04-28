@@ -522,6 +522,14 @@
     margin-top: 150px;
 }
 
+//パンくずリスト
+.breadcrumb{
+    font-size: 16px;
+    background-color: white;
+    color: #999999;
+    padding-left: 0px;
+}
+
 //ユーザー登録画面
 #users_new {
     margin-top: 30px;
@@ -787,7 +795,11 @@
 
 //本投稿画面
 #books_post {
-    padding-top: 100px;
+    h2{
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
     margin-bottom: 100px;
     .btn {
         margin-top: 30px;
@@ -1313,5 +1325,11 @@
             margin-top: 10px;
             text-align: center;
         }
+        .comment{
+            text-align: center;
+        }
+    }
+    .text-right{
+        font-size: 18px;
     }
 }

@@ -1,5 +1,9 @@
 - provide(:title, "プロフィール編集")
+- breadcrumb :user_edit, @user
+- provide(:title, "プロフィール編集")
 .container
+  == breadcrumbs separator:  "＞" , class: "breadcrumb"
+
   .row
     .col-xl-9#users_edit
       .row

@@ -1,4 +1,8 @@
+- provide(:title, "レコメンド状況")
+- breadcrumb :recomme_index, @user
 .container
+  == breadcrumbs separator:  "＞" , class: "breadcrumb"
+  
   .row
     .col-xl-9#reco-index
       - if current_user?(@user)
