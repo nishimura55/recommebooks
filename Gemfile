@@ -23,8 +23,9 @@ gem 'will_paginate-bootstrap4'
 gem 'rakuten_web_service'
 gem 'rails-controller-testing'
 gem 'ransack'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'font-awesome-sass'
+gem 'gretel'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

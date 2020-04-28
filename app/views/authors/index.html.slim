@@ -1,5 +1,9 @@
 - provide(:title, "著者一覧")
+- breadcrumb :authors
 .container#authorindex
+
+  == breadcrumbs separator:  "＞" , class: "breadcrumb"
+
   h2  著者一覧
 
   = search_form_for @q do |f|

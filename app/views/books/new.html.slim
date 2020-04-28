@@ -1,7 +1,11 @@
 - provide(:title, "本を投稿")
+- breadcrumb :book_new
 .container#books_post
+  == breadcrumbs separator:  "＞" , class: "breadcrumb"
+
   .row
     .offset-md-2.col-md-8.offset-lg-3.col-lg-6.offset-md-2.col-md-8
+      h2 本を投稿 
       .card
         .card-header
           h4.text-center ジャンルと感想を入力して本を投稿

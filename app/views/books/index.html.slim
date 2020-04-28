@@ -1,5 +1,9 @@
 - provide(:title, "本一覧")
+- breadcrumb :books
 .container#bookindex
+
+  == breadcrumbs separator:  "＞" , class: "breadcrumb"
+
   - if @feeling.present?
     h2 「#{@feeling.situation}」に読みたい本一覧
   - elsif @genre.present?

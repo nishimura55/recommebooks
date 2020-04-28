@@ -54,7 +54,7 @@ RSpec.describe '本のシステムテスト', type: :system do
         end
 
         it '本投稿ページが正しく表示される' do
-            expect(page).to have_content '本を投稿'
+            expect(page).to have_content '投稿する本を検索'
             expect(page).to have_button '本の題名を検索'
         end
 
