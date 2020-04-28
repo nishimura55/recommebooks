@@ -36,6 +36,7 @@ class RecommendsController < ApplicationController
             recommend.create_notification_response!
             if recommend.status == 2
                 recommend.recommender.increment!(:recomme_point, 1)
+                recommend.recommender.update_title_or_not
                 recommend.book.increment!(:recomme_evaluation_point, 1)
             end
             flash[:success] = "レコメンドに対する回答を完了しました！"

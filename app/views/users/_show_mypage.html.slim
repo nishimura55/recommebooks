@@ -18,7 +18,7 @@
           = link_to '本を投稿', search_books_path, class: "btn btn-success", id: "book-post-button"
           = link_to 'レコメンド状況', user_recommends_path(@user.id), class: "btn btn-success", id: "user-recomme-button"
         .col-lg-8.user-overview
-          p.user-title  称号「レコメニスト」
+          p.user-title  称号「#{@user.title.name}」
           p.user-recomme-point  #{@user.recomme_point}レコメポイント
           .user-profile-favorirte-genre
             - if @user.profile?

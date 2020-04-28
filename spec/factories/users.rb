@@ -7,6 +7,8 @@ FactoryBot.define do
     favorite_genre { 'ミステリーが好きです' }
     profile { '大学生です。ハラハラ系のミステリーに目がありません。' }
     admin { false }
+    title_id { 1 }
+    association :title
   end
 
   trait :admin_user do

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'ユーザー作成のリクエストテスト', type: :request do
+    let!(:title) { create(:title, id: 1) }
 
     context 'パラメータが有効な場合' do
         it 'ユーザー詳細画面に移行する' do

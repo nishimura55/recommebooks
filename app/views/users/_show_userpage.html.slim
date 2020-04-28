@@ -20,7 +20,7 @@
             = link_to 'レコメンドする', new_recommend_path(user_id: @user.id), class: "btn btn-success", id: "user-recomme-button"
             = link_to 'レコメンド状況', user_recommends_path(@user.id), class: "btn btn-success", id: "user-recomme-button"
         .col-lg-8.user-overview
-          p.user-title  称号「レコメニスト」
+          p.user-title  称号「#{@user.title.name}」
           p.user-recomme-point  #{@user.recomme_point}レコメポイント
           .user-profile-favorirte-genre
             - if @user.profile?

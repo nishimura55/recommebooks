@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    belongs_to :title
+
     has_many :books
 
     has_many :favorites, dependent: :destroy
@@ -84,6 +86,12 @@ class User < ApplicationRecord
         if temp.blank?
             notification = current_user.active_notifications.new(visited_id: id, action: 'follow')
             notification.save if notification.valid?
+        end
+    end
+
+    def update_title_or_not
+        if self.recomme_point == 5 || self.recomme_point == 15
+            self.increment!(:title_id, 1)
         end
     end
 
