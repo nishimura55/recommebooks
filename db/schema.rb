@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_062850) do
+ActiveRecord::Schema.define(version: 2020_04_28_093101) do
 
   create_table "authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -121,6 +121,12 @@ ActiveRecord::Schema.define(version: 2020_04_27_062850) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "titles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "user_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id"
     t.integer "genre_id"
@@ -142,6 +148,7 @@ ActiveRecord::Schema.define(version: 2020_04_27_062850) do
     t.integer "recomme_point", default: 0, null: false
     t.string "image"
     t.boolean "admin", default: false
+    t.integer "title_id", default: 1
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

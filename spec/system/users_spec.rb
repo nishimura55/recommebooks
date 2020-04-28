@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'ユーザーのシステムテスト', type: :system do
+    let!(:title) { create(:title, id: 1) }
     let(:user) { create(:user) }
     let(:other_user) { create(:user) }
     let(:admin_user) { create(:user, :admin_user) }
