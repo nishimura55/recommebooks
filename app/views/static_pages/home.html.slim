@@ -4,12 +4,39 @@
 
   == breadcrumbs separator: " &rsaquo; "
 
-  h1
-    | RecommeBooks
-  
-  p
-    | 本をおすすめしよう！
-  
-  - if logged_in?
-    = link_to 'レコメンドしてみる', new_recommend_path, class: "btn btn-success"
-    = link_to '本を投稿', search_books_path, class: "btn btn-info"
+  .row
+    .col-xl-9#top-page
+      .main-logo-area
+        h1.title RecommeBooks
+        p.main-message 本をおすすめしよう
+        p.sub-message レコメブックスはユーザー同士で本をレコメンドするサービスです。
+        p.sub-message あなたの座右の書を、あの人に。
+        
+        .btn-area
+          - if logged_in?
+            = link_to 'レコメンドしてみる', new_recommend_path, class: "btn btn-success"
+            = link_to '本を投稿', search_books_path, class: "btn btn-info"
+      
+      .explanation-area
+        p.title レコメブックスとは？
+        p.sub-title レコメブックスは本の投稿・レビュー共有SNSサービスであり、
+        p.sub-title 本のレコメンドとレコメンドに対する評価を行うことができます。
+        .items
+          .container
+            .row
+              .col-md-6
+                .item.left
+                  p.item-titol 読んだ本を投稿しよう
+              .col-md-6
+                .item.right
+                  p.item-titol 気になるユーザーをフォローしよう
+            .row
+              .col-md-6
+                .item.left
+                  p.item-titol 本をレコメンドしよう
+              .col-md-6
+                .item.right
+                  p.item-titol レコメポイントを貯めよう
+
+    .col-xl-3
+      = render 'shared/right_side' 

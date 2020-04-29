@@ -26,6 +26,7 @@ gem 'ransack'
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
 gem 'gretel'
+gem "actionview", ">= 6.0.2.2"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
