@@ -530,6 +530,92 @@
     padding-left: 0px;
 }
 
+//右サイドメニュー
+.right-side{
+    margin-top: 30px;
+    .recently-recommend-book{
+        margin-bottom: 30px;
+        .card-header{
+            p{
+                text-align: center;
+                margin-bottom: 0px;
+            }
+        }
+        .card-body{
+            #book-thumb-image{
+                .book-image{
+                    margin-left: 35px;
+                }
+            }
+            #book-thumb-overview{
+                .book-info{
+                    display: block;
+                    margin: auto;
+                    text-align: center;
+                }
+                .title{
+                    margin-top: 10px;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    .twitter{
+        width: 255px;
+        .twitter-timeline{
+            display: block;
+        }
+    }
+}
+
+ //ホーム画面
+ #top-page{
+    margin-top: 30px;
+    .main-logo-area{
+        padding: 15px;
+        background-color: #75A9FF;
+        color: white;
+        .title{
+            font-size: 50px;
+        }
+        .main-message{
+            font-size: 30px;
+        }
+    }
+    .explanation-area{
+        margin-top: 30px;
+        .title{
+            text-align: center;
+            font-size: 30px;
+        }
+        .sub-title{
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .items{
+            margin-top: 20px;
+            .col-md-6{
+                padding: 0px;
+                .item{
+                    background-color: #75A9FF;
+                    color: white;
+                    margin-bottom: 10px;
+                    &.left{
+                        margin-right: 5px;
+                    }
+                    &.right{
+                        margin-left: 5px;
+                    }
+                    .item-titol{
+                        text-align: center;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
 //ユーザー登録画面
 #users_new {
     margin-top: 30px;
@@ -598,7 +684,7 @@
 //ユーザー詳細画面
 
 #usershow{
-    margin-top: 30px;
+    margin-top: 15px;
     .user-name{
         font-size: 30px;
         margin-bottom: 10px;
@@ -858,7 +944,7 @@
 
 //本詳細画面
 #book-show{
-    margin-top: 30px;
+    margin-top: 15px;
     .book-title{
         font-size: 30px;
         margin-bottom: 10px;
@@ -982,17 +1068,6 @@
     }
 }
 
-
-//右サイドメニュー
-.right-side{
-    margin-top: 30px;
-    .twitter{
-        width: 255px;
-        .twitter-timeline{
-            display: block;
-        }
-    }
-}
 
 //レコメンドするユーザー選択画面
 #reco-user-index{

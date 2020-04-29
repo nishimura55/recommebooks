@@ -1,3 +1,8 @@
 .right-side
+  - if !@recently_recommend_book.nil?
+    .recently-recommend-book.table-bordered
+      = render 'shared/recently_recommend_book', { book: @recently_recommend_book }
+   
   .twitter.table-bordered
-    <a class="twitter-timeline" data-lang="ja" data-width="255" data-height="600" data-theme="light" href="https://twitter.com/books06805400?ref_src=twsrc%5Etfw">Tweets by books06805400</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <a class="twitter-timeline" data-lang="ja" data-width="255" data-height="600" data-theme="light" href="https://twitter.com/books06805400?ref_src=twsrc%5Etfw">Tweets by books06805400</a> 
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

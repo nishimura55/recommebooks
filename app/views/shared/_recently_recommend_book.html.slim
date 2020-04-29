@@ -1,0 +1,17 @@
+.card
+  .card-header
+    p レコメブックスで
+    p 最近レコメンドされた本
+  .card-body
+    #book-thumb-image
+      = link_to book_path(book)
+        - if book.image?
+          = image_tag book.image, class: "book-image", width: '140px'
+        - else
+          =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
+    #book-thumb-overview
+      = link_to book.title, book_path(book), class: "book-info title"
+      .book-info.author
+        = link_to book.author.name, author_path(book.author)
+        a 著
+      a.book-info.rep #{book.recomme_evaluation_point}REP
