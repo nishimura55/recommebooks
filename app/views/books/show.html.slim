@@ -14,11 +14,15 @@
             =image_tag @book.image, size: '240x341', class: "book-image"
           - else
             =image_tag 'booklogo.jpg', size: '240x341', class: "book-image"
-          = link_to '楽天で詳しくみる', @book.rakuten_url, class: "btn btn-success", id: "rakuten-url-button"
+          = link_to @book.rakuten_url, class: "btn btn-primary", id: "rakuten-url-button" do
+            i.fas.fa-search-plus
+            span 楽天で詳しくみる
           - if logged_in?
             div id = "favorite-button-#{@book.id}"
               = render 'favorites/favorite', book: @book
-            = link_to 'レコメンドする', new_recommend_path(book_id: @book.id), class: "btn btn-success", id: "book-recomme-button"
+            = link_to new_recommend_path(book_id: @book.id), class: "btn btn-primary", id: "book-recomme-button" do
+              i.fas.fa-hand-holding-heart
+              span レコメンドする
           - if !current_user.nil? && current_user.admin?
             = link_to '削除', @book, method: :delete, data: { confirm: '削除しますか？' }, id: "delete", class: "btn btn-danger"
         .col-xl-8.book-overview
@@ -27,6 +31,7 @@
             a 著
           - @book.genres.each do |genre|
               .genre-tag-mark.bg-warning
+                a.fa.fa-tag
                 = link_to genre.name, books_path(genre_id: genre.id), id: "genre-tag-text"
           .book-recomme-evaluation-point-fav
             a.book-recomme-evaluation-point  #{@book.recomme_evaluation_point}レコメ評価ポイント
@@ -40,6 +45,7 @@
               a )の感想
             - @book.feelings.each do |feeling|
               .feeling-tag-mark.bg-info
+                a.fa.fa-tag
                 = link_to "#{feeling.situation}に", books_path(feeling_id: feeling.id), id: "feeling-tag-text"
             p.book-contributor-review.table-bordered = @book.contributor_review
           - if logged_in?

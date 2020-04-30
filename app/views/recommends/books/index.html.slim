@@ -11,7 +11,7 @@
       - if @user_id.present?
         = f.hidden_field :user_id, :value => @user_id
       = f.search_field :title_cont, class: 'form-control input-area', id: "book-index-search", placeholder: "本の題名で検索"
-      = f.submit "検索", class: "btn btn-success"
+      = f.submit "検索", class: "btn btn-primary"
 
 
   = will_paginate(@books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)

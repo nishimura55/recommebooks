@@ -1,3 +1,10 @@
+//カラー
+$main-blue: #75A9FF;
+$pale-blue: #D9E5FF;
+$primary-blue: #007bff;
+$gray: #EEEEEE;
+
+
 //開発画面用
 .debug_dump{
     clear: both;
@@ -462,31 +469,34 @@
 }
 
 //ヘッダー・フッター
-.navbar{
-    background-color: #e3f2fd;
+.header-top{
+    background-color: white;
 }
-
-#headerfooter{
-    .logo{
-        width: 300px;
-    }
+.header-under{
+    background-color: $gray;
+}
+.footer{
+    background-color: $gray;
+    margin-top: 150px;
     .logo-main{
-        height: 25px;
-        text-align: left;
-        padding-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 10px
+        font-size: 30px;
     }
-    .logo-sub{
-        font-size: 15px;
-        height: 20px;
+}
+.headerfooter{
+    .logo-main{
+        font-size: 30px;
         text-align: left;
         padding-top: 0px;
         padding-bottom: 0px;
-        padding-left: 10px
+        color: $primary-blue;
     }
     .nav-item{
-        padding: 0px 10px;
+        margin-right: 40px;
+        padding: 0px;
+        .nav-link{
+            padding: 10px 0px 10px 0px;
+            
+        }
     }
     .search-form{
         .input-area{
@@ -516,10 +526,6 @@
             color: #BBBBBB;
         }
     }
-}
-
-.footer{
-    margin-top: 150px;
 }
 
 //パンくずリスト
@@ -605,6 +611,10 @@
                 #genre-tag-text{
                     color: white;
                 }
+                .fa-tag{
+                    color: white;
+                    margin-right: 3px;
+                }
             }
         }
     }
@@ -614,15 +624,22 @@
  #top-page{
     margin-top: 30px;
     .main-area{
-        background-color: #75A9FF;
+        background-color: $main-blue;
         padding: 15px;
         .main-message-area{
             color: white;
             .title{
                 font-size: 50px;
+                margin-bottom: 0px;
+            }
+            .sub-title{
+                font-size: 20px;
             }
             .main-message{
                 font-size: 30px;
+            }
+            .sub-message{
+                font-size: 18px;
             }
             .recomme-area{
                 .btn{
@@ -631,7 +648,7 @@
             }
         }
         .logo-mark{
-            margin-top: 15px;
+            margin-top: 30px;
         }
     }
     .explanation-area{
@@ -649,7 +666,7 @@
             .col-md-6{
                 padding: 0px;
                 .item{
-                    background-color: #75A9FF;
+                    background-color: $main-blue;
                     color: white;
                     padding: 10px;
                     margin-bottom: 10px;
@@ -684,12 +701,12 @@
     }
     .book-ranking-area{
         margin-top: 30px;
-        background-color: #EEEEEE;
+        background-color: $gray;
         padding: 10px 20px 20px 20px;
         .title{
-            color: #007bff;
+            color: black;
             font-size: 25px;
-            margin-bottom: 0px;
+            margin-bottom: 10px;
         }
         .whatrep1{
             padding: 3px;
@@ -725,12 +742,12 @@
     }
     .user-ranking-area{
         margin-top: 30px;
-        background-color: #EEEEEE;
+        background-color: $gray;
         padding: 10px 20px 20px 20px;
         .title{
-            color: #007bff;
+            color: black;
             font-size: 25px;
-            margin-bottom: 0px;
+            margin-bottom: 10px;
         }
         .whatrep2{
             padding: 3px;
@@ -878,6 +895,10 @@
                 margin-bottom: 7px;
                 #genre-tag-text{
                     color: white;
+                }
+                .fa-tag{
+                    color: white;
+                    margin-right: 3px;
                 }
             }
             .user-favorirte-genre{
@@ -1119,6 +1140,10 @@
         #genre-tag-text{
             color: white;
         }
+        .fa-tag{
+            color: white;
+            margin-right: 3px;
+        }
     }
     .book-recomme-evaluation-point-fav{
         font-size: 20px;
@@ -1146,6 +1171,10 @@
             #feeling-tag-text{
                 color: white;
             }
+            .fa-tag{
+                color: white;
+                margin-right: 3px;
+            }
         }
         .book-contributor-review{
             padding: 5px;
@@ -1155,6 +1184,9 @@
         display: block;
         margin-top: 10px;
         width: 240px;
+        .fa-search-plus{
+            margin-right: 5px;
+        }
     }
     .user-image{
         margin-top: 10px;
@@ -1257,6 +1289,11 @@
         text-align: center;
         margin-top: 30px;
         margin-bottom: 30px;
+    }
+    .reco-intro{
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 35px;
     }
     .arrow-space{
         padding-top: 80px;
@@ -1401,16 +1438,16 @@
                     color: white;
                 }
                 &.i2{
-                    background-color: #0000FF;
+                    background-color: $primary-blue;
                     color: white;
                 }
                 &.i3{
-                    background-color: #C0C0C0;
-                    color: black;
+                    background-color: #999999;
+                    color: white;
                 }
                 &.i4{
-                    background-color: #FFA07A;
-                    color: black;
+                    background-color: #999999;
+                    color: white;
                 }
             }
         }
@@ -1456,16 +1493,16 @@
                     color: white;
                 }
                 &.i2{
-                    background-color: #0000FF;
+                    background-color: $primary-blue;
                     color: white;
                 }
                 &.i3{
-                    background-color: #C0C0C0;
-                    color: black;
+                    background-color: #999999;
+                    color: white;
                 }
                 &.i4{
-                    background-color: #FFA07A;
-                    color: black;
+                    background-color: #999999;
+                    color: white;
                 }
             }
         }
@@ -1494,6 +1531,14 @@
                 display: inline-block;
                 width: 31%;
                 margin-left: 10px;
+                .i3{
+                    background-color: #999999;
+                    color: white;
+                }
+                .i4{
+                    background-color: #999999;
+                    color: white;
+                }
             }
         }
     }
@@ -1562,4 +1607,14 @@
     .text-right{
         font-size: 18px;
     }
+}
+
+.fa{
+    margin-right: 8px;
+}
+.fas{
+    margin-right: 8px;
+}
+.far{
+    margin-right: 8px;
 }

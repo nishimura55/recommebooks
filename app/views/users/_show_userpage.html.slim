@@ -17,8 +17,12 @@
           - if logged_in?
             div id = "follow-button-show-#{@user.id}"
               = render 'follow_form', user: @user
-            = link_to 'レコメンドする', new_recommend_path(user_id: @user.id), class: "btn btn-success", id: "user-recomme-button"
-            = link_to 'レコメンド状況', user_recommends_path(@user.id), class: "btn btn-success", id: "user-recomme-button"
+            = link_to new_recommend_path(user_id: @user.id), class: "btn btn-primary", id: "user-recomme-button" do
+              i.fas.fa-hand-holding-heart
+              span レコメンドする
+            = link_to user_recommends_path(@user.id), class: "btn btn-primary", id: "user-recomme-button" do
+              i.fas.fa-list-ul
+              span レコメンド状況
         .col-lg-8.user-overview
           p.user-title  称号「#{@user.title.name}」
           p.user-recomme-point  #{@user.recomme_point}レコメポイント
@@ -30,6 +34,7 @@
               p.heading 好きなジャンル・本
               - @user.genres.each do |genre|
                 .genre-tag-mark.bg-warning
+                  a.fa.fa-tag
                   = link_to genre.name, books_path(genre_id: genre.id), id: "genre-tag-text"
             - if @user.favorite_genre?
               p.user-favorirte-genre.table-bordered = @user.favorite_genre

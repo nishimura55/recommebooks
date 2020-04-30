@@ -12,5 +12,6 @@
   - if user.genres.present?
     - user.genres.each do |genre|
       .genre-tag-mark.bg-warning
+        a.fa.fa-tag
         = link_to genre.name, books_path(genre_id: genre.id), id: "genre-tag-text"
     

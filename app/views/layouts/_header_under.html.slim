@@ -1,15 +1,12 @@
-nav.navbar.navbar-expand-lg.navbar-light
-  .container#headerfooter
+nav.navbar.navbar-expand-lg.navbar-light.header-under
+  .container.headerfooter
     button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
       span.navbar-toggler-icon 
     #navbarNav.collapse.navbar-collapse
       .navbar-nav
         li.nav-item.active
-          =link_to books_path, class: 'nav-link' do
-            |  本の一覧をみる
+          =link_to "本の一覧をみる", books_path, class: 'nav-link'
         li.nav-item.active
-          =link_to authors_path, class: 'nav-link' do
-            |  著者の一覧をみる
+          =link_to "著者の一覧をみる", authors_path, class: 'nav-link'
         li.nav-item.active
-          =link_to users_path, class: 'nav-link' do
-            |  ユーザーの一覧をみる
+          =link_to "ユーザーの一覧をみる", users_path, class: 'nav-link'

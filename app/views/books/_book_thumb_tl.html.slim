@@ -16,7 +16,7 @@
           = image_tag book.image, class: "book-image", width: '140px'
         - else
           =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
-    #book-thumb-overview 
+    #book-thumb-overview
       .thumb-book-title
         = link_to book.title, book_path(book)
         - if !current_user.nil? && current_user.admin?
@@ -29,6 +29,8 @@
       .thumb-book-story #{book.story}
       .thumb-book-recomme-fav
         - if logged_in?
-          = link_to 'レコメンドする', new_recommend_path(book_id: book.id), class: "btn btn-primary", id: "thmb-recomme-btn"
+          = link_to new_recommend_path(book_id: book.id), class: "btn btn-primary", id: "thmb-recomme-btn" do
+            i.fas.fa-hand-holding-heart
+            span レコメンドする
           div id = "favorite-button-tl-#{book.id}" class = "fav-btn" 
             = render 'favorites/favorite', book: book

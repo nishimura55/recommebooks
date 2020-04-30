@@ -14,7 +14,9 @@
         = f.check_box :spoiler, id: 'spoiler-check'
         = f.text_area :content, class: 'form-control', id: 'review-content'
     
-        = f.submit '投稿', class: 'btn btn-success', id: 'review-post-btn'
+        = button_tag type: 'submit', class: 'form-control btn btn-primary', id: 'review-post-btn' do
+          i.far.fa-file-alt
+          span 投稿
 
 
 

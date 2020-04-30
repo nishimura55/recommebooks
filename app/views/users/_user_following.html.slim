@@ -16,6 +16,8 @@
       = user.favorite_genre
     - if logged_in? && !current_user?(user)
       .thumb-follow-recomme
-        = link_to 'レコメンドする', new_recommend_path(user_id: user.id), class: "btn btn-primary", id: "thmb-recomme-btn"
+        = link_to new_recommend_path(user_id: user.id), class: "btn btn-primary", id: "thmb-recomme-btn" do
+          i.fas.fa-hand-holding-heart
+          span レコメンドする
         div id = "follow-button-thumb-following-#{user.id}" class= "follow-btn"
           = render 'follow_form', user: user
