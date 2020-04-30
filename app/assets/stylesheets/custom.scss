@@ -566,20 +566,72 @@
             display: block;
         }
     }
+    .login-signup{
+        margin-bottom: 30px;
+        .btn{
+            width: 210px;
+        }
+        .signup{
+            margin-top: 20px;
+            margin-bottom: 0px;
+        }
+    }
+    .my-user-info{
+        margin-bottom: 30px;
+        border: 1.5px solid #D3D3D3;
+        padding: 10px;
+        #user-image-name{
+            color: black;
+            .user-name{
+                margin-left: 15px;
+                font-size: 20px;
+                color: black;
+            }
+        }
+        #user-overview{
+            .user-rp{
+                font-size: 20px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            .genre-tag-mark{
+                display: inline-block;
+                text-align: center;
+                font-size: 15px;
+                padding: 5px;
+                border-radius: 10px;
+                margin-right: 10px;
+                margin-bottom: 7px;
+                #genre-tag-text{
+                    color: white;
+                }
+            }
+        }
+    }
 }
 
  //ホーム画面
  #top-page{
     margin-top: 30px;
-    .main-logo-area{
-        padding: 15px;
+    .main-area{
         background-color: #75A9FF;
-        color: white;
-        .title{
-            font-size: 50px;
+        padding: 15px;
+        .main-message-area{
+            color: white;
+            .title{
+                font-size: 50px;
+            }
+            .main-message{
+                font-size: 30px;
+            }
+            .recomme-area{
+                .btn{
+                    margin-left: 20px;
+                }
+            }
         }
-        .main-message{
-            font-size: 30px;
+        .logo-mark{
+            margin-top: 15px;
         }
     }
     .explanation-area{
@@ -599,6 +651,7 @@
                 .item{
                     background-color: #75A9FF;
                     color: white;
+                    padding: 10px;
                     margin-bottom: 10px;
                     &.left{
                         margin-right: 5px;
@@ -608,10 +661,112 @@
                     }
                     .item-titol{
                         text-align: center;
+                        font-size: 24px;
+                    }
+                    .image{
+                        text-align: center;
+                        .logo{
+                            margin-bottom: 10px;
+                        }
+                    }
+                    .item-sub{
+                        text-align: center;
+                        margin-bottom: 5px;
+                    }
+                    .btn{
+                        width: 100%;
+                        margin-top: 10px;
                     }
                 }
             }
             
+        }
+    }
+    .book-ranking-area{
+        margin-top: 30px;
+        background-color: #EEEEEE;
+        padding: 10px 20px 20px 20px;
+        .title{
+            color: #007bff;
+            font-size: 25px;
+            margin-bottom: 0px;
+        }
+        .whatrep1{
+            padding: 3px;
+        }
+        .target1.is-hidden{
+            display: none;
+        }
+        .target1{
+            margin-left: 5px;
+        }
+        .book-thumb{
+            width: 179px;
+            background-color: white;
+            float: left;
+            padding: 10px;
+            margin: 0 auto;
+            margin-top: 10px;
+            #thumb-book-raning{
+                text-align: center;
+                font-size: 22px;
+            }
+            #book-thumb-image{
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            #book-thumb-overview{
+                text-align: center;
+                .text{
+                    color: black;
+                }
+            }
+        }
+    }
+    .user-ranking-area{
+        margin-top: 30px;
+        background-color: #EEEEEE;
+        padding: 10px 20px 20px 20px;
+        .title{
+            color: #007bff;
+            font-size: 25px;
+            margin-bottom: 0px;
+        }
+        .whatrep2{
+            padding: 3px;
+        }
+        .target2.is-hidden{
+            display: none;
+        }
+        .target2{
+            margin-left: 5px;
+        }
+        .user-thumb{
+            width: 179px;
+            background-color: white;
+            float: left;
+            padding: 10px;
+            margin: 0 auto;
+            margin-top: 10px;
+            #thumb-user-raning{
+                text-align: center;
+                font-size: 22px;
+            }
+            #thumb-user-title{
+                text-align: center;
+                font-size: 18px;
+                margin-bottom: 5px;
+            }
+            #user-thumb-image{
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            #user-thumb-overview{
+                text-align: center;
+                .text{
+                    color: black;
+                }
+            }
         }
     }
 }

@@ -6,17 +6,20 @@
 
   .row
     .col-xl-9#top-page
-      .main-logo-area
-        h1.title RecommeBooks
-        p.main-message 本をおすすめしよう
-        p.sub-message レコメブックスはユーザー同士で本をレコメンドするサービスです。
-        p.sub-message あなたの座右の書を、あの人に。
-        
-        .btn-area
-          - if logged_in?
-            = link_to 'レコメンドしてみる', new_recommend_path, class: "btn btn-success"
-            = link_to '本を投稿', search_books_path, class: "btn btn-info"
-      
+      .main-area
+        .row
+          .col-md-8
+            .main-message-area
+              h1.title RecommeBooks
+              p.main-message 本をおすすめしよう
+              p.sub-message レコメブックスはユーザー同士で本をレコメンドするサービスです。
+              p.sub-message あなたの座右の書を、あの人に。
+              .recomme-area
+                - if logged_in?
+                  a ＞＞
+                  = link_to 'レコメンドしてみる', new_recommend_path, class: "btn btn-primary", id: "main-reco"
+          .col-md-4
+            = image_tag 'booklogo2white.png', size: '220x220', class: "logo-mark"
       .explanation-area
         p.title レコメブックスとは？
         p.sub-title レコメブックスは本の投稿・レビュー共有SNSサービスであり、
@@ -27,16 +30,107 @@
               .col-md-6
                 .item.left
                   p.item-titol 読んだ本を投稿しよう
+                  .image
+                    = image_tag 'booklogo2white.png', size: '80x80', class: "logo book-logo"
+                  p.item-sub あなたの感想と共に本を投稿しよう
+                  p.item-sub すでに投稿されている本にはレビューの投稿ができます
+                  - if logged_in?
+                    = link_to '本を投稿してみる', search_books_path, class: "btn btn-primary"
               .col-md-6
                 .item.right
                   p.item-titol 気になるユーザーをフォローしよう
+                  .image
+                    = image_tag 'follow-logo.png', size: '80x80', class: "logo follow-logo"
+                  p.item-sub あなたのタイムラインでフォローしたユーザーの
+                  p.item-sub 投稿を確認できます
+                  - if logged_in?
+                    = link_to 'ユーザーの一覧へ', users_path, class: "btn btn-primary"
             .row
               .col-md-6
                 .item.left
                   p.item-titol 本をレコメンドしよう
+                  .image
+                    = image_tag 'recommend-logo.png', size: '80x80', class: "logo recommend-logo"
+                  p.item-sub ユーザーのプロフィールや投稿を確認して
+                  p.item-sub そのユーザーにぴったりな一冊をレコメンドしてみよう
+                  - if logged_in?
+                    = link_to 'レコメンドしてみる', new_recommend_path, class: "btn btn-primary"
               .col-md-6
                 .item.right
                   p.item-titol レコメポイントを貯めよう
-
+                  .image
+                    = image_tag 'point-logo.png', size: '80x80', class: "logo point-logo"
+                  p.item-sub レコメンドした相手がその本を「面白かった！」と
+                  p.item-sub 評価したら、あなたのレコメポイント(RP)が貯まります
+                  - if logged_in?
+                    = link_to 'レコメンド状況を確認する', user_recommends_path(current_user.id), class: "btn btn-primary"
+      .book-ranking-area
+        p.title 本のレコメ評価ポイント(REP)ランキング
+        button class="whatrep1 btn btn-secondary" type="button" レコメ評価ポイント(REP)とは？
+        div class = 'target1 is-hidden' target = "_blank"
+          a 本のレコメンドの評価が「面白かった！」であった場合、その本に加算されるポイントです。
+        .row
+          - r = 1 
+          - @ranking_books.each do |book|
+            .col-lg-3
+              .book-thumb
+                #thumb-book-raning
+                  a.rank #{r}位
+                  - r += 1
+                  a.book-rep  #{book.recomme_evaluation_point}REP
+                #book-thumb-image
+                  = link_to book_path(book)
+                    - if book.image?
+                      = image_tag book.image, class: "book-image", width: '140px'
+                    - else
+                      =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
+                #book-thumb-overview
+                  .thumb-book-title
+                    = link_to book.title.truncate(12), book_path(book), class: "text"
+                  .thumb-book-author
+                    = link_to book.author.name.truncate(10), author_path(book.author), class: "text"
+                    a 著
+      .user-ranking-area
+        p.title ユーザーのレコメポイント(RP)ランキング
+        button class="whatrep2 btn btn-secondary" type="button" レコメポイント(RP)とは？
+        div class = 'target2 is-hidden' target = "_blank"
+          a レコメンドの評価が「面白かった！」であった場合、レコメンドしたユーザーに加算されるポイントです。
+        .row
+          - r = 1 
+          - @ranking_users.each do |user|
+            .col-lg-3
+              .user-thumb
+                #thumb-user-raning
+                  a.rank #{r}位
+                  - r += 1
+                  a.user-rep  #{user.recomme_point}RP
+                #thumb-user-title
+                  a 「#{user.title.name}」
+                #user-thumb-image
+                  = link_to user_path(user)
+                    - if user.image?
+                      = image_tag user.image_url(:thumb2), class: "user-image"
+                    - else
+                      =image_tag 'userlogo.png', size: '120x135', class: "user-image"
+                #user-thumb-overview
+                  .thumb-user-name
+                    = link_to user.name.truncate(12), user_path(user), class: "text"
+        
     .col-xl-3
       = render 'shared/right_side' 
+
+
+/アセットファイル下に移動することが課題（現状アセットファイル下に移すと機能しない）
+javascript:
+  var $target1 = document.querySelector('.target1')
+  var $whatrep1 = document.querySelector('.whatrep1')
+  $whatrep1.addEventListener('click', function() {
+    $target1.classList.toggle('is-hidden')
+  })
+
+javascript:
+  var $target2 = document.querySelector('.target2')
+  var $whatrep2 = document.querySelector('.whatrep2')
+  $whatrep2.addEventListener('click', function() {
+    $target2.classList.toggle('is-hidden')
+  })

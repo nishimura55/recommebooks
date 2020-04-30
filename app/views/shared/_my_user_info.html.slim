@@ -1,0 +1,16 @@
+#user-image-name
+  = link_to user_path(user)
+    - if user.image?
+      = image_tag user.image_url(:thumb2), size: '60x60', class: "user-image"
+    - else
+      = image_tag 'userlogo.png', size: '30x30', class: "user-image"
+    = link_to user.name, user_path(user), class: "user-name"
+#user-overview
+  .user-rp
+    a #{user.recomme_point}RP
+    a 「#{user.title.name}」
+  - if user.genres.present?
+    - user.genres.each do |genre|
+      .genre-tag-mark.bg-warning
+        = link_to genre.name, books_path(genre_id: genre.id), id: "genre-tag-text"
+    

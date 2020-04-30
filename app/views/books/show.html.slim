@@ -42,10 +42,11 @@
               .feeling-tag-mark.bg-info
                 = link_to "#{feeling.situation}に", books_path(feeling_id: feeling.id), id: "feeling-tag-text"
             p.book-contributor-review.table-bordered = @book.contributor_review
-          - if @my_review.present?
-            = render 'reviews/review', { review: @my_review }
-          - else
-            = render 'reviews/post_form' 
+          - if logged_in?
+            - if @my_review.present?
+              = render 'reviews/review', { review: @my_review }
+            - else
+              = render 'reviews/post_form' 
           - if @reviews.present?
             - @reviews.each do |review|
               = render 'reviews/review', { review: review }

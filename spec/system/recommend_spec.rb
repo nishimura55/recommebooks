@@ -11,7 +11,7 @@ RSpec.describe 'レコメンド機能のシステムテスト', type: :system do
             log_in_as(user)
             visit root_path
             expect do
-                click_on 'レコメンドしてみる'
+                find('#main-reco').click
                 click_on 'レコメンドする本を選ぶ'
                 click_on 'レコメンドする'
                 click_on 'レコメンドするユーザーを選ぶ'

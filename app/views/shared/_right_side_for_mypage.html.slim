@@ -1,11 +1,4 @@
 .right-side
-  - if logged_in?
-    .my-user-info
-      = render 'shared/my_user_info', { user: current_user }
-  - else
-    .login-signup
-      = render 'shared/login_signup'
-
   - if !@recently_recommend_book.nil?
     .recently-recommend-book.table-bordered
       = render 'shared/recently_recommend_book', { book: @recently_recommend_book }
