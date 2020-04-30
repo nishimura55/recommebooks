@@ -11,13 +11,16 @@
           .col-md-8
             .main-message-area
               h1.title RecommeBooks
+              p.sub-title レコメブックス
               p.main-message 本をおすすめしよう
               p.sub-message レコメブックスはユーザー同士で本をレコメンドするサービスです。
               p.sub-message あなたの座右の書を、あの人に。
               .recomme-area
                 - if logged_in?
                   a ＞＞
-                  = link_to 'レコメンドしてみる', new_recommend_path, class: "btn btn-primary", id: "main-reco"
+                  = link_to new_recommend_path, class: "btn btn-primary", id: "main-reco" do
+                    i.fas.fa-hand-holding-heart
+                    span レコメンドしてみる
           .col-md-4
             = image_tag 'booklogo2white.png', size: '220x220', class: "logo-mark"
       .explanation-area
@@ -35,7 +38,9 @@
                   p.item-sub あなたの感想と共に本を投稿しよう
                   p.item-sub すでに投稿されている本にはレビューの投稿ができます
                   - if logged_in?
-                    = link_to '本を投稿してみる', search_books_path, class: "btn btn-primary"
+                    = link_to search_books_path, class: "btn btn-primary" do
+                      i.fas.fa-book
+                      span 本を投稿してみる
               .col-md-6
                 .item.right
                   p.item-titol 気になるユーザーをフォローしよう
@@ -44,7 +49,9 @@
                   p.item-sub あなたのタイムラインでフォローしたユーザーの
                   p.item-sub 投稿を確認できます
                   - if logged_in?
-                    = link_to 'ユーザーの一覧へ', users_path, class: "btn btn-primary"
+                    = link_to users_path, class: "btn btn-primary" do
+                      i.fas.fa-user
+                      span ユーザーの一覧へ
             .row
               .col-md-6
                 .item.left
@@ -54,7 +61,9 @@
                   p.item-sub ユーザーのプロフィールや投稿を確認して
                   p.item-sub そのユーザーにぴったりな一冊をレコメンドしてみよう
                   - if logged_in?
-                    = link_to 'レコメンドしてみる', new_recommend_path, class: "btn btn-primary"
+                    = link_to new_recommend_path, class: "btn btn-primary" do
+                      i.fas.fa-hand-holding-heart
+                      span レコメンドしてみる
               .col-md-6
                 .item.right
                   p.item-titol レコメポイントを貯めよう
@@ -63,7 +72,9 @@
                   p.item-sub レコメンドした相手がその本を「面白かった！」と
                   p.item-sub 評価したら、あなたのレコメポイント(RP)が貯まります
                   - if logged_in?
-                    = link_to 'レコメンド状況を確認する', user_recommends_path(current_user.id), class: "btn btn-primary"
+                    = link_to user_recommends_path(current_user.id), class: "btn btn-primary" do
+                      i.fas.fa-list-ul
+                      span レコメンド状況を確認する
       .book-ranking-area
         p.title 本のレコメ評価ポイント(REP)ランキング
         button class="whatrep1 btn btn-secondary" type="button" レコメ評価ポイント(REP)とは？

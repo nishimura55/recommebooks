@@ -61,5 +61,6 @@
             .form-group
               = f.label :story, '内容紹介'
               = f.text_area :story, value: @book.story, class: 'form-control', readonly: true 
-                   
-              = f.submit '投稿する', class: 'btn btn-success btn-block'
+              = button_tag type: 'submit', class: 'btn-block btn btn-primary' do
+                i.fas.fa-book
+                span 投稿する

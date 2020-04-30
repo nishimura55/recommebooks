@@ -23,8 +23,7 @@ gem 'will_paginate-bootstrap4'
 gem 'rakuten_web_service'
 gem 'rails-controller-testing'
 gem 'ransack'
-gem 'font-awesome-rails'
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', '~> 5.12.0'
 gem 'gretel'
 gem "actionview", ">= 6.0.2.2"
 

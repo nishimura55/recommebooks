@@ -28,6 +28,8 @@
       .thumb-book-story #{book.story}
       .thumb-book-recomme-fav
         - if logged_in?
-          = link_to 'レコメンドする', new_recommend_path(book_id: book.id), class: "btn btn-primary", id: "thmb-recomme-btn"
+          = link_to new_recommend_path(book_id: book.id), class: "btn btn-primary", id: "thmb-recomme-btn" do
+            i.fas.fa-hand-holding-heart
+            span レコメンドする
           div id = "favorite-button-post-#{book.id}" class = "fav-btn" 
             = render 'favorites/favorite', book: book

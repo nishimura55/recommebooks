@@ -15,10 +15,14 @@
     .thumb-follow-recomme
       - if !current_user?(user)
         - if params[:book_id]
-          = link_to 'レコメンドする', new_recommend_path(user_id: user.id, book_id: params[:book_id]),
-                                    class: "btn btn-primary", id: "thmb-recomme-btn"
+          = link_to new_recommend_path(user_id: user.id, book_id: params[:book_id]), class: "btn btn-primary", id: "thmb-recomme-btn" do
+            i.fas.fa-hand-holding-heart
+            span レコメンドする
         - elsif params[:q]
-          = link_to 'レコメンドする', new_recommend_path(user_id: user.id, book_id: params[:q][:book_id]),
-                                    class: "btn btn-primary", id: "thmb-recomme-btn"
+          = link_to new_recommend_path(user_id: user.id, book_id: params[:q][:book_id]), class: "btn btn-primary", id: "thmb-recomme-btn" do
+            i.fas.fa-hand-holding-heart
+            span レコメンドする
         - else
-          = link_to 'レコメンドする', new_recommend_path(user_id: user.id), class: "btn btn-primary", id: "thmb-recomme-btn"
+          = link_to new_recommend_path(user_id: user.id), class: "btn btn-primary", id: "thmb-recomme-btn" do
+            i.fas.fa-hand-holding-heart
+            span レコメンドする

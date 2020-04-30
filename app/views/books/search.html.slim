@@ -10,7 +10,9 @@
         = form_with url: search_books_path, method: :get, local: true do |f|
           .form-group
             = f.search_field :keyword, value: params[:keyword], id: "book_search", class: "form-control", placeholder: "題名を入力してください"
-            = f.submit '本の題名を検索', class: "form-control btn btn-success"
+            = button_tag type: 'submit', class: 'form-control btn btn-primary' do
+              i.fas.fa-search
+              span 本の題名を検索
       .book_list
         - if @books.present?
           = render 'books/book'

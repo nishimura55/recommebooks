@@ -14,9 +14,15 @@
             =image_tag @user.image_url(:thumb1), class: "user-image"
           - else
             =image_tag 'userlogo.png', size: '240x260', class: "user-image"
-          = link_to 'プロフィールの編集', edit_user_path(current_user), class: "btn btn-success", id: "user-edit-button"
-          = link_to '本を投稿', search_books_path, class: "btn btn-success", id: "book-post-button"
-          = link_to 'レコメンド状況', user_recommends_path(@user.id), class: "btn btn-success", id: "user-recomme-button"
+          = link_to edit_user_path(current_user), class: "btn btn-primary", id: "user-edit-button" do
+            i.far.fa-edit
+            span プロフィールの編集
+          = link_to search_books_path, class: "btn btn-primary", id: "book-post-button" do
+            i.far.fas.fa-book
+            span 本を投稿
+          = link_to user_recommends_path(@user.id), class: "btn btn-primary", id: "user-recomme-button" do
+            i.fas.fa-list-ul
+            span レコメンド状況
         .col-lg-8.user-overview
           p.user-title  称号「#{@user.title.name}」
           p.user-recomme-point  #{@user.recomme_point}レコメポイント
@@ -28,6 +34,7 @@
               p.heading 好きなジャンル・本
               - @user.genres.each do |genre|
                 .genre-tag-mark.bg-warning
+                  a.fa.fa-tag
                   = link_to genre.name, books_path(genre_id: genre.id), id: "genre-tag-text"
             - if @user.favorite_genre?
               p.user-favorirte-genre.table-bordered = @user.favorite_genre

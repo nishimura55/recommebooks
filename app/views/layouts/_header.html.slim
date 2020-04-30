@@ -1,16 +1,15 @@
-nav.navbar.navbar-expand-lg.navbar-light
-  .container#headerfooter
+nav.navbar.navbar-expand-lg.navbar-light.header-top
+  .container.headerfooter
     =link_to root_path
       .row.logo
-        .col-md-2
-          =image_tag 'booklogo2.png', size: '50x50'
         .col-md-4
           .navbar-brand.logo-main RecommeBooks
-          .navbar-brand.logo-sub レコメブックス
     = search_form_for @q_header, url: books_path, class: "form-inline" do |f|
       .form-group.search-form
         = f.search_field :title_or_author_name_cont, class: 'form-control input-area', id: "header-search", placeholder: "題名・著者名"
-        = f.submit "本を検索", class: "btn btn-info"
+        = button_tag type: 'submit', class: 'btn btn-primary' do
+          i.fas.fa-search
+          span 本を検索
     ul.navbar-nav
       - if logged_in?
         li.nav-item.active.notice
@@ -22,7 +21,8 @@ nav.navbar.navbar-expand-lg.navbar-light
             - else 
               i.fa.fa-bell.fa-lg.not-new style="font-size: 2.0em;" 
         li.dropdown
-          button.btn.btn-secondary.dropdown-toggle#dropdownMenu1 type="button" data-toggle='dropdown' aria-haspopup="true" aria-expanded="false"
+          button.btn.btn-primary.dropdown-toggle#dropdownMenu1 type="button" data-toggle='dropdown' aria-haspopup="true" aria-expanded="false"
+            i.fas.fa-user-circle
             = current_user.name
           .dropdown-menu aria-labelledby="dropdownMenu1"
             = link_to current_user, class: "dropdown-item"

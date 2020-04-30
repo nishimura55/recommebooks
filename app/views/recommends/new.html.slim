@@ -7,6 +7,7 @@
     .col-xl-9#recommend
       .col-xl-11
         h2 レコメンド
+        p.reco-intro レコメンドする本とユーザーを選んでください
       .col-xl-1
       .row
         .col-md-3.reco-current
@@ -20,9 +21,9 @@
           .fa.fa-arrow-right.d-none.d-md-block
         .col-md-3.reco-book
           - if !@book.present? && @user.present?
-            = link_to 'レコメンドする本を選ぶ', recommends_books_path(user_id: @user.id), class: "btn btn-info", id: "reco-book-btn"
+            = link_to 'レコメンドする本を選ぶ', recommends_books_path(user_id: @user.id), class: "btn btn-primary", id: "reco-book-btn"
           - elsif !@book.present? && !@user.present?
-            = link_to 'レコメンドする本を選ぶ', recommends_books_path, class: "btn btn-info", id: "reco-book-btn"
+            = link_to 'レコメンドする本を選ぶ', recommends_books_path, class: "btn btn-primary", id: "reco-book-btn"
           
           - if @book.present?
             #book-thumb-image
@@ -32,16 +33,16 @@
                 =image_tag 'booklogo.jpg', class: "book-image", height: '200px', id: "reco-book-image"
             h4  #{@book.title}
             - if @user.present?
-              = link_to '本を選びなおす', recommends_books_path(user_id: @user.id), class: "btn btn-info rechose"
+              = link_to '本を選びなおす', recommends_books_path(user_id: @user.id), class: "btn btn-secondary rechose"
             - elsif !@user.present?
-              = link_to '本を選びなおす', recommends_books_path, class: "btn btn-info rechose"
+              = link_to '本を選びなおす', recommends_books_path, class: "btn btn-secondary rechose"
         .col-md-1.arrow-space.right
           .fa.fa-arrow-right.fa-3x.d-none.d-md-block
         .col-md-3.reco-user
           - if !@user.present? && @book.present?
-            = link_to "レコメンドするユーザーを選ぶ", recommends_users_path(book_id: @book.id), class: "btn btn-success", id: "reco-user-btn"
+            = link_to "レコメンドするユーザーを選ぶ", recommends_users_path(book_id: @book.id), class: "btn btn-primary", id: "reco-user-btn"
           - elsif !@user.present? && !@book.present?
-            = link_to recommends_users_path, class: "btn btn-success", id: "reco-user-btn" do
+            = link_to recommends_users_path, class: "btn btn-primary", id: "reco-user-btn" do
               span レコメンドする
               br
               span ユーザーを選ぶ
@@ -53,9 +54,9 @@
                 =image_tag 'userlogo.png', class: "user-image", height: '200px'
               h4 #{@user.name}さん
             - if @book.present?
-              = link_to 'ユーザーを選びなおす', recommends_users_path(book_id: @book.id), class: "btn btn-success rechose"
+              = link_to 'ユーザーを選びなおす', recommends_users_path(book_id: @book.id), class: "btn btn-secondary rechose"
             - elsif !@book.present?
-              = link_to 'ユーザーを選びなおす', recommends_users_path, class: "btn btn-success rechose"
+              = link_to 'ユーザーを選びなおす', recommends_users_path, class: "btn btn-secondary rechose"
         .col-md-1
       .row.reco-message-area
         .col-xl-4
@@ -85,8 +86,10 @@
                   = f.label :body, 'アピール文'
                   a.must-mark.bg-danger 必須
                   = f.text_area :body, class: 'form-control', id: 'reco-message-field'
-                        
-                  = f.submit 'レコメンドする', class: 'btn btn-primary btn-block'
+
+                  = button_tag type: 'submit', class: 'btn-block btn btn-primary' do
+                    i.fas.fa-hand-holding-heart
+                    span レコメンドする
         .col-xl-1
 
 
