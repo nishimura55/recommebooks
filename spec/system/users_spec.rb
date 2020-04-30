@@ -57,8 +57,7 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
 
         before do
             visit root_path
-            find(".navbar-toggler-icon").click
-            click_on '新規登録'
+            find('#side-login').click
         end
 
         it '新規登録ページが正しく表示される' do

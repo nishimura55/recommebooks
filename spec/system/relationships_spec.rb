@@ -49,8 +49,6 @@ RSpec.describe 'フォロー機能のシステムテスト', type: :system do
             click_on 'フォロー解除'
             visit user_path(user2)
             expect(page).to have_button 'フォローする'
-            click_on 'フォロワー'
-            expect(page).not_to have_link user1.name, href: user_path(user1)
         end
     end
 
