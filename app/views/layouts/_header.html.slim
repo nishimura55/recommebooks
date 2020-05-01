@@ -3,7 +3,7 @@ nav.navbar.navbar-expand-lg.navbar-light.header-top
     =link_to root_path
       .row.logo
         .col-md-4
-          .navbar-brand.logo-main RecommeBooks
+          .navbar-brand.logo-main RecommeBooks pr-test
     = search_form_for @q_header, url: books_path, class: "form-inline" do |f|
       .form-group.search-form
         = f.search_field :title_or_author_name_cont, class: 'form-control input-area', id: "header-search", placeholder: "題名・著者名"
