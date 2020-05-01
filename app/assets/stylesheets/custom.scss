@@ -1200,6 +1200,16 @@ $gray: #EEEEEE;
             text-align: center;
         }
         .card-body{
+            .must-mark{
+                display: inline-block;
+                text-align: center;
+                font-size: 15px;
+                color: white;
+                width: 50px;
+                padding: 0px;
+                border-radius: 10px;
+                margin-left: 10px;
+            }
             .spoiler-check{
                 margin-left: 20px;
             }

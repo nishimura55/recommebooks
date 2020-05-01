@@ -9,7 +9,7 @@
     .thumb-user-name
       = link_to user_path(user)
         = user.name
-      a.thumb-recomme-point #{user.recomme_point}RP(レコメニスト)
+      a.thumb-recomme-point #{user.recomme_point}RP「#{user.title.name}」
       - if !current_user.nil? && current_user.admin? && !current_user?(user)
         = link_to '削除', user, method: :delete, data: { confirm: '削除しますか？' }, id: "delete-nallow"
     .thumb-user-favorite-genre.d-none.d-sm-block

@@ -20,8 +20,30 @@
                   = f.label :password, 'パスワード'
                   = f.password_field :password, class: 'form-control'
                         
-                  = f.submit 'ログイン', class: 'btn btn-primary btn-block'
+                  = button_tag type: 'submit', class: 'btn-block btn btn-primary' do
+                    i.fas.fa-sign-in-alt
+                    span ログイン
                   
                 p.guidance-signup  ユーザー登録されていない方は#{link_to 'こちらから新規登録', signup_path}してください
+
+              = form_with scope: :session, url: login_path, local: true do |a|
+                = a.hidden_field :email, :value => "testa@test.com"
+                = a.hidden_field :password, :value => "passworda"
+                = button_tag type: 'submit', class: 'btn-block btn btn-success' do
+                  i.fas.fa-sign-in-alt
+                  span テストログイン
+                  br
+                  i.fas.fa-user
+                  span テストユーザーA
+              
+              = form_with scope: :session, url: login_path, local: true do |b|
+                = b.hidden_field :email, :value => "testb@test.com"
+                = b.hidden_field :password, :value => "passwordb"
+                = button_tag type: 'submit', class: 'btn-block btn btn-warning' do
+                  i.fas.fa-sign-in-alt
+                  span テストログイン
+                  br
+                  i.fas.fa-user
+                  span テストユーザーB
     .col-xl-3
-      = render 'shared/right_side'   
+      = render 'shared/right_side_for_login_signup'   

@@ -36,7 +36,7 @@ class BooksController < ApplicationController
       @book.update(author: author)
       @book.save_feelings(params[:book][:feeling_ids]) unless params[:book][:feeling_ids].nil?
       @book.save_genres(params[:book][:genre_ids])
-      flash[:success] = "本を投稿しました"
+      flash[:primary] = "本を投稿しました"
       redirect_to book_path(@book.id)
     else
       @author_name = params[:book][:author]
@@ -57,7 +57,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    flash[:success] = "削除しました"
+    flash[:primary] = "削除しました"
     redirect_to books_path
   end
 

@@ -10,6 +10,7 @@
         = f.text_field :title, class: 'form-control'
       .form-group
         = f.label :content, 'レビュー'
+        a.must-mark.bg-danger 必須
         a.spoiler-check ※ネタバレあり
         = f.check_box :spoiler, id: 'spoiler-check'
         = f.text_area :content, class: 'form-control', id: 'review-content'

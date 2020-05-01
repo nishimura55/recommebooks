@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
         @review.book_id = params[:book_id]
         @reviews = @book.reviews.where.not(user_id: current_user.id).paginate(page: params[:page])
         if @review.save
-          flash[:success] = "レビューを投稿しました"
+          flash[:primary] = "レビューを投稿しました"
           redirect_to @book
         else
           flash.now[:danger] = "投稿に失敗しました"
@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
         @review = current_user.reviews.find_by(book_id: params[:book_id])
         @reviews = @book.reviews.where.not(user_id: current_user.id).paginate(page: params[:page])
         if @review.update_attributes(review_params)
-            flash[:success] = "レビューを編集しました"
+            flash[:primary] = "レビューを編集しました"
             redirect_to @book
         else
             flash.now[:danger] = "編集に失敗しました"
@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
     def destroy
         @review = current_user.reviews.find_by(book_id: params[:book_id])
         @review.destroy
-        flash[:success] = "レビューを削除しました"
+        flash[:primary] = "レビューを削除しました"
         redirect_to @book
     end
 

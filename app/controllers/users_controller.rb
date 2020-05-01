@@ -31,7 +31,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             log_in @user
-            flash[:success] = "ユーザー登録が完了しました。レコメブックスへようこそ！"
+            flash[:primary] = "ユーザー登録が完了しました。レコメブックスへようこそ！"
             redirect_to @user
         else
             render 'new'
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
             else
                 @user.save_genres([])
             end
-            flash[:success] = "プロフィールを更新しました"
+            flash[:primary] = "プロフィールを更新しました"
             redirect_to @user
         else
             render 'edit'
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
 
     def destroy
         User.find(params[:id]).destroy
-        flash[:success] = "削除しました"
+        flash[:primary] = "削除しました"
         redirect_to users_url
     end
 
