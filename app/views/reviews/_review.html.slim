@@ -22,8 +22,12 @@
     .card-body
       .review-content #{review.content}
       .review-updated_time #{review.updated_at.strftime("%Y年%m月%d日")}
-      = link_to '編集', edit_book_reviews_path(review.book), class: "btn btn-primary", id: "review-edit"
-      = link_to '削除', book_reviews_path(review.book), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-primary",  id: "review-delete"
+      = link_to edit_book_reviews_path(review.book), class: "btn btn-primary", id: "review-edit" do
+        i.far.fa-edit
+        span 編集
+      = link_to book_reviews_path(review.book), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-primary",  id: "review-delete" do
+        i.fas.fa-trash-alt
+        span 削除
   - else
     div class= (review.spoiler? ? "card-body spoiler-review" : "card-body")
       .review-content #{review.content}

@@ -16,7 +16,7 @@ class RecommendsController < ApplicationController
         @recommend = Recommend.new(recommend_params)
         if @recommend.save
             @recommend.create_notification_recommend!
-            flash[:success] = "レコメンドが完了しました！"
+            flash[:primary] = "レコメンドが完了しました！"
             redirect_to user_recommends_path(current_user.id)
         else
             flash.now[:danger] = "レコメンドに失敗しました"
@@ -39,7 +39,7 @@ class RecommendsController < ApplicationController
                 recommend.recommender.update_title_or_not
                 recommend.book.increment!(:recomme_evaluation_point, 1)
             end
-            flash[:success] = "レコメンドに対する回答を完了しました！"
+            flash[:primary] = "レコメンドに対する回答を完了しました！"
             redirect_to user_recommends_path(current_user.id)
         else
             flash[:danger] = "回答に失敗しました"

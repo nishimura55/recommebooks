@@ -9,8 +9,11 @@
         = f.text_field :title, class: 'form-control'
       .form-group
         = f.label :content, 'レビュー'
+        a.must-mark.bg-danger 必須
         a.spoiler-check ※ネタバレあり
         = f.check_box :spoiler
         = f.text_area :content, class: 'form-control', id: 'review-content'
     
-        = f.submit '更新', class: 'btn btn-success', id: 'review-post-btn'
+        = button_tag type: 'submit', class: 'btn btn-primary', id: 'review-post-btn' do
+          i.fas.fa-file-upload
+          span 更新

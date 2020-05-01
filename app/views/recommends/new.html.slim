@@ -84,7 +84,6 @@
                   = f.hidden_field :book_id, :value => @book.id
                   
                   = f.label :body, 'アピール文'
-                  a.must-mark.bg-danger 必須
                   = f.text_area :body, class: 'form-control', id: 'reco-message-field'
 
                   = button_tag type: 'submit', class: 'btn-block btn btn-primary' do
