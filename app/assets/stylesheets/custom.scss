@@ -3,6 +3,7 @@ $main-blue: #75A9FF;
 $pale-blue: #D9E5FF;
 $primary-blue: #007bff;
 $gray: #EEEEEE;
+$background: rgba(238,238,238,0.2);
 
 
 //開発画面用
@@ -468,9 +469,14 @@ $gray: #EEEEEE;
     }
 }
 
+//全体背景色
+body {
+    background-color: $background;
+    }
+
 //ヘッダー・フッター
 .header-top{
-    background-color: white;
+    background-color: $background;
 }
 .header-under{
     background-color: $gray;
@@ -531,7 +537,7 @@ $gray: #EEEEEE;
 //パンくずリスト
 .breadcrumb{
     font-size: 16px;
-    background-color: white;
+    background-color: $background;
     color: #999999;
     padding-left: 0px;
 }
