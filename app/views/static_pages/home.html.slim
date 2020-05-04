@@ -18,7 +18,7 @@
               .recomme-area
                 - if logged_in?
                   a ＞＞
-                  = link_to new_recommend_path, class: "btn btn-primary", id: "main-reco" do
+                  = link_to new_recommend_path, class: "btn btn-home", id: "main-reco" do
                     i.fas.fa-hand-holding-heart
                     span レコメンドしてみる
           .col-md-4
@@ -38,7 +38,7 @@
                   p.item-sub あなたの感想と共に本を投稿しよう
                   p.item-sub すでに投稿されている本にはレビューの投稿ができます
                   - if logged_in?
-                    = link_to search_books_path, class: "btn btn-primary" do
+                    = link_to search_books_path, class: "btn btn-home" do
                       i.fas.fa-book
                       span 本を投稿してみる
               .col-md-6
@@ -49,7 +49,7 @@
                   p.item-sub あなたのタイムラインでフォローしたユーザーの
                   p.item-sub 投稿を確認できます
                   - if logged_in?
-                    = link_to users_path, class: "btn btn-primary" do
+                    = link_to users_path, class: "btn btn-home" do
                       i.fas.fa-user
                       span ユーザーの一覧へ
             .row
@@ -61,7 +61,7 @@
                   p.item-sub ユーザーのプロフィールや投稿を確認して
                   p.item-sub そのユーザーにぴったりな一冊をレコメンドしてみよう
                   - if logged_in?
-                    = link_to new_recommend_path, class: "btn btn-primary" do
+                    = link_to new_recommend_path, class: "btn btn-home" do
                       i.fas.fa-hand-holding-heart
                       span レコメンドしてみる
               .col-md-6
@@ -72,7 +72,7 @@
                   p.item-sub レコメンドした相手がその本を「面白かった！」と
                   p.item-sub 評価したら、あなたのレコメポイント(RP)が貯まります
                   - if logged_in?
-                    = link_to user_recommends_path(current_user.id), class: "btn btn-primary" do
+                    = link_to user_recommends_path(current_user.id), class: "btn btn-home" do
                       i.fas.fa-list-ul
                       span レコメンド状況を確認する
       .book-ranking-area
