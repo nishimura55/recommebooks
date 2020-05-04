@@ -1,9 +1,32 @@
 //カラー
-$main-blue: #75A9FF;
+//$main-blue: #75A9FF;
+$main-blue: rgba(0, 104, 182, 1);
 $pale-blue: #D9E5FF;
-$primary-blue: #007bff;
-$gray: #EEEEEE;
-$background: rgba(238,238,238,0.2);
+$primary-blue: rgba(0, 104, 182, 1);
+$gray: rgba(192,192,192 ,0.5 );
+$background: rgba(238,238,238,0.5);
+
+//ボタン
+.btn{
+    background-color: $main-blue;
+    &.btn-home{
+        background-color: white;
+        color: $main-blue;
+    }
+    &.btn-cancell{
+        background-color: #6c757d;
+        color: white;
+    }
+}
+
+//ページネーション
+.pagination{
+    .page-link{
+        color: $main-blue;
+    }
+}
+
+
 
 
 //開発画面用
@@ -486,6 +509,7 @@ body {
     margin-top: 150px;
     .logo-main{
         font-size: 30px;
+        color: $main-blue;
     }
 }
 .headerfooter{
@@ -537,7 +561,7 @@ body {
 //パンくずリスト
 .breadcrumb{
     font-size: 16px;
-    background-color: $background;
+    background-color: rgba(238,238,238,0.1);
     color: #999999;
     padding-left: 0px;
 }
@@ -812,9 +836,15 @@ body {
     margin-bottom: 100px;
     .btn {
         margin-top: 30px;
-    .guidance-signup{
-        padding-top: 10px;
+        .guidance-signup{
+            padding-top: 10px;
+        }
     }
+    .btn-success{
+        background-color: #28a745;
+    }
+    .btn-warning{
+        background-color: #ffc107;
     }
 }
 
@@ -890,6 +920,7 @@ body {
             }
             .user-profile{
                 padding: 5px;
+                border: 1px solid #C0C0C0;
             }
             .genre-tag-mark{
                 display: inline-block;
@@ -909,6 +940,7 @@ body {
             }
             .user-favorirte-genre{
                 padding: 5px;
+                border: 1px solid #C0C0C0;
             }
             margin-bottom: 50px;
         }
@@ -1165,6 +1197,7 @@ body {
         }
         .book-story{
             padding: 5px;
+            border: 1px solid #C0C0C0;
         }
         .feeling-tag-mark{
             display: inline-block;
@@ -1184,6 +1217,7 @@ body {
         }
         .book-contributor-review{
             padding: 5px;
+            border: 1px solid #C0C0C0;
         }   
     }
     .btn{

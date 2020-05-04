@@ -3,7 +3,7 @@
     = form_with model: [ current_user, current_user.active_relationships.find_by(followed_id: user.id) ],
                 html: {method: :delete} do |f|
       .form-group
-        = f.submit "フォロー解除", class: "form-control btn btn-secondary"
+        = f.submit "フォロー解除", class: "form-control btn btn-cancell"
   - else
     = form_with model: [ current_user, current_user.active_relationships.build ] do |f|
       .form-group
