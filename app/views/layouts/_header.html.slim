@@ -1,9 +1,8 @@
 nav.navbar.navbar-expand-lg.navbar-light.header-top
   .container.headerfooter
     =link_to root_path
-      .row.logo
-        .col-md-4
-          .navbar-brand.logo-main RecommeBooks
+      = image_tag 'main-logo-8.png', size: '50x50', class: "logo-mark"
+      .navbar-brand.logo-main RecommeBooks
     = search_form_for @q_header, url: books_path, class: "form-inline" do |f|
       .form-group.search-form
         = f.search_field :title_or_author_name_cont, class: 'form-control input-area', id: "header-search", placeholder: "題名・著者名"

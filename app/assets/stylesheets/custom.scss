@@ -516,9 +516,11 @@ body {
     .logo-main{
         font-size: 30px;
         text-align: left;
-        padding-top: 0px;
-        padding-bottom: 0px;
+        
         color: $primary-blue;
+    }
+    .logo-mark{
+        
     }
     .nav-item{
         margin-right: 40px;
@@ -678,7 +680,8 @@ body {
             }
         }
         .logo-mark{
-            margin-top: 30px;
+            margin-top: 20px;
+            color: $main-blue;
         }
     }
     .explanation-area{
@@ -739,7 +742,7 @@ body {
             margin-bottom: 10px;
         }
         .whatrep1{
-            padding: 3px;
+            padding: 3px 10px 3px 10px;
         }
         .target1.is-hidden{
             display: none;
@@ -780,7 +783,7 @@ body {
             margin-bottom: 10px;
         }
         .whatrep2{
-            padding: 3px;
+            padding: 3px 10px 3px 10px;
         }
         .target2.is-hidden{
             display: none;

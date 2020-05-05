@@ -22,7 +22,7 @@
                     i.fas.fa-hand-holding-heart
                     span レコメンドしてみる
           .col-md-4
-            = image_tag 'booklogo2white.png', size: '220x220', class: "logo-mark"
+            = image_tag 'main-logo-6.png', size: '250x250', class: "logo-mark"
       .explanation-area
         p.title レコメブックスとは？
         p.sub-title レコメブックスは本の投稿・レビュー共有型のSNSサービスです。
@@ -77,7 +77,9 @@
                       span レコメンド状況を確認する
       .book-ranking-area
         p.title 本のレコメ評価ポイント(REP)ランキング
-        button class="whatrep1 btn btn-secondary" type="button" レコメ評価ポイント(REP)とは？
+        button class="whatrep1 btn btn-secondary" type="button"
+          i.fas.fa-question-circle
+          a レコメ評価ポイント(REP)とは？
         div class = 'target1 is-hidden' target = "_blank"
           a 本のレコメンドの評価が「面白かった！」であった場合、その本に加算されるポイントです。
         .row
@@ -103,7 +105,9 @@
                     a 著
       .user-ranking-area
         p.title ユーザーのレコメポイント(RP)ランキング
-        button class="whatrep2 btn btn-secondary" type="button" レコメポイント(RP)とは？
+        button class="whatrep2 btn btn-secondary" type="button"
+          i.fas.fa-question-circle
+          a レコメポイント(RP)とは？
         div class = 'target2 is-hidden' target = "_blank"
           a レコメンドの評価が「面白かった！」であった場合、レコメンドしたユーザーに加算されるポイントです。
         .row
