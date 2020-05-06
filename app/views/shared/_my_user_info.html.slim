@@ -1,10 +1,13 @@
 #user-image-name
-  = link_to user_path(user)
-    - if user.image?
-      = image_tag user.image_url(:thumb2), size: '60x60', class: "user-image"
-    - else
-      = image_tag 'userlogo.png', size: '30x30', class: "user-image"
-    = link_to user.name, user_path(user), class: "user-name"
+  .row
+    .col-sm-4
+      = link_to user_path(user), class: "user-image-space"
+        - if user.image?
+          = image_tag user.image_url(:thumb2), size: '60x60', class: "user-image"
+        - else
+          = image_tag 'userlogo.png', size: '60x60', class: "user-image"
+    .col-sm-8
+      = link_to user.name, user_path(user), class: "user-name"
 #user-overview
   .user-rp
     a #{user.recomme_point}RP
