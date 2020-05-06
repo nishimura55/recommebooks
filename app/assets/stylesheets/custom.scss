@@ -6,6 +6,11 @@ $primary-blue: rgba(0, 104, 182, 1);
 $gray: rgba(192,192,192 ,0.5 );
 $background: rgba(238,238,238,0.5);
 
+//フォント
+body{
+    font-family: ヒラギノ丸ゴ Pro W4;
+}
+
 //ボタン
 .btn{
     background-color: $main-blue;
@@ -25,9 +30,6 @@ $background: rgba(238,238,238,0.5);
         color: $main-blue;
     }
 }
-
-
-
 
 //開発画面用
 .debug_dump{
@@ -617,13 +619,20 @@ body {
     .my-user-info{
         margin-bottom: 30px;
         border: 1.5px solid #D3D3D3;
-        padding: 10px;
+        padding: 15px;
         #user-image-name{
             color: black;
+            .user-image-space{
+                height: 60px;
+                
+                
+            }
             .user-name{
-                margin-left: 15px;
+                
                 font-size: 20px;
                 color: black;
+                
+                
             }
         }
         #user-overview{
@@ -671,7 +680,7 @@ body {
                 font-size: 30px;
             }
             .sub-message{
-                font-size: 18px;
+                font-size: 16px;
             }
             .recomme-area{
                 .btn{
@@ -722,6 +731,7 @@ body {
                     .item-sub{
                         text-align: center;
                         margin-bottom: 5px;
+                        font-size: 15px;
                     }
                     .btn{
                         width: 100%;
@@ -804,7 +814,7 @@ body {
             }
             #thumb-user-title{
                 text-align: center;
-                font-size: 18px;
+                font-size: 16px;
                 margin-bottom: 5px;
             }
             #user-thumb-image{
