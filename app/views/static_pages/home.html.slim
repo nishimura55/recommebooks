@@ -87,7 +87,9 @@
           - @ranking_books.each do |book|
             .col-lg-3
               .book-thumb
-                #thumb-book-raning
+                div id = "thumb-book-raning" class = "ver-#{r}"
+                  - if r != 4
+                    i.fas.fa-crown
                   a.rank #{r}位
                   - r += 1
                   a.book-rep  #{book.recomme_evaluation_point}REP
@@ -99,7 +101,7 @@
                       =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
                 #book-thumb-overview
                   .thumb-book-title
-                    = link_to book.title.truncate(12), book_path(book), class: "text"
+                    = link_to book.title.truncate(10), book_path(book), class: "text"
                   .thumb-book-author
                     = link_to book.author.name.truncate(10), author_path(book.author), class: "text"
                     a 著
@@ -115,7 +117,9 @@
           - @ranking_users.each do |user|
             .col-lg-3
               .user-thumb
-                #thumb-user-raning
+                div id = "thumb-user-raning" class = "ver-#{r}"
+                  - if r != 4
+                    i.fas.fa-crown
                   a.rank #{r}位
                   - r += 1
                   a.user-rep  #{user.recomme_point}RP
@@ -129,7 +133,7 @@
                       =image_tag 'userlogo.png', size: '120x135', class: "user-image"
                 #user-thumb-overview
                   .thumb-user-name
-                    = link_to user.name.truncate(12), user_path(user), class: "text"
+                    = link_to user.name.truncate(10), user_path(user), class: "text"
         
     .col-xl-3
       = render 'shared/right_side' 

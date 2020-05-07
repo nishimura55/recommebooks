@@ -26,6 +26,8 @@
         .col-lg-8.user-overview
           p.user-title  称号「#{@user.title.name}」
           p.user-recomme-point  #{@user.recomme_point}レコメポイント
+          - @user.recomme_point.times do
+            = image_tag 'main-logo-9.png', size: '50x50', class: "logo-mark"
           .user-profile-favorirte-genre
             - if @user.profile?
               p.heading 自己紹介
