@@ -35,6 +35,8 @@
                 = link_to genre.name, books_path(genre_id: genre.id), id: "genre-tag-text"
           .book-recomme-evaluation-point-fav
             a.book-recomme-evaluation-point  #{@book.recomme_evaluation_point}レコメ評価ポイント
+          - @book.recomme_evaluation_point.times do
+            = image_tag 'main-logo-9.png', size: '50x50', class: "logo-mark"
           .book-story-contributor-review
             - if @book.story?
               p.heading 内容紹介
