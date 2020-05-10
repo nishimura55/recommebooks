@@ -45,3 +45,7 @@ group :test do
   gem 'webdrivers'
   gem 'selenium-webdriver'
 end
+
+group :production do
+  gem 'unicorn'
+end
