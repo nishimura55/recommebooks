@@ -28,8 +28,8 @@ User.create!(
  User.create!(
     name: 'テストユーザーB',
     email: 'testb@test.com',
-    password: passwordb,
-    password_confirmation: passwordb,
+    password: 'passwordb',
+    password_confirmation: 'passwordb',
     profile: '技術系の仕事をしており、勉強のために読書することが多いです！IT業界で働いている方には良い本をレコメンドできる自信があります！',
     favorite_genre: '普段は技術書が多いですが、趣味のアウトドア関連の本もよく読みます。'
  )
