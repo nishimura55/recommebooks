@@ -229,23 +229,23 @@ Genre.create!(
     name: '語学'
 )
 Genre.create!(
-    division: ５,
+    division: 5,
     name: '旅行・地図'
 )
 Genre.create!(
-    division: ５,
+    division: 5,
     name: '海外旅行'
 )
 Genre.create!(
-    division: ５,
+    division: 5,
     name: '国内旅行'
 )
 Genre.create!(
-    division: ５,
+    division: 5,
     name: '地図'
 )
 Genre.create!(
-    division: ５,
+    division: 5,
     name: '世界遺産'
 )
 Genre.create!(
