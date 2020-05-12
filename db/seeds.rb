@@ -5,3 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# coding: utf-8mb4
+
+Title.create!(
+    name: 'レコメビギナー'
+ )
+ Title.create!(
+    name: 'レコメベテラン'
+ )
+ Title.create!(
+    name: 'レコメマスター'
+ )
+
+ User.create!(
+    name: 'テストユーザー',
+    email: 'tesu@tesu.com',
+    admin: true
+ )
+
