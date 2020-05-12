@@ -13,7 +13,7 @@ User.create!(
    email: 'tesu@tesu.com',
    password: ENV['ADMIN_PASSWORD'],
    password_confirmation: ENV['ADMIN_PASSWORD'],
-   admin: true
+   admin: true,
    profile: '20代の社会人です！読書は営業トークにも役立ってます！たくさんのレコメンドよろしくお願いします！',
    favorite_genre: 'もっぱら教養書をよく読んでます！知的好奇心が刺激される本が好きです！'
 )
