@@ -1,5 +1,3 @@
-# coding: utf8mb4
-
 Title.create!(
    name: 'レコメビギナー'
 )
