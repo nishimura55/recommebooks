@@ -9,5 +9,6 @@ unless Rails.env.development? || Rails.env.test?
   
       config.fog_directory  = 'recommebooks-s3'
       config.cache_storage = :fog
+      config.fog_public = false
     end
 end
