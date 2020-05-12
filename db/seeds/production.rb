@@ -14,7 +14,25 @@ User.create!(
    password: ENV['ADMIN_PASSWORD'],
    password_confirmation: ENV['ADMIN_PASSWORD'],
    admin: true
+   profile: '20代の社会人です！読書は営業トークにも役立ってます！たくさんのレコメンドよろしくお願いします！',
+   favorite_genre: 'もっぱら教養書をよく読んでます！知的好奇心が刺激される本が好きです！'
 )
+User.create!(
+    name: 'テストユーザーA',
+    email: 'testa@test.com',
+    password: 'passworda',
+    password_confirmation: 'passworda',
+    profile: '小学生の頃から本ばかり読んでました！最近のマイブームは音声読書です！色々な本レコメンドしてください！',
+    favorite_genre: '小説を推理もの〜歴史ものまで幅広く読んでます！最近は詩集も眺めたり。'
+ )
+ User.create!(
+    name: 'テストユーザーB',
+    email: 'testb@test.com',
+    password: passwordb,
+    password_confirmation: passwordb,
+    profile: '技術系の仕事をしており、勉強のために読書することが多いです！IT業界で働いている方には良い本をレコメンドできる自信があります！',
+    favorite_genre: '普段は技術書が多いですが、趣味のアウトドア関連の本もよく読みます。'
+ )
 
 Genre.create!(
     division: 1,
@@ -347,6 +365,44 @@ Feeling.create!(
 Feeling.create!(
     situation: 'スカッとしたい時'
 )
+
+UserGenre.create!(
+    user_id: 1,
+    genre_id: 20
+)
+UserGenre.create!(
+    user_id: 1,
+    genre_id: 37
+)
+UserGenre.create!(
+    user_id: 1,
+    genre_id: 41
+)
+UserGenre.create!(
+    user_id: 2,
+    genre_id: 2
+)
+UserGenre.create!(
+    user_id: 2,
+    genre_id: 3
+)
+UserGenre.create!(
+    user_id: 2,
+    genre_id: 4
+)
+UserGenre.create!(
+    user_id: 3,
+    genre_id: 27
+)
+UserGenre.create!(
+    user_id: 3,
+    genre_id: 28
+)
+UserGenre.create!(
+    user_id: 3,
+    genre_id: 23
+)
+
 
 
 
