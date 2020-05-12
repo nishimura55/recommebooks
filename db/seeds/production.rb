@@ -11,6 +11,6 @@ Title.create!(
 User.create!(
    name: 'やまだ',
    email: 'tesu@tesu.com',
-   password: 'ENV['ADMIN_PASSWORD']',
+   password: ENV['ADMIN_PASSWORD'],
    admin: true
 )
