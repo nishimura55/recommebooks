@@ -116,7 +116,7 @@ RSpec.describe 'レコメンド機能のシステムテスト', type: :system do
                 log_in_as(other_user)
                 visit notifications_path
                 expect(page).to have_content user.name
-                expect(page).to have_content 'さんがあなたに本をレコメンドしました。'
+                expect(page).to have_content 'さんがあなたにレコメンドしました。'
             end
         end
 
