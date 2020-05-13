@@ -15,6 +15,7 @@
     .form-group.search-form
       = f.search_field :title_cont, class: 'form-control input-area', id: "book-index-search", placeholder: "本の題名で検索"
       = f.submit "検索", class: "btn btn-primary"
+      a.suggest-book-post お探しの本がない場合は#{link_to 'こちらから本を投稿', search_books_path}してください。
 
   = will_paginate(@books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
   .row.books
