@@ -1,14 +1,12 @@
 .users-reco-choose
   #users-thumb-image
-    = link_to user_path(user)
-      - if user.image?
-        = image_tag user.image_url(:thumb2), class: "user-image"
-      - else
-        =image_tag 'userlogo.png', size: '120x135', class: "user-image"
+    - if user.image?
+      = image_tag user.image_url(:thumb2), class: "user-image"
+    - else
+      =image_tag 'userlogo.png', size: '120x135', class: "user-image"
   #users-thumb-overview
     .thumb-user-name
-      = link_to user_path(user)
-        = user.name
+      = user.name
       a.thumb-recomme-point #{user.recomme_point}RP(レコメニスト)
     .thumb-user-favorite-genre.d-none.d-sm-block
       = user.favorite_genre
