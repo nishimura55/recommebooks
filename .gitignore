@@ -30,3 +30,7 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+/mysql/mysql_data
+
+/public/uploads/user/image
