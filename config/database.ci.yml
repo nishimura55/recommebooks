@@ -4,6 +4,5 @@ test:
   pool: 5
   username: root
   password:
-  port: 3306
   host: db
-  database: circleci_test
+  database: docker_development
