@@ -12,6 +12,9 @@ jobs:
           name: docker-compose up
           command: docker-compose up -d
       - run:
+         name: 'wait for docker-compose up'
+         command: sleep 15
+      - run:
           name: db create
           command: docker-compose run web bundle exec rails db:create
       - run:
