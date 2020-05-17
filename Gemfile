@@ -43,7 +43,7 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'webdrivers'
+  gem 'webdrivers', require: !ENV['SELENIUM_REMOTE_URL']
   gem 'selenium-webdriver'
 end
 
