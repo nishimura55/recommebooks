@@ -17,7 +17,7 @@ jobs:
       - run:
          name: install chrome
          command: |
-          sudo curl -sS -L https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+          sudo curl -sS -L https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
           sudo echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
           sudo apt-get update -q -y
           sudo apt-get install -y google-chrome-stable
