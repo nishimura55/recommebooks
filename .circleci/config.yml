@@ -2,9 +2,14 @@ version: 2
 jobs:
   build:
     machine:
-      image: circleci/classic:edge
+      image: circleci/classic:edge-browsers
     steps:
+      - run:
+          command: chromedriver
+          background: true
       - checkout
+      - run: sudo apt update
+      - run: sudo apt upgrade
       - run:
           name: docker-compose build
           command: docker-compose build
@@ -14,14 +19,6 @@ jobs:
       - run:
          name: wait for docker-compose up
          command: sleep 15
-      - run:
-         name: install chrome
-         command: |
-           sudo apt install libappindicator3-1
-           curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-           sudo dpkg -i google-chrome.deb
-           sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
-           rm google-chrome.deb
       - run:
           name: set db config for circleci
           command: mv config/database.ci.yml config/database.yml
