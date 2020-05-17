@@ -15,6 +15,13 @@ jobs:
          name: wait for docker-compose up
          command: sleep 15
       - run:
+         name: install chrome
+         command: |
+          curl -sS -L https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+          echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+          apt-get update -q -y
+          apt-get install -y google-chrome-stable
+      - run:
           name: set db config for circleci
           command: mv config/database.ci.yml config/database.yml
       - run:
