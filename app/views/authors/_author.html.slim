@@ -2,7 +2,7 @@
   .card
     .card-header.thumb-author-name
       = link_to author.name, author_path(author)
-      a.author-books-count 本#{author.books.count}冊
+      a.author-books-count #{author.books.count}冊
     .card-body.thumb-author-book
       - author.books.each do |book|
         = link_to book_path(book)
