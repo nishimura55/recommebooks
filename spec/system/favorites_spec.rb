@@ -78,7 +78,7 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
             click_on 'つんどく本登録'
             visit user_path(user)
             click_on 'つんどく本'
-            expect(page).to have_content 'つんどく本解除'
+            expect(page).to have_content book.title
         end
 
         context '本一覧画面からつんどく本解除した場合' do
@@ -90,7 +90,7 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
                 end.to change {Favorite.count}.by(-1)
                 visit user_path(user)
                 click_on 'つんどく本'
-                expect(page).to have_content 'つんどく本がありません'
+                expect(page).not_to have_content book.title
             end
         end
 
@@ -103,7 +103,7 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
                 end.to change {Favorite.count}.by(-1)
                 visit user_path(user)
                 click_on 'つんどく本'
-                expect(page).not_to have_content 'つんどく本解除'
+                expect(page).not_to have_content book.title
             end
         end
 
@@ -132,7 +132,7 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
                 end.to change {Favorite.count}.by(-1)
                 visit user_path(user)
                 click_on 'つんどく本'
-                expect(page).to have_content 'つんどく本解除', count: 1
+                expect(page).not_to have_content book.title
             end
         end
 
