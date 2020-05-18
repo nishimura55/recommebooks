@@ -90,7 +90,7 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
                 end.to change {Favorite.count}.by(-1)
                 visit user_path(user)
                 click_on 'つんどく本'
-                expect(page).not_to have_content 'つんどく本解除'
+                expect(page).to have_content 'つんどく本がありません'
             end
         end
 
