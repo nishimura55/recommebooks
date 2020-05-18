@@ -42,8 +42,8 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
-  gem 'webdrivers'
+  gem 'capybara'
+  gem 'webdrivers', require: !ENV['SELENIUM_REMOTE_URL']
   gem 'selenium-webdriver'
 end
 

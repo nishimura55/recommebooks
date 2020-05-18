@@ -7,15 +7,9 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_USER: root
       MYSQL_PASSWORD: ""
-    #command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    #command: mysqld --character-set-client=utf8mb4
-    #command: mysqld --character-set-connection=utf8mb4
-    #command: mysqld --character-set-database=utf8mb4
-    #command: mysqld --character-set-results=utf8mb4
-    #command: mysqld --character-set-system=utf8mb4
     volumes:
       - ./mysql/mysql_data:/var/lib/mysql
-      - /tmp/dockerdir:/etc/mysql/conf.d/
+      - ./dockerdir:/etc/mysql/conf.d/
     ports:
       - "4306:3306"
   web:
@@ -26,9 +20,14 @@ services:
     command: /bin/sh -c "rm -f /workdir/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     tty: true
     stdin_open: true
+    environment:
+      SELENIUM_REMOTE_URL: http://webdriver_chrome:4444/wd/hub
     depends_on:
       - db
+      - webdriver_chrome
     ports:
       - "3000:3000"
     volumes:
       - .:/workdir
+  webdriver_chrome:
+    image: selenium/standalone-chrome

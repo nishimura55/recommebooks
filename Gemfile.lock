@@ -312,7 +312,7 @@ DEPENDENCIES
   bootstrap (~> 4.4.1)
   bootstrap-will_paginate (= 1.0.0)
   byebug
-  capybara (>= 2.15)
+  capybara
   carrierwave
   factory_bot_rails
   fog-aws

@@ -1,0 +1,43 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.7.0-node-browsers
+        environment:
+          RAILS_ENV: test
+          DB_HOST: '127.0.0.1'
+      - image: circleci/mysql:5.7
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - rails-demo-{{ checksum "Gemfile.lock" }}
+            - rails-demo-
+      - run:
+          name: Install bundler
+          command: gem install bundler -v 2.1.4
+      - run:
+          name: Install gem
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+      - save_cache:
+          key: rails-demo-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: install MySQL client
+          command: sudo apt-get install default-mysql-client
+      - run:
+          name: set db config for circleci
+          command: mv config/database.ci.yml config/database.yml
+      - run:
+         name: wait for db
+         command: sleep 15
+      - run:
+          name: db create
+          command: bundle exec rails db:create RAILS_ENV=test
+      - run:
+          name: db migrate
+          command: bundle exec rails db:migrate RAILS_ENV=test  
+      - run:
+          name: run rspec
+          command: bundle exec rspec spec
