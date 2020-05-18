@@ -4,5 +4,5 @@ test:
   pool: 5
   username: root
   password:
-  host: db
+  host: <%= ENV.fetch('DB_HOST') %>
   database: docker_development
