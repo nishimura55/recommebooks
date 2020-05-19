@@ -27,6 +27,7 @@ https ~
 ## インフラ構成図
 
 ## テーブル設計図
+<img width="909" alt="recommebooks" src="https://user-images.githubusercontent.com/61367038/82334587-2431d580-9a23-11ea-9c91-6d67d579a821.png">
 
 ## 機能一覧
 - ユーザー登録機能
