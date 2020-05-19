@@ -1,4 +1,5 @@
 # RecommeBooks (レコメブックス)
+<img width="818" alt="main-logo" src="https://user-images.githubusercontent.com/61367038/82335118-d9648d80-9a23-11ea-968a-8f495f7a7b3c.png">
 
 ## サービス概要
 レコメブックスはユーザー同士で本をレコメンドしあうSNSサービスです。  
