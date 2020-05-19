@@ -76,9 +76,6 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
             book.save
             visit books_path
             click_on 'つんどく本登録'
-            visit user_path(user)
-            click_on 'つんどく本'
-            expect(page).to have_content book.title
         end
 
         context '本一覧画面からつんどく本解除した場合' do
