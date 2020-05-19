@@ -8,12 +8,12 @@
     .col-xl-9#top-page
       .main-area
         .row
-          .col-md-8
+          .col-md-7
             .main-message-area
               h1.title RecommeBooks
               p.sub-title レコメブックス
               p.main-message 本をおすすめしよう
-              p.sub-message レコメブックスはユーザー同士で本をレコメンドするサービスです。
+              p.sub-message ユーザー同士で本をレコメンドするサービスです。
               p.sub-message あなたの座右の書を、あの人に。
               .recomme-area
                 - if logged_in?
@@ -21,7 +21,7 @@
                   = link_to new_recommend_path, class: "btn btn-home", id: "main-reco" do
                     i.fas.fa-hand-holding-heart
                     span レコメンドしてみる
-          .col-md-4
+          .col-md-5
             = image_tag 'main-logo-6.png', size: '250x250', class: "logo-mark"
       .explanation-area
         p.title レコメブックスとは？

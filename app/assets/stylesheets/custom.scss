@@ -669,7 +669,7 @@ body {
     margin-top: 30px;
     .main-area{
         background-color: $main-blue;
-        padding: 15px;
+        padding: 15px 15px 15px 25px;
         .main-message-area{
             color: white;
             .title{
@@ -693,6 +693,7 @@ body {
         }
         .logo-mark{
             margin-top: 20px;
+            margin-left: 10px;
             color: $main-blue;
         }
     }
