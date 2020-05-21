@@ -53,4 +53,5 @@ end
 
 group :production do
   gem 'unicorn'
+  gem 'sassc', '~> 2.1.0'
 end
