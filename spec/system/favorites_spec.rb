@@ -74,7 +74,7 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
         before do
             log_in_as(user)
             book.save
-            visit books_path
+            visit book_path(book)
             click_on 'つんどく本登録'
         end
 
@@ -105,24 +105,10 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
         end
 
         context 'マイページからつんどく本解除した場合' do
-            before do
-                visit user_path(user)
-                click_on '本を投稿'
-                fill_in 'book_search', with: '山'
-                click_on '本の題名を検索'
-                page.all('#thmb-book-btn')[0].click
-                click_on '文学・小説'
-                check 'テストジャンル'
-                fill_in '投稿者の感想', with: 'そうとう面白かった！'
-                click_on '投稿する'
-                click_on 'つんどく本登録'
-            end
-
             it 'マイページのつんどく本タブから表示がなくなる' do
                 visit user_path(user)
                 click_on 'つんどく本'
-                expect(page).to have_content 'つんどく本解除', count: 2
-                visit user_path(user)
+                expect(page).to have_content 'つんどく本解除'
                 expect do
                     click_on 'つんどく本解除'
                     expect(page).to have_content 'つんどく本登録'

@@ -19,6 +19,10 @@ set :rbenv_ruby, '2.7.0'
 
 set :log_level, :debug
 
+set :default_environment, { 
+    'PKG_CONFIG_PATH' => '/usr/lib/pkgconfig:/usr/local/lib/pkgconfig'
+}
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
