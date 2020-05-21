@@ -23,6 +23,8 @@ set :default_environment, {
     'PKG_CONFIG_PATH' => '/usr/lib/pkgconfig:/usr/local/lib/pkgconfig'
 }
 
+set :bundle_flags, "--quiet --binstubs --shebang ruby-local-exec"
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
