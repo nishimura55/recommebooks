@@ -28,7 +28,9 @@ set :bundle_flags, "--quiet --binstubs --shebang ruby-local-exec"
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:restart'
+    on roles(:app) do
+      invoke 'unicorn:restart'
+    end
   end
 
   after :publishing, :restart
