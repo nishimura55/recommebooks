@@ -20,7 +20,9 @@ set :rbenv_ruby, '2.7.0'
 set :log_level, :debug
 
 set :default_environment, { 
-    'PKG_CONFIG_PATH' => '/usr/lib/pkgconfig:/usr/local/lib/pkgconfig'
+    'PKG_CONFIG_PATH' => '/usr/lib/pkgconfig:/usr/local/lib/pkgconfig',
+    'S3_ACCESS_KEY' => ENV['S3_ACCESS_KEY'],
+    'S3_SECRET_ACCESS_KEY' => ENV['S3_SECRET_ACCESS_KEY']
 }
 
 set :bundle_flags, "--quiet --binstubs --shebang ruby-local-exec"
