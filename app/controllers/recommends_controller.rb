@@ -26,21 +26,21 @@ class RecommendsController < ApplicationController
 
     def index
         @user = User.find(params[:user_id])
-        @active_recommends = @user.active_recommends.order(created_at: "DESC").paginate(page: params[:page])
-        @passive_recommends = @user.passive_recommends.order(created_at: "DESC").paginate(page: params[:page])
+        @active_recommends = @user.active_recommends.order(created_at: :desc).paginate(page: params[:page])
+        @passive_recommends = @user.passive_recommends.order(created_at: :desc).paginate(page: params[:page])
     end
 
     def update
         recommend = Recommend.find(params[:id])
         if recommend.update_attributes(recommend_params)
             recommend.create_notification_response!
+            # statusカラムはgemのenumerzieを使いたい
             if recommend.status == 2
                 recommend.recommender.increment!(:recomme_point, 1)
                 recommend.recommender.update_title_or_not
                 recommend.book.increment!(:recomme_evaluation_point, 1)
             end
-            flash[:primary] = "レコメンドに対する回答を完了しました！"
-            redirect_to user_recommends_path(current_user.id)
+            redirect_to user_recommends_path(current_user.id), primary: 'レコメンドに対する回答を完了しました！'
         else
             flash[:danger] = "回答に失敗しました"
             redirect_to user_recommends_path(current_user.id)

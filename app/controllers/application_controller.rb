@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_recently_recommend_book
-    @recently_recommend_book = Recommend.last.book unless Recommend.count == 0
+    @recently_recommend_book = Recommend.last.book if Recommend.count.nonzero?
   end
 end

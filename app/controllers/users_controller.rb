@@ -14,6 +14,7 @@ class UsersController < ApplicationController
         @user = User.find_by(id: params[:id])
         @post_feed_books = @user.books.paginate(page: params[:page])
         @post_feed_reviews = @user.reviews.paginate(page: params[:page])
+        # @user.following.order(xxxx)で取れそう
         @following = @user.active_relationships.order(created_at: "DESC").map{|active_relationship| active_relationship.followed}.paginate(page: params[:page])
         @followers = @user.passive_relationships.order(created_at: "DESC").map{|passive_relationship| passive_relationship.follower}.paginate(page: params[:page])
         if logged_in? && current_user?(@user)
@@ -78,6 +79,7 @@ class UsersController < ApplicationController
             end
         end
 
+        # DBから取得して使いたい
         def set_genre
             @genre = { "1": "文学・小説", "2": "社会・ビジネス", "3": "趣味・実用", "4": "芸術・教養・エンタメ",
                        "5": "旅行・地図", "6": "暮らし・健康", "7": "図鑑・百科事典", "8": "こども", "9": "コミック" } 

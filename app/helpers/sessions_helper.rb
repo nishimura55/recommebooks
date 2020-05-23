@@ -1,5 +1,6 @@
 module SessionsHelper
 
+    # コントローラに書きたい
     def logged_in_user
         unless logged_in?
             store_location
@@ -8,6 +9,7 @@ module SessionsHelper
         end
     end
 
+    # コントローラに書きたい
     def admin_user
         redirect_to(root_url) unless current_user.admin? 
     end
