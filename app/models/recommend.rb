@@ -7,20 +7,18 @@ class Recommend < ApplicationRecord
     has_many :notifications, dependent: :destroy
 
     def create_notification_recommend!
-        temp = Notification.where(["visitor_id = ? and visited_id = ? and recommend_id = ? and action = ? ",
-                                    recommender_id, recommended_id, id, 'response'])
-        if temp.blank?
-            notification = self.recommender.active_notifications.new(visited_id: recommended_id, recommend_id: id, action: 'recommend')
-            notification.save if notification.valid?
-        end
+        create_notification!('recommend')
     end
 
     def create_notification_response!
-        temp = Notification.where(["visitor_id = ? and visited_id = ? and recommend_id = ? and action = ? ",
-                                   recommender_id, recommended_id, id, 'response'])
-        if temp.blank?
-            notification = self.recommended.active_notifications.new(visited_id: recommender_id, recommend_id: id, action: 'response')
-            notification.save if notification.valid?
+        create_notification!('response')
+    end
+
+    def create_notification!(action)
+        notification = recommender.notifications.where(visited: recommended, recommend_id: id, action: action)
+        if notification.blank?
+            new_notification = self.recommended.active_notifications.new(visited_id: recommender_id, recommend_id: id, action: action)
+            new_notification.save! if new_notification.valid?
         end
     end
 end

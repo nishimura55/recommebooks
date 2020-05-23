@@ -48,6 +48,8 @@ class User < ApplicationRecord
     def time_line_feed_books
         following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
         Book.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
+
+        #Book.where(user_id: Relationship.where(follower: self).select(:followed_id)).or(books)
     end
 
     def time_line_feed_reviews
@@ -69,12 +71,9 @@ class User < ApplicationRecord
 
     def save_genres(tag_ids)
         current_tag_ids = self.genres.pluck(:id) unless self.genres.nil?
-        old_tag_ids = current_tag_ids - tag_ids
         new_tag_ids = tag_ids - current_tag_ids
     
-        old_tag_ids.each do |old_tag_id|
-          self.user_genres.find_by(genre_id: old_tag_id).delete
-        end
+        user_genres.where.not(genre_id: tag_ids).delete_all
     
         new_tag_ids.each do |new_tag_id|
           self.genres << Genre.find_by(id: new_tag_id)
