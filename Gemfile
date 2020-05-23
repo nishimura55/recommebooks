@@ -4,7 +4,7 @@ ruby '2.7.0'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'bcrypt'
 gem 'mysql2', '>= 0.4.4'
-gem 'puma', '>= 4.3.2'
+gem "puma", ">= 4.3.5"
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 gem 'jbuilder', '~> 2.7'
