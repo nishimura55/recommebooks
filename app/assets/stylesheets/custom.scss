@@ -671,11 +671,9 @@ body {
         background-color: $main-blue;
         padding: 15px 15px 15px 20px;
         .main-message-area{
-            //color: white;
-            color: black;
+            color: white;
             .title{
-                //font-size: 50px;
-                font-size: 20px;
+                font-size: 50px;
                 margin-bottom: 0px;
             }
             .sub-title{
@@ -1518,7 +1516,7 @@ body {
         }
     }
     .my-active-recommend{
-        margin-top: 20px;
+        margin-top: 40px;
         border: 1px solid #C0C0C0;
         .card-header{
             font-size: 18px;
@@ -1573,7 +1571,7 @@ body {
         }
     }
     .my-passive-recommend{
-        margin-top: 20px;
+        margin-top: 40px;
         border: 1px solid #C0C0C0;
         .card-header{
             font-size: 18px;
