@@ -6,7 +6,7 @@
   .row
     .col-xl-9#reco-index
       - if current_user?(@user)
-        h2 あなたのレコメンド状況
+        h2 あなたのレコメンド状況編集
       - else
         h2 #{@user.name}さんのレコメンド状況
       ul.nav.nav-tabs.justify-content-center role = "tablist"         
