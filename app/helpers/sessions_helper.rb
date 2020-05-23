@@ -10,6 +10,7 @@ module SessionsHelper
     end
 
     # コントローラに書きたい
+    # メソッド名と処理内容が合っていない(例:redirect_to_unless_admin_user)
     def admin_user
         redirect_to(root_url) unless current_user.admin? 
     end
@@ -45,6 +46,4 @@ module SessionsHelper
         redirect_to(session[:forwarding_url] || default)
         session.delete(:forwarding_url)
     end
-
-
 end
