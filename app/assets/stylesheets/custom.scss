@@ -669,11 +669,13 @@ body {
     margin-top: 30px;
     .main-area{
         background-color: $main-blue;
-        padding: 15px 15px 15px 25px;
+        padding: 15px 15px 15px 20px;
         .main-message-area{
-            color: white;
+            //color: white;
+            color: black;
             .title{
-                font-size: 50px;
+                //font-size: 50px;
+                font-size: 20px;
                 margin-bottom: 0px;
             }
             .sub-title{
