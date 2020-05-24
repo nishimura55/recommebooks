@@ -40,13 +40,13 @@
                     p
                 .form-group
                   = f.label :favorite_genre, 'どんなタイプの本が好き？'
-                  = f.text_field :favorite_genre, class: 'form-control', placeholder: "例 スポ根系の小説が好き！"
+                  = f.text_area :favorite_genre, class: 'form-control genre-area', placeholder: "例 スポ根系の小説が好き！"
                 .row#pale-line
                   .col-lg-12
                     p
                 .form-group
                   = f.label :profile, '自己紹介'
-                  = f.text_area :profile, class: 'form-control'
+                  = f.text_area :profile, class: 'form-control profile-area'
                 .row#user-edit-line
                   .col-lg-12
                     p

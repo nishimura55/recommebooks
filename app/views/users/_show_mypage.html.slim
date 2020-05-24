@@ -31,7 +31,7 @@
           .user-profile-favorirte-genre
             - if @user.profile?
               p.heading 自己紹介
-              p.user-profile.table-bordered = @user.profile
+              = simple_format(@user.profile, class: "user-profile table-bordered")
             - if @user.favorite_genre? || @user.genres.present?
               p.heading 好きなジャンル・本
               - @user.genres.each do |genre|
@@ -39,7 +39,7 @@
                   a.fa.fa-tag
                   = link_to genre.name, books_path(genre_id: genre.id), id: "genre-tag-text"
             - if @user.favorite_genre?
-              p.user-favorirte-genre.table-bordered = @user.favorite_genre
+              = simple_format(@user.favorite_genre, class: "user-favorirte-genre table-bordered")
           ul.nav.nav-tabs.justify-content-center role = "tablist"         
             li.nav-item
               a.nav-link.active#time-line-tab data-toggle="tab" href="#time-line" role="tab" aria-controls="time-line" aria-selected="true"

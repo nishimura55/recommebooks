@@ -24,7 +24,7 @@
         a.thumb-review-title 「#{review.title}」
       - if review.spoiler?
         a.spoiler-mark.bg-danger ネタバレ
-      .thumb-review-content #{review.content}
+      = simple_format(review.content, class: "thumb-review-content")
       - if review.user == current_user
         .thumb-review-edit-delete
           = link_to edit_book_reviews_path(review.book), class: "btn btn-primary", id: "review-edit" do

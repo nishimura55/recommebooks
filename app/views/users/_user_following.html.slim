@@ -12,8 +12,7 @@
       a.thumb-recomme-point #{user.recomme_point}RP(レコメニスト)
       - if !current_user.nil? && current_user.admin? && !current_user?(user)
         = link_to '削除', user, method: :delete, data: { confirm: '削除しますか？' }, id: "delete-nallow"
-    .thumb-user-favorite-genre.d-none.d-sm-block
-      = user.favorite_genre
+    = simple_format(user.favorite_genre, class: "thumb-user-favorite-genre d-none d-sm-block")
     - if logged_in? && !current_user?(user)
       .thumb-follow-recomme
         = link_to new_recommend_path(user_id: user.id), class: "btn btn-primary", id: "thmb-recomme-btn" do

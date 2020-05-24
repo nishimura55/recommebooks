@@ -8,8 +8,7 @@
     .thumb-user-name
       = user.name
       a.thumb-recomme-point #{user.recomme_point}RP(レコメニスト)
-    .thumb-user-favorite-genre.d-none.d-sm-block
-      = user.favorite_genre
+    = simple_format(user.favorite_genre, class: "thumb-user-favorite-genre d-none d-sm-block")
     .thumb-follow-recomme
       - if !current_user?(user)
         - if params[:book_id]
