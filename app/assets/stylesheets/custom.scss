@@ -24,6 +24,11 @@ body{
     }
 }
 
+//フラッシュメッセージ
+.alert-dismissible{
+    margin-top: 10px;
+}
+
 //ページネーション
 .pagination{
     .page-link{
@@ -934,6 +939,12 @@ body {
         margin-bottom: 20px;
         color: whitesmoke;
     }
+    .profile-area{
+        height: 110px;
+    }
+    .genre-area{
+        height: 55px;
+    }
 }
 
 //ユーザー詳細画面
@@ -1201,6 +1212,9 @@ body {
         padding: 0px;
         border-radius: 10px;
         margin-left: 10px;
+    }
+    .review-area{
+        height: 110px;
     }
 }
 

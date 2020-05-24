@@ -49,7 +49,7 @@
               .feeling-tag-mark.bg-info
                 a.fa.fa-tag
                 = link_to "#{feeling.situation}に", books_path(feeling_id: feeling.id), id: "feeling-tag-text"
-            p.book-contributor-review.table-bordered = @book.contributor_review
+            = simple_format(@book.contributor_review, class: "book-contributor-review table-bordered")
           - if logged_in?
             - if @my_review.present?
               = render 'reviews/review', { review: @my_review }
