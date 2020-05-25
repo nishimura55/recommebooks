@@ -20,7 +20,7 @@ jobs:
              sudo apt-get install python3-pip groff-base
       - run:
           name: Install awscli
-          command: sudo pip install awscli --ignore-installed six
+          command: sudo pip3 install awscli --ignore-installed six
       - run:
           name: Install bundler
           command: gem install bundler -v 2.1.4
