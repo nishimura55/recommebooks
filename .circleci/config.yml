@@ -13,7 +13,7 @@ jobs:
           keys:
             - rails-demo-{{ checksum "Gemfile.lock" }}
             - rails-demo-
-       - run:
+      - run:
           name: Install awscli
           command: sudo pip install awscli --ignore-installed six
       - run:
