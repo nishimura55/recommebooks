@@ -7,15 +7,20 @@ jobs:
           RAILS_ENV: test
           DB_HOST: '127.0.0.1'
       - image: circleci/mysql:5.7
-    dependencies:
-      pre:
-        - sudo pip install awscli
     steps:
       - checkout
       - restore_cache:
           keys:
             - rails-demo-{{ checksum "Gemfile.lock" }}
             - rails-demo-
+      - run:
+          name: Install pip
+          command:  |
+             sudo apt-get update
+             sudo apt-get install python3-pip groff-base
+      - run:
+          name: Install awscli
+          command: sudo pip3 install awscli --ignore-installed six
       - run:
           name: Install bundler
           command: gem install bundler -v 2.1.4
