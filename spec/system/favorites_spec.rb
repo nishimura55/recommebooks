@@ -118,6 +118,11 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
     #            expect(page).not_to have_content book.title
     #        end
     #    end
+         
+        #1) つんどく機能のシステムテスト つんどく解除のテスト マイページからつんどく本解除した場合 マイページのつんどく本タブから表示がなくなる
+        #Failure/Error: expect(page).to have_content 'つんどく本解除'
+        #expected to find text "つんどく本解除" in "RecommeBooks\n本を検索\nテストユーザー403\nトップページ\n＞\nマイページ\nテストユーザー403\nプロフィールの編集\n本を投稿\nレコメンド状況\n称号「レコメビギナー」\n0レコメポイント\n自己紹介\n大学生です。ハラハラ系のミステリーに目がありません。\n好きなジャンル・本\nミステリーが好きです\nタイムライン\nつんどく本\n投稿\nフォロー\nフォロワー\nつんどく本がありません\nRecommeBooks"
+
 #
 #
     #end
