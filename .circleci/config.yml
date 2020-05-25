@@ -51,5 +51,5 @@ jobs:
          name: capistrano on circleci
          command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ./script/deploy.sh
+              sh script/deploy.sh
             fi
