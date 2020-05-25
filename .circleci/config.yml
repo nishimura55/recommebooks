@@ -46,5 +46,7 @@ jobs:
             - "5e:99:56:26:b4:17:e1:4e:7c:f9:65:0d:01:97:cf:38"
       - deploy:
          name: capistrano on circleci
-         command:
-           bundle exec cap production deploy
+         command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              bundle exec cap production deploy
+            fi
