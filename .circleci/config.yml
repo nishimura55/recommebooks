@@ -7,6 +7,9 @@ jobs:
           RAILS_ENV: test
           DB_HOST: '127.0.0.1'
       - image: circleci/mysql:5.7
+    dependencies:
+      pre:
+        - sudo pip install awscli
     steps:
       - checkout
       - restore_cache:
@@ -48,5 +51,5 @@ jobs:
          name: capistrano on circleci
          command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              bundle exec cap production deploy
+              ./script/deploy.sh
             fi
