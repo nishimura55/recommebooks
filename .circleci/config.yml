@@ -14,6 +14,11 @@ jobs:
             - rails-demo-{{ checksum "Gemfile.lock" }}
             - rails-demo-
       - run:
+          name: Install pip
+          command:  |
+             sudo apt-get update
+             sudo apt-get install python3-pip groff-base
+      - run:
           name: Install awscli
           command: sudo pip install awscli --ignore-installed six
       - run:
