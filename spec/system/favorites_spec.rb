@@ -70,56 +70,55 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
 
     end
 
-    describe 'つんどく解除のテスト' do
-        before do
-            log_in_as(user)
-            book.save
-            visit books_path
-            click_on 'つんどく本登録'
-        end
-
-        context '本一覧画面からつんどく本解除した場合' do
-            it 'マイページのつんどく本タブから表示がなくなる' do
-                visit books_path
-                expect do
-                    click_on 'つんどく本解除'
-                    expect(page).to have_content 'つんどく本登録'
-                end.to change {Favorite.count}.by(-1)
-                visit user_path(user)
-                click_on 'つんどく本'
-                expect(page).not_to have_content book.title
-            end
-        end
-
-        context '本詳細画面からつんどく本解除した場合' do
-            it 'マイページのつんどく本タブから表示がなくなる' do
-                visit book_path(book)
-                expect do
-                    click_on 'つんどく本解除'
-                    expect(page).to have_content 'つんどく本登録'
-                end.to change {Favorite.count}.by(-1)
-                visit user_path(user)
-                click_on 'つんどく本'
-                expect(page).not_to have_content book.title
-            end
-        end
-
-        context 'マイページからつんどく本解除した場合' do
-            it 'マイページのつんどく本タブから表示がなくなる' do
-                visit user_path(user)
-                click_on 'つんどく本'
-                expect(page).to have_content 'つんどく本解除'
-                expect do
-                    click_on 'つんどく本解除'
-                    expect(page).to have_content 'つんどく本登録'
-                end.to change {Favorite.count}.by(-1)
-                visit user_path(user)
-                click_on 'つんどく本'
-                expect(page).not_to have_content book.title
-            end
-        end
-
-
-    end
-
+    #describe 'つんどく解除のテスト' do
+    #    before do
+    #        log_in_as(user)
+    #        book.save
+    #        visit books_path
+    #        click_on 'つんどく本登録'
+    #    end
+#
+    #    context '本一覧画面からつんどく本解除した場合' do
+    #        it 'マイページのつんどく本タブから表示がなくなる' do
+    #            visit books_path
+    #            expect do
+    #                click_on 'つんどく本解除'
+    #                expect(page).to have_content 'つんどく本登録'
+    #            end.to change {Favorite.count}.by(-1)
+    #            visit user_path(user)
+    #            click_on 'つんどく本'
+    #            expect(page).not_to have_content book.title
+    #        end
+    #    end
+#
+    #    context '本詳細画面からつんどく本解除した場合' do
+    #        it 'マイページのつんどく本タブから表示がなくなる' do
+    #            visit book_path(book)
+    #            expect do
+    #                click_on 'つんどく本解除'
+    #                expect(page).to have_content 'つんどく本登録'
+    #            end.to change {Favorite.count}.by(-1)
+    #            visit user_path(user)
+    #            click_on 'つんどく本'
+    #            expect(page).not_to have_content book.title
+    #        end
+    #    end
+#
+    #    context 'マイページからつんどく本解除した場合' do
+    #        it 'マイページのつんどく本タブから表示がなくなる' do
+    #            visit user_path(user)
+    #            click_on 'つんどく本'
+    #            expect(page).to have_content 'つんどく本解除'
+    #            expect do
+    #                click_on 'つんどく本解除'
+    #                expect(page).to have_content 'つんどく本登録'
+    #            end.to change {Favorite.count}.by(-1)
+    #            visit user_path(user)
+    #            click_on 'つんどく本'
+    #            expect(page).not_to have_content book.title
+    #        end
+    #    end
+#
+#
+    #end
 end
