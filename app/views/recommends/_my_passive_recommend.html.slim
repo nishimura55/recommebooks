@@ -7,7 +7,7 @@
         - else
           = image_tag 'userlogo.png', size: '30x30', class: "user-image"
         = link_to recommend.recommender.name, user_path(recommend.recommender), class: "user-name"
-        a さんからレコメンド
+        a さんからのレコメンド
       .col-xl-5
         #recommend-status
           = render 'recommends/passive_recommend_status', { recommend: recommend }

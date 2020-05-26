@@ -31,7 +31,7 @@ RSpec.describe 'レコメンド更新のリクエストテスト', type: :reques
                                                         }       
                                            } 
                 expect(response.status).to eq 302
-                expect(response).to redirect_to user_recommends_path(user)
+                expect(response).to redirect_to user_recommends_path(user, for_passive: true)
                 follow_redirect!
                 expect(response).to render_template('recommends/index')
                 expect(response.body).to include "面白かった！"

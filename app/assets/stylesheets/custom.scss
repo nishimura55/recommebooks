@@ -14,6 +14,7 @@ body{
 //ボタン
 .btn{
     background-color: $main-blue;
+    border-color: $main-blue;
     &.btn-home{
         background-color: white;
         color: $main-blue;
@@ -576,6 +577,13 @@ body {
     background-color: rgba(238,238,238,0.1);
     color: #999999;
     padding-left: 0px;
+    a{
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    span{
+        margin-left: 5px;
+    }
 }
 
 //右サイドメニュー
@@ -1086,6 +1094,9 @@ body {
     }
     .book_list{
         margin-top: 50px;
+        .no-book-message{
+            text-align: center;
+        }
     }
     .search-box{
         form{
@@ -1162,6 +1173,10 @@ body {
     margin-bottom: 100px;
     .btn {
         margin-top: 30px;
+    }
+    .error-message{
+        color: red;
+        margin-bottom: 40px;
     }
     .check-box-title{
         display: block;

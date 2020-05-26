@@ -28,6 +28,7 @@ class RecommendsController < ApplicationController
         @user = User.find(params[:user_id])
         @active_recommends = @user.active_recommends.order(created_at: "DESC").paginate(page: params[:page])
         @passive_recommends = @user.passive_recommends.order(created_at: "DESC").paginate(page: params[:page])
+        @for_passive = params[:for_passive]
     end
 
     def update
@@ -40,7 +41,7 @@ class RecommendsController < ApplicationController
                 recommend.book.increment!(:recomme_evaluation_point, 1)
             end
             flash[:primary] = "レコメンドに対する回答を完了しました！"
-            redirect_to user_recommends_path(current_user.id)
+            redirect_to user_recommends_path(current_user.id, for_passive: true)
         else
             flash[:danger] = "回答に失敗しました"
             redirect_to user_recommends_path(current_user.id)

@@ -107,7 +107,7 @@ RSpec.describe '本のシステムテスト', type: :system do
                     check 'テストジャンル'
                     click_on '投稿する'
                 end.to change {Book.count}.by(0)
-                expect(page).to have_content '感想を入力してください'             
+                expect(page).to have_content '必須項目を入力してください'             
             end
         end
 
@@ -120,7 +120,7 @@ RSpec.describe '本のシステムテスト', type: :system do
                     fill_in '投稿者の感想', with: 'そうとう面白かった！'
                     click_on '投稿する'
                 end.to change {Book.count}.by(0)
-                expect(page).to have_content '投稿に失敗しました'             
+                expect(page).to have_content '必須項目を入力してください'             
             end
         end
 

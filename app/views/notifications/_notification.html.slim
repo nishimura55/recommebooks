@@ -18,7 +18,7 @@
       - when 'recommend' then
         = "あなたにレコメンドしました。"
         p.book-name 「#{notification.recommend.book.title}」
-        = link_to "レコメンド状況確認へ", user_recommends_path(current_user.id), class: "suggest-reco-page"
+        = link_to "レコメンド状況確認へ", user_recommends_path(current_user.id, for_passive: true), class: "suggest-reco-page"
       - when 'response' then
         = "あなたのレコメンドに回答しました。"
         - if notification.recommend.status == 2

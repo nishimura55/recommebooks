@@ -1,7 +1,10 @@
 - provide(:title, "レコメンド状況")
-- breadcrumb :recomme_index, @user
+  - if current_user?(@user)
+    - breadcrumb :my_recomme_index, @user
+  - else
+    - breadcrumb :user_recomme_index, @user
 .container
-  == breadcrumbs separator:  "＞" , class: "breadcrumb"
+  == breadcrumbs separator:  ">" , class: "breadcrumb"
   
   .row
     .col-xl-9#reco-index
@@ -11,13 +14,13 @@
         h2 #{@user.name}さんのレコメンド状況
       ul.nav.nav-tabs.justify-content-center role = "tablist"         
         li.nav-item
-          a.nav-link.active#active-reco-tab data-toggle="tab" href="#active-reco" role="tab" aria-controls="active-reco" aria-selected="true"
+          a class="nav-link #{@for_passive.nil? ? 'active' : ''}" id="active-reco-tab" data-toggle="tab" href="#active-reco" role="tab" aria-controls="active-reco" aria-selected="true"
             p レコメンドした本
         li.nav-item
-          a.nav-link#passive-reco-tab data-toggle="tab" href="#passive-reco" role="tab" aria-controls="passive-reco" aria-selected="false"
+          a class="nav-link #{@for_passive.nil? ? '' : 'active'}" id="passive-reco-tab" data-toggle="tab" href="#passive-reco" role="tab" aria-controls="passive-reco" aria-selected="false"
             p レコメンドされた本
       .tab-content
-        .tab-pane.fade.show.active#active-reco role="tabpanel" aria-labelledby="active-reco-tab"
+        div class="tab-pane fade #{@for_passive.nil? ? 'active show' : ''}" id="active-reco" role="tabpanel" aria-labelledby="active-reco-tab"
           - if @active_recommends.present?
             - @active_recommends.each do |active_recommend|
               - if current_user?(@user)
@@ -27,7 +30,7 @@
             = will_paginate(@active_recommends, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
           - else
             p 表示するレコメンドがありません
-        .tab-pane.fade#passive-reco role="tabpanel" aria-labelledby="passive-reco-tab"
+        div class="tab-pane fade #{@for_passive.nil? ? '' : 'active show'}" id="passive-reco" role="tabpanel" aria-labelledby="passive-reco-tab"
           - if @passive_recommends.present?
             - @passive_recommends.each do |passive_recommend|
               - if current_user?(@user)
