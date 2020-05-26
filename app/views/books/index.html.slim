@@ -19,7 +19,10 @@
 
   = will_paginate(@books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
   .row.books
-    - @books.each do |book|
-      .col-xl-6 
-        = render 'books/book_thumb', { book: book }
+    - if @books.present?
+      - @books.each do |book|
+        .col-xl-6 
+          = render 'books/book_thumb', { book: book }
+    - else
+      p.no-book-message 表示する本がありません
   = will_paginate(@books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)

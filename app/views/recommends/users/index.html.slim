@@ -16,7 +16,10 @@
   
   = will_paginate(@users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
   .row.users
-    - @users.each do |user|
-      .col-xl-6 
-        = render 'users/user_reco_choose', { user: user }
+    - if @users.present?
+      - @users.each do |user|
+        .col-xl-6 
+          = render 'users/user_reco_choose', { user: user }
+    - else
+      p.no-user-message 表示するユーザーがいません
   = will_paginate(@users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
