@@ -7,6 +7,7 @@ class BooksController < ApplicationController
 
   def search
     if !params[:keyword].to_s.empty?
+      @serch_message = params[:keyword]
       books = RakutenWebService::Books::Book.search(title: params[:keyword])
       @books = books.map do |item|
         {
@@ -40,6 +41,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id)
     else
       @author_name = params[:book][:author]
+      @message = "必須項目を入力してください"
       flash.now[:danger] = "投稿に失敗しました"
       render 'new'
     end
