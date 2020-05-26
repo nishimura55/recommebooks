@@ -14,7 +14,7 @@
             =image_tag @book.image, size: '240x341', class: "book-image"
           - else
             =image_tag 'booklogo.jpg', size: '240x341', class: "book-image"
-          = link_to @book.rakuten_url, class: "btn btn-primary", id: "rakuten-url-button" do
+          = link_to @book.rakuten_url, target: :_blank, class: "btn btn-primary", id: "rakuten-url-button" do
             i.fas.fa-search-plus
             span 楽天で詳しくみる
           - if logged_in?
