@@ -14,11 +14,12 @@
             =image_tag @user.image_url(:thumb1), class: "user-image"
           - else
             =image_tag 'userlogo.png', size: '240x260', class: "user-image"
-          = link_to edit_user_path(current_user), class: "btn btn-primary", id: "user-edit-button" do
-            i.far.fa-edit
-            span プロフィールの編集
+          - if @user.email != 'testa@test.com' && @user.email != 'testb@test.com'
+            = link_to edit_user_path(current_user), class: "btn btn-primary", id: "user-edit-button" do
+              i.far.fa-edit
+              span プロフィールの編集
           = link_to search_books_path, class: "btn btn-primary", id: "book-post-button" do
-            i.far.fas.fa-book
+            i.fas.fa-book
             span 本を投稿
           = link_to user_recommends_path(@user.id), class: "btn btn-primary", id: "user-recomme-button" do
             i.fas.fa-list-ul

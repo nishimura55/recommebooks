@@ -10,7 +10,7 @@
         .row
           .col-md-7
             .main-message-area
-              h1.title RecommeBooks 黒
+              h1.title RecommeBooks
               p.sub-title レコメブックス
               p.main-message 本をおすすめしよう
               p.sub-message ユーザー同士で本をレコメンドするサービスです。
@@ -77,7 +77,7 @@
                       span レコメンド状況を確認する
       .book-ranking-area
         p.title 本のレコメ評価ポイント(REP)ランキング
-        button class="whatrep1 btn btn-secondary" type="button"
+        button class="whatrep1 btn btn-primary" type="button"
           i.fas.fa-question-circle
           a レコメ評価ポイント(REP)とは？
         div class = 'target1 is-hidden' target = "_blank"
@@ -107,7 +107,7 @@
                     a 著
       .user-ranking-area
         p.title ユーザーのレコメポイント(RP)ランキング
-        button class="whatrep2 btn btn-secondary" type="button"
+        button class="whatrep2 btn btn-primary" type="button"
           i.fas.fa-question-circle
           a レコメポイント(RP)とは？
         div class = 'target2 is-hidden' target = "_blank"
@@ -137,19 +137,3 @@
         
     .col-xl-3
       = render 'shared/right_side' 
-
-
-/アセットファイル下に移動することが課題（現状アセットファイル下に移すと機能しない）
-javascript:
-  var $target1 = document.querySelector('.target1')
-  var $whatrep1 = document.querySelector('.whatrep1')
-  $whatrep1.addEventListener('click', function() {
-    $target1.classList.toggle('is-hidden')
-  })
-
-javascript:
-  var $target2 = document.querySelector('.target2')
-  var $whatrep2 = document.querySelector('.whatrep2')
-  $whatrep2.addEventListener('click', function() {
-    $target2.classList.toggle('is-hidden')
-  })

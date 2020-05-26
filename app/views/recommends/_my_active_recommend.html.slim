@@ -20,7 +20,7 @@
               = image_tag recommend.book.image, class: "book-image", height: '200px'
             - else
               =image_tag 'booklogo.jpg', class: "book-image", height: '200px'
-      .col-xl-９
+      .col-xl-8
         p.book-title
           = link_to recommend.book.title, book_path(recommend.book)
         p.book-author
@@ -30,3 +30,4 @@
           - if recommend.body?
             p.heading アピール文
             p.reco-apeal 「#{recommend.body}」
+      .col-xl-1

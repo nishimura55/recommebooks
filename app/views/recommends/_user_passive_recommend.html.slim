@@ -1,4 +1,4 @@
-.user-passive-recommend
+.user-passive-recommend.card
   .row
     .col-xl-3
       #book-thumb-image
@@ -7,9 +7,10 @@
             = image_tag recommend.book.image, class: "book-image", height: '200px'
           - else
             =image_tag 'booklogo.jpg', class: "book-image", height: '200px'
-    .col-xl-９
+    .col-xl-8
       p.book-title
         = link_to recommend.book.title, book_path(recommend.book)
       p.book-author
         = link_to recommend.book.author.name, author_path(recommend.book.author)
         a 著
+    .col-xl-1

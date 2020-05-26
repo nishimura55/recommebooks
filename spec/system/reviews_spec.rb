@@ -17,7 +17,6 @@ RSpec.describe 'レビューのシステムテスト', type: :system do
             it 'レビューが本詳細ページとマイページで表示される' do
                 expect(page).not_to have_content 'あなたのレビュー'
                 expect do
-                    click_on 'レビューを投稿する'
                     fill_in 'タイトル', with: 'とてもためになった'
                     fill_in 'review-content', with: '万人にオススメしたい'
                     click_button '投稿'
@@ -38,12 +37,10 @@ RSpec.describe 'レビューのシステムテスト', type: :system do
             it 'レビュー投稿に失敗する' do
                 expect(page).not_to have_content 'あなたのレビュー'
                 expect do
-                    click_on 'レビューを投稿する'
                     fill_in 'タイトル', with: 'とてもためになった'
                     click_button '投稿'
                 end.to change {Review.count}.by(0)
                 expect(page).to have_content '投稿に失敗しました'
-                click_on 'レビューを投稿する'
                 expect(page).to have_content 'レビューを入力してください'
             end
         end
@@ -52,7 +49,6 @@ RSpec.describe 'レビューのシステムテスト', type: :system do
             it '他のユーザーから見るととボヤけてみえる' do
                 expect(page).not_to have_content 'あなたのレビュー'
                 expect do
-                    click_on 'レビューを投稿する'
                     fill_in 'タイトル', with: 'とてもためになった'
                     fill_in 'review-content', with: 'ネタバレの内容です！犯人は●●！'
                     check 'spoiler-check'
@@ -78,7 +74,6 @@ RSpec.describe 'レビューのシステムテスト', type: :system do
         before do
             log_in_as(user)
             visit book_path(book)
-            click_on 'レビューを投稿する'
             fill_in 'タイトル', with: 'とてもためになった'
             fill_in 'review-content', with: '万人にオススメしたい'
             click_button '投稿'
@@ -130,7 +125,6 @@ RSpec.describe 'レビューのシステムテスト', type: :system do
         before do
             log_in_as(user)
             visit book_path(book)
-            click_on 'レビューを投稿する'
             fill_in 'タイトル', with: 'とてもためになった'
             fill_in 'review-content', with: '万人にオススメしたい'
             click_button '投稿'

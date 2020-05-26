@@ -1,8 +1,7 @@
 .card.review-post-form
   button.card-header.button
-    i.fas.fa-chevron-circle-down
     a レビューを投稿する
-  div class = 'card-body target is-hidden' target = "_blank"
+  div class = 'card-body target' target = "_blank"
     = form_with model: [@book, @review], local: true do |f|
       = render 'shared/error_messages', object: f.object
 
@@ -19,15 +18,4 @@
         = button_tag type: 'submit', class: 'form-control btn btn-primary', id: 'review-post-btn' do
           i.far.fa-file-alt
           span 投稿
-
-
-
-/アセットファイル下に移動することが課題（現状アセットファイル下に移すと機能しない）
-javascript:
-  var $target = document.querySelector('.target')
-  var $button = document.querySelector('.button')
-  $button.addEventListener('click', function() {
-    $target.classList.toggle('is-hidden')
-  })
-
   
