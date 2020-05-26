@@ -1067,6 +1067,9 @@ body {
         margin-bottom: 30px;
     }
     @include search-form;
+    .no-user-message{
+        margin-left: 15px;
+    }
     .users-thumb{
         @include users-thumb;
     }
@@ -1081,6 +1084,9 @@ body {
         margin-bottom: 30px;
     }
     @include search-form;
+    .no-book-message{
+        margin-left: 15px;
+    }
     .book-thumb{
         @include book-thumb;
     }
@@ -1355,6 +1361,9 @@ body {
         margin-bottom: 30px;
     }
     @include search-form;
+    .no-author-message{
+        margin-left: 15px;
+    }
     .author-thumb{
         margin-bottom: 30px;
         .thumb-author-name{
@@ -1392,6 +1401,9 @@ body {
         margin-bottom: 30px;
     }
     @include search-form;
+    .no-user-message{
+        margin-left: 15px;
+    }
     .users-reco-choose{
         @include users-thumb;
     }
@@ -1406,6 +1418,9 @@ body {
         margin-bottom: 30px;
     }
     @include search-form;
+    .no-book-message{
+        margin-left: 15px;
+    }
     .book-reco-choose{
         @include book-thumb;
     }

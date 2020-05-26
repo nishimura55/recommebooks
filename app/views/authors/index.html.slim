@@ -13,7 +13,10 @@
   
   = will_paginate(@authors, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
   .row.authors
-    - @authors.each do |author|
-      .col-xl-12
-        = render 'authors/author', { author: author }
+    - if @authors.present?
+      - @authors.each do |author|
+        .col-xl-12
+          = render 'authors/author', { author: author }
+    - else
+      p.no-author-message 表示する著者がいません
   = will_paginate(@authors, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
