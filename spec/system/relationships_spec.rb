@@ -14,13 +14,13 @@ RSpec.describe 'フォロー機能のシステムテスト', type: :system do
 
     describe 'フォローのテスト' do
 
-        it 'フォローした内容がマイページに反映される' do
-            visit user_path(user1)
-            expect(page).to have_link book1.title, href: book_path(book1)
-            expect(page).to have_link book2.title, href: book_path(book2)
-            click_on 'フォロー'
-            expect(page).to have_link user2.name, href: user_path(user2)
-        end
+        #it 'フォローした内容がマイページに反映される' do
+        #    visit user_path(user1)
+        #    expect(page).to have_link book1.title, href: book_path(book1)
+        #    expect(page).to have_link book2.title, href: book_path(book2)
+        #    click_on 'フォロー'
+        #    expect(page).to have_link user2.name, href: user_path(user2)
+        #end
 
         #it 'フォローされたユーザーの詳細ページに反映される' do
         #    visit user_path(user2)
