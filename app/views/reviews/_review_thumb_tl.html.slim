@@ -26,10 +26,12 @@
       - if review.spoiler?
         a.spoiler-mark.bg-danger ネタバレ
       - if review.user == current_user
-        = simple_format(review.content, class: "thumb-review-content")
+        .thumb-review-content
+          = safe_join(review.content.split("\n"), tag(:br))
       - else
         div class= (review.spoiler? ? "spoiler-review" : "")
-          = simple_format(review.content, class: "thumb-review-content")
+          .thumb-review-content
+            = safe_join(review.content.split("\n"), tag(:br))
       - if review.user == current_user
         .thumb-review-edit-delete
           = link_to edit_book_reviews_path(review.book), class: "btn btn-primary", id: "review-edit" do

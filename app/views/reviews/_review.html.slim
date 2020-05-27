@@ -20,7 +20,8 @@
           a.spoiler-mark.bg-danger ネタバレ
   - if review.user == current_user
     .card-body
-      = simple_format(review.content, class: "review-content")
+      .review-content
+        = safe_join(review.content.split("\n"), tag(:br))
       .review-updated_time #{review.updated_at.strftime("%Y年%m月%d日")}
       = link_to edit_book_reviews_path(review.book), class: "btn btn-primary", id: "review-edit" do
         i.far.fa-edit
@@ -30,6 +31,7 @@
         span 削除
   - else
     div class= (review.spoiler? ? "card-body spoiler-review" : "card-body")
-      = simple_format(review.content, class: "review-content")
+      .review-content
+        = safe_join(review.content.split("\n"), tag(:br))
       .review-updated_time #{review.updated_at.strftime("%Y年%m月%d日")}
       
