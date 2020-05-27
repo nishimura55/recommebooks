@@ -1,16 +1,16 @@
 # RecommeBooks (レコメブックス)
 <img width="818" alt="main-logo" src="https://user-images.githubusercontent.com/61367038/82335118-d9648d80-9a23-11ea-968a-8f495f7a7b3c.png">
 
-## サービス概要
+## 1. サービス概要
 レコメブックスはユーザー同士で本をレコメンドしあうSNSサービスです。  
 本をレコメンドした相手から本の評価をもらうことができ、  
 評価が「面白かった！」であった場合はレコメンドしたユーザーと本にポイントがたまります。
 
-## URL
+## 2. URL
 https ~  
 複数のテストユーザーからテストログインが可能です。レコメンド機能の確認にお使いください。
 
-## 技術スタック
+## 3. 技術スタック
 ### 言語・フレームワーク
 - Ruby 2.7.0  
 - Ruby on Rails 6.0.2
@@ -25,12 +25,12 @@ https ~
 - Unicorn (アプリケーションサーバー)  
 - Nginx (Webサーバー)
 
-## インフラ構成図
+## 4. インフラ構成図
 
-## テーブル設計図
+## 5. テーブル設計図
 <img width="909" alt="recommebooks" src="https://user-images.githubusercontent.com/61367038/82334587-2431d580-9a23-11ea-9c91-6d67d579a821.png">
 
-## 機能一覧
+## 6. 機能一覧
 - ユーザー登録機能
 - ログイン・ログアウト機能
 - 管理ユーザー機能
@@ -51,8 +51,28 @@ https ~
 - ページネーション機能 (will_paginate)
 - パンくずリスト機能 (gretel)
 
-## その他ポイント
+## 7. その他ポイント
 - レスポンシブ対応 (Bootstrap) ※今後実装予定
 - SSL証明書取得 (ACM)
 - 独自ドメイン使用 (Route53)
 - Githubを活用した開発 (pullrequests・issues)
+
+## 8. 環境構築
+### ビルド
+```
+$ docker-compose build
+```
+
+### DB設定
+```
+$ docker-compose run web bundle exec rails db:create
+$ docker-compose run web bundle exec rails db:migrate
+$ docker-compose run web bundle exec rails db:seed
+```
+
+### 起動
+```
+$ docker-compose up
+```
+
+http://localhost:3000 にアクセス
