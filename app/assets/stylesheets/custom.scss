@@ -21,6 +21,7 @@ body{
     }
     &.btn-cancell{
         background-color: #6c757d;
+        border-color: #6c757d;
         color: white;
     }
 }
@@ -94,7 +95,7 @@ body{
         }
         .thumb-book-story{
             height: 95px;
-            overflow-y: scroll;
+            overflow-y: auto;
             overflow-x: hidden;
         }
         .thumb-book-recomme-fav{
@@ -161,7 +162,7 @@ body{
         .thumb-review-content{
             font-size: 16px;
             height: 95px;
-            overflow-y: scroll;
+            overflow-y: auto;
             overflow-x: hidden;
         }
         .thumb-review-edit-delete{
@@ -226,7 +227,7 @@ body{
         }
         .thumb-book-story{
             height: 95px;
-            overflow-y: scroll;
+            overflow-y: auto;
             overflow-x: hidden;
         }
         .thumb-book-recomme-fav{
@@ -291,7 +292,7 @@ body{
         }
         .thumb-book-story{
             height: 95px;
-            overflow-y: scroll;
+            overflow-y: auto;
             overflow-x: hidden;
         }
         .thumb-book-recomme-fav{
@@ -350,7 +351,7 @@ body{
         }
         .thumb-book-story{
             height: 70px;
-            overflow-y: scroll;
+            overflow-y: auto;
             overflow-x: hidden;
         }
         .thumb-book-recomme-fav{
@@ -398,7 +399,7 @@ body{
             }
         }
         .thumb-user-favorite-genre{
-            overflow-y: scroll;
+            overflow-y: auto;
             overflow-x: hidden;
             height: 50px;
         }
@@ -1141,7 +1142,7 @@ body {
             .thumb-book-story{
                 padding: 3px;
                 height: 150px;
-                overflow-y: scroll;
+                overflow-y: auto;
                 overflow-x: hidden;
             }
         }
@@ -1274,6 +1275,7 @@ body {
     }
     .book-story-contributor-review{
         margin-top: 15px;
+        margin-bottom: 30px;
         .heading{
             font-size: 20px;
             margin-bottom: 0px;
@@ -1608,9 +1610,11 @@ body {
                 font-size: 20px;
             }
             #recommend-body{
-                font-size: 20px;
                 .heading{
                     margin-bottom: 0px;
+                }
+                .reco-apeal{
+                    padding: 5px;
                 }
             }
         }
@@ -1663,9 +1667,11 @@ body {
                 font-size: 20px;
             }
             #recommend-body{
-                font-size: 20px;
                 .heading{
                     margin-bottom: 0px;
+                }
+                .reco-apeal{
+                    padding: 5px;
                 }
             }
         }

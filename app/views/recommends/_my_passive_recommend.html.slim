@@ -29,7 +29,8 @@
         #recommend-body
           - if recommend.body?
             p.heading アピール文
-            p.reco-apeal 「#{recommend.body}」
+            .reco-apeal.table-bordered
+              = safe_join(recommend.body.split("\n"), tag(:br))
       .col-xl-1
   - if recommend.status == 1
     .card-footer
