@@ -82,29 +82,35 @@
           a レコメ評価ポイント(REP)とは？
         div class = 'target1 is-hidden' target = "_blank"
           a 本のレコメンドの評価が「面白かった！」であった場合、その本に加算されるポイントです。
-        .row
-          - r = 1 
-          - @ranking_books.each do |book|
-            .col-lg-3
-              .book-thumb
-                div id = "thumb-book-raning" class = "ver-#{r}"
-                  - if r != 4
-                    i.fas.fa-crown
-                  a.rank #{r}位
-                  - r += 1
-                  a.book-rep  #{book.recomme_evaluation_point}REP
-                #book-thumb-image
-                  = link_to book_path(book)
-                    - if book.image?
-                      = image_tag book.image, class: "book-image", width: '140px'
-                    - else
-                      =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
-                #book-thumb-overview
-                  .thumb-book-title
-                    = link_to book.title.truncate(10), book_path(book), class: "text"
-                  .thumb-book-author
-                    = link_to book.author.name.truncate(10), author_path(book.author), class: "text"
-                    a 著
+        - if @ranking_books.present?
+          .row
+            - r = 1 
+            - prev = @ranking_books.first.recomme_evaluation_point
+            - @ranking_books.each_with_index do |book, i|
+              - if book.recomme_evaluation_point == prev
+                - r = r
+              - else
+                - r = i + 1
+                - prev = book.recomme_evaluation_point
+              .col-lg-3
+                .book-thumb
+                  div id = "thumb-book-raning" class = "ver-#{r}"
+                    - if r != 4
+                      i.fas.fa-crown
+                    a.rank #{r}位
+                    a.book-rep  #{book.recomme_evaluation_point}REP
+                  #book-thumb-image
+                    = link_to book_path(book)
+                      - if book.image?
+                        = image_tag book.image, class: "book-image", width: '140px'
+                      - else
+                        =image_tag 'booklogo.jpg', size: '120x135', class: "book-image"
+                  #book-thumb-overview
+                    .thumb-book-title
+                      = link_to book.title.truncate(10), book_path(book), class: "text"
+                    .thumb-book-author
+                      = link_to book.author.name.truncate(10), author_path(book.author), class: "text"
+                      a 著
       .user-ranking-area
         p.title ユーザーのレコメポイント(RP)ランキング
         button class="whatrep2 btn btn-primary" type="button"
@@ -112,28 +118,34 @@
           a レコメポイント(RP)とは？
         div class = 'target2 is-hidden' target = "_blank"
           a レコメンドの評価が「面白かった！」であった場合、レコメンドしたユーザーに加算されるポイントです。
-        .row
-          - r = 1 
-          - @ranking_users.each do |user|
-            .col-lg-3
-              .user-thumb
-                div id = "thumb-user-raning" class = "ver-#{r}"
-                  - if r != 4
-                    i.fas.fa-crown
-                  a.rank #{r}位
-                  - r += 1
-                  a.user-rep  #{user.recomme_point}RP
-                #thumb-user-title
-                  a 「#{user.title.name}」
-                #user-thumb-image
-                  = link_to user_path(user)
-                    - if user.image?
-                      = image_tag user.image_url(:thumb2), class: "user-image"
-                    - else
-                      =image_tag 'userlogo.png', size: '120x135', class: "user-image"
-                #user-thumb-overview
-                  .thumb-user-name
-                    = link_to user.name.truncate(10), user_path(user), class: "text"
+        - if @ranking_users.present?
+          .row
+            - r = 1 
+            - prev = @ranking_users.first.recomme_point
+            - @ranking_users.each_with_index do |user, i|
+              - if user.recomme_point == prev
+                - r = r
+              - else
+                - r = i + 1
+                - prev = user.recomme_point
+              .col-lg-3
+                .user-thumb
+                  div id = "thumb-user-raning" class = "ver-#{r}"
+                    - if r != 4
+                      i.fas.fa-crown
+                    a.rank #{r}位
+                    a.user-rep  #{user.recomme_point}RP
+                  #thumb-user-title
+                    a 「#{user.title.name}」
+                  #user-thumb-image
+                    = link_to user_path(user)
+                      - if user.image?
+                        = image_tag user.image_url(:thumb2), class: "user-image"
+                      - else
+                        =image_tag 'userlogo.png', size: '120x135', class: "user-image"
+                  #user-thumb-overview
+                    .thumb-user-name
+                      = link_to user.name.truncate(10), user_path(user), class: "text"
         
     .col-xl-3
       = render 'shared/right_side' 
