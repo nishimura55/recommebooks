@@ -1,8 +1,8 @@
 - if recommend.status == 1
-  p.status.i1 回答まち
-- elsif recommend.status == 2
-  p.status.i2 回答あり「面白かった！」
-- elsif recommend.status == 3
-  p.status.i3 回答あり「合わなかったかも」
-- elsif recommend.status == 4
-  p.status.i4 回答あり「読んだことがある」
+  .status.bulue
+    i.far.fa-lightbulb
+    a 回答まち
+- else
+  .status
+    i.fas.fa-check-square
+    a 回答あり

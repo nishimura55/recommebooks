@@ -37,6 +37,11 @@
             a.book-recomme-evaluation-point  #{@book.recomme_evaluation_point}レコメ評価ポイント
           - @book.recomme_evaluation_point.times do
             = image_tag 'main-logo-9.png', size: '50x50', class: "logo-mark"
+          button class="whatrep3 btn btn-primary" type="button"
+            i.fas.fa-question-circle
+            a レコメ評価ポイント(REP)とは？
+          div class = 'target3 is-hidden' target = "_blank"
+            a 本のレコメンドの評価が「面白かった！」であった場合、その本に加算されるポイントです。
           .book-story-contributor-review
             - if @book.story?
               p.heading 内容紹介

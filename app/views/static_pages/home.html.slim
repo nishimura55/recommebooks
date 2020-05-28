@@ -11,16 +11,15 @@
           .col-md-7
             .main-message-area
               h1.title RecommeBooks
-              p.sub-title レコメブックスデプロイテスト4
+              p.sub-title レコメブックス
               p.main-message 本をおすすめしよう
               p.sub-message ユーザー同士で本をレコメンドするサービスです。
               p.sub-message あなたの座右の書を、あの人に。
               .recomme-area
-                - if logged_in?
-                  a ＞＞
-                  = link_to new_recommend_path, class: "btn btn-home", id: "main-reco" do
-                    i.fas.fa-hand-holding-heart
-                    span レコメンドしてみる
+                a ＞＞
+                = link_to new_recommend_path, class: "btn btn-home", id: "main-reco" do
+                  i.fas.fa-hand-holding-heart
+                  span レコメンドしてみる
           .col-md-5
             = image_tag 'main-logo-6.png', size: '250x250', class: "logo-mark"
       .explanation-area
@@ -37,21 +36,19 @@
                     = image_tag 'booklogo2white.png', size: '80x80', class: "logo book-logo"
                   p.item-sub あなたの感想と共に本を投稿しよう
                   p.item-sub すでに投稿されている本にはレビューの投稿ができます
-                  - if logged_in?
-                    = link_to search_books_path, class: "btn btn-home" do
-                      i.fas.fa-book
-                      span 本を投稿してみる
+                  = link_to search_books_path, class: "btn btn-home" do
+                    i.fas.fa-book
+                    span 本を投稿してみる
               .col-md-6
                 .item.right
                   p.item-titol 気になるユーザーをフォローしよう
                   .image
                     = image_tag 'follow-logo.png', size: '80x80', class: "logo follow-logo"
                   p.item-sub あなたのタイムラインでフォローしたユーザーの
-                  p.item-sub 投稿を確認できます
-                  - if logged_in?
-                    = link_to users_path, class: "btn btn-home" do
-                      i.fas.fa-user
-                      span ユーザーの一覧へ
+                  p.item-sub 投稿を確認できます                  
+                  = link_to users_path, class: "btn btn-home" do
+                    i.fas.fa-user
+                    span ユーザーの一覧へ
             .row
               .col-md-6
                 .item.left
@@ -59,11 +56,10 @@
                   .image
                     = image_tag 'recommend-logo.png', size: '80x80', class: "logo recommend-logo"
                   p.item-sub ユーザーのプロフィールや投稿を確認して
-                  p.item-sub そのユーザーにぴったりな一冊をレコメンドしてみよう
-                  - if logged_in?
-                    = link_to new_recommend_path, class: "btn btn-home" do
-                      i.fas.fa-hand-holding-heart
-                      span レコメンドしてみる
+                  p.item-sub そのユーザーにぴったりな一冊をレコメンドしてみよう                  
+                  = link_to new_recommend_path, class: "btn btn-home" do
+                    i.fas.fa-hand-holding-heart
+                    span レコメンドしてみる
               .col-md-6
                 .item.right
                   p.item-titol レコメポイントを貯めよう
@@ -73,6 +69,10 @@
                   p.item-sub 評価したら、あなたのレコメポイント(RP)が貯まります
                   - if logged_in?
                     = link_to user_recommends_path(current_user.id), class: "btn btn-home" do
+                      i.fas.fa-list-ul
+                      span レコメンド状況を確認する
+                  - else
+                    = link_to login_path, class: "btn btn-home" do
                       i.fas.fa-list-ul
                       span レコメンド状況を確認する
       .book-ranking-area
