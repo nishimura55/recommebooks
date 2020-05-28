@@ -26,9 +26,19 @@
             span レコメンド状況
         .col-lg-8.user-overview
           p.user-title  称号「#{@user.title.name}」
+          button class="whatrep5 btn btn-primary" type="button"
+            i.fas.fa-question-circle
+            a 称号とは？
+          div class = 'target5 is-hidden' target = "_blank"
+            a レコメポイント数に応じて称号が付与されます。まずは5レコメポイント貯めると新たな称号が・・・
           p.user-recomme-point  #{@user.recomme_point}レコメポイント
           - @user.recomme_point.times do
             = image_tag 'main-logo-9.png', size: '50x50', class: "logo-mark"
+          button class="whatrep4 btn btn-primary" type="button"
+            i.fas.fa-question-circle
+            a レコメポイント(RP)とは？
+          div class = 'target4 is-hidden' target = "_blank"
+            a レコメンドの評価が「面白かった！」であった場合、レコメンドしたユーザーに加算されるポイントです。
           .user-profile-favorirte-genre
             - if @user.profile?
               p.heading 自己紹介

@@ -903,9 +903,11 @@ body {
     }
     .btn-success{
         background-color: #28a745;
+        border-color: #28a745;
     }
     .btn-warning{
         background-color: #ffc107;
+        border-color: #ffc107;
     }
 }
 
@@ -972,6 +974,58 @@ body {
         }
     }
     .user-overview{
+        .btn.whatrep4{
+            width: 240px;
+            padding: 2px;
+            display: block;
+        }
+        .target4{
+            margin-top: 3px;
+            padding: 5px;
+            background-color: $pale-blue;
+        }
+        .target4.is-hidden{
+            display: none;
+        }
+        .btn.whatrep5{
+            width: 130px;
+            padding: 2px;
+            display: block;
+        }
+        .target5{
+            margin-top: 3px;
+            padding: 5px;
+            background-color: $pale-blue;
+        }
+        .target5.is-hidden{
+            display: none;
+        }
+        .btn.whatrep6{
+            width: 240px;
+            padding: 2px;
+            display: block;
+        }
+        .target6{
+            margin-top: 3px;
+            padding: 5px;
+            background-color: $pale-blue;
+        }
+        .target6.is-hidden{
+            display: none;
+        }
+        .btn.whatrep7{
+            width: 130px;
+            padding: 2px;
+            display: block;
+        }
+        .target7{
+            margin-top: 3px;
+            padding: 5px;
+            background-color: $pale-blue;
+        }
+        .target7.is-hidden{
+            display: none;
+        }
         .user-title{
             font-size: 25px;
             margin-bottom: 0px;
@@ -979,6 +1033,7 @@ body {
         .user-recomme-point{
             font-size: 20px;
             margin-bottom: 0px;
+            margin-top: 10px;
         }
         .user-profile-favorirte-genre{
             .heading{
@@ -1313,6 +1368,18 @@ body {
             margin-right: 5px;
         }
     }
+    .btn.whatrep3{
+        width: 290px;
+        padding: 2px;
+    }
+    .target3{
+        margin-top: 3px;
+        padding: 5px;
+        background-color: $pale-blue;
+    }
+    .target3.is-hidden{
+        display: none;
+    }
     .user-image{
         margin-top: 10px;
     }
@@ -1577,23 +1644,9 @@ body {
                 padding: 6px 10px 6px 10px;
                 margin-right: 20px;
                 font-size: 19px;
-                border-radius: 8px;
-                &.i1{
-                    background-color: seagreen;
-                    color: white;
-                }
-                &.i2{
-                    background-color: $primary-blue;
-                    color: white;
-                }
-                &.i3{
-                    background-color: #999999;
-                    color: white;
-                }
-                &.i4{
-                    background-color: #999999;
-                    color: white;
-                }
+            }
+            .bulue{
+                color: $main-blue;
             }
         }
         .card-body{
@@ -1603,7 +1656,7 @@ body {
                 border: 1px solid;
             }
             .book-title{
-                font-size: 25px;
+                font-size: 20px;
                 margin-bottom: 0px;
             }
             .book-author{
@@ -1616,6 +1669,16 @@ body {
                 .reco-apeal{
                     padding: 5px;
                 }
+            }
+        }
+        .card-footer{
+            .suggest{
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
+            .status{
+                font-size: 20px;
+                margin-bottom: 0px;
             }
         }
     }
@@ -1634,23 +1697,9 @@ body {
                 padding: 6px 10px 6px 10px;
                 margin-right: 20px;
                 font-size: 19px;
-                border-radius: 8px;
-                &.i1{
-                    background-color: seagreen;
-                    color: white;
-                }
-                &.i2{
-                    background-color: $primary-blue;
-                    color: white;
-                }
-                &.i3{
-                    background-color: #999999;
-                    color: white;
-                }
-                &.i4{
-                    background-color: #999999;
-                    color: white;
-                }
+            }
+            .bulue{
+                color: $main-blue;
             }
         }
         .card-body{
@@ -1660,13 +1709,18 @@ body {
                 border: 1px solid;
             }
             .book-title{
-                font-size: 25px;
+                font-size: 20px;
                 margin-bottom: 0px;
             }
             .book-author{
                 font-size: 20px;
+                margin-bottom: 5px;
+            }
+            .favorite{
+                margin-bottom: 0px;
             }
             #recommend-body{
+                margin-top: 20px;
                 .heading{
                     margin-bottom: 0px;
                 }
@@ -1676,18 +1730,28 @@ body {
             }
         }
         .card-footer{
+            .suggest{
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
             form{
                 display: inline-block;
                 width: 31%;
                 margin-left: 10px;
                 .i3{
                     background-color: #999999;
+                    border-color: #999999;
                     color: white;
                 }
                 .i4{
                     background-color: #999999;
+                    border-color: #999999;
                     color: white;
                 }
+            }
+            .status{
+                font-size: 20px;
+                margin-bottom: 0px;
             }
         }
     }

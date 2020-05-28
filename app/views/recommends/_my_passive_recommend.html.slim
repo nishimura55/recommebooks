@@ -1,4 +1,4 @@
-.my-passive-recommend.card
+div class="my-passive-recommend card #{recommend.status == 1 ? 'border-primary' : ''}"
   .card-header
     .row
       .col-xl-7
@@ -26,6 +26,9 @@
         p.book-author
           = link_to recommend.book.author.name, author_path(recommend.book.author)
           a 著
+        - if recommend.status == 1
+          div id = "favorite-button-#{recommend.book.id}" class = "favorite"
+            = render 'favorites/favorite', book: recommend.book
         #recommend-body
           - if recommend.body?
             p.heading アピール文
@@ -34,12 +37,22 @@
       .col-xl-1
   - if recommend.status == 1
     .card-footer
+      .suggest ３つの選択肢からレコメンドに対する回答をしてください
       = form_with model: recommend, local: true do |f|
         = f.hidden_field :status, :value => 2
-        = f.submit '面白かった！', class: 'btn btn-primary btn-block'
+        = f.submit '1. 面白かった！', class: 'btn btn-primary btn-block'
       = form_with model: recommend, local: true do |f|
         = f.hidden_field :status, :value => 3
-        = f.submit '合わなかったかも', class: 'btn i3 btn-block'
+        = f.submit '2. 合わなかったかも', class: 'btn i3 btn-block'
       = form_with model: recommend, local: true do |f|
         = f.hidden_field :status, :value => 4
-        = f.submit '読んだことがある', class: 'btn i4 btn-block'
+        = f.submit '3. 読んだことがある', class: 'btn i4 btn-block'
+  - elsif recommend.status == 2
+    .card-footer
+      p.status あなたの回答「面白かった！」
+  - elsif recommend.status == 3
+    .card-footer
+      p.status あなたの回答「合わなかったかも」
+  - elsif recommend.status == 4
+    .card-footer
+      p.status あなたの回答「読んだことがある」

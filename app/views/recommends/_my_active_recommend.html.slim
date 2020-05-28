@@ -1,4 +1,4 @@
-.my-active-recommend.card
+div class="my-active-recommend card #{recommend.status == 1 ? 'border-primary' : ''}"
   .card-header
     .row
       .col-xl-7
@@ -32,3 +32,12 @@
             .reco-apeal.table-bordered
               = safe_join(recommend.body.split("\n"), tag(:br))
       .col-xl-1
+  - if recommend.status == 2
+    .card-footer
+      p.status 回答「面白かった！」
+  - elsif recommend.status == 3
+    .card-footer
+      p.status 回答「合わなかったかも」
+  - elsif recommend.status == 4
+    .card-footer
+      p.status 回答「読んだことがある」
