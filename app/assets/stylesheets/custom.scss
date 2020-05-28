@@ -1799,26 +1799,29 @@ body {
         margin-bottom: 30px;
     }
     .form-inline{
-        font-size: 18px;
-        .user-image{
-            margin-right: 8px;
-        }
-        .book-name{
-            font-size: 22px;
-            margin-top: 10px;
-            text-align: center;
-        }
-        .status{
-            font-size: 22px;
-            margin-top: 10px;
-            text-align: center;
-        }
-        .comment{
-            text-align: center;
-        }
-        .suggest-reco-page{
-            display: block;
-            text-align: center;
+        span{
+            font-size: 18px;
+            width: 100%;
+            .user-image{
+                margin-right: 8px;
+            }
+            .book-name{
+                font-size: 22px;
+                margin-top: 10px;
+                text-align: center;
+            }
+            .status{
+                font-size: 22px;
+                margin-top: 10px;
+                text-align: center;
+            }
+            .comment{
+                text-align: center;
+            }
+            .suggest-reco-page{
+                display: block;
+                text-align: center;
+            }
         }
     }
     .text-right{
