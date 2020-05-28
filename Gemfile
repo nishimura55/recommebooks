@@ -27,6 +27,9 @@ gem 'ransack'
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'gretel'
 gem "actionview", ">= 6.0.2.2"
+gem "activesupport", ">= 6.0.3.1"
+gem "actionpack", ">= 6.0.3.1"
+gem "activestorage", ">= 6.0.3.1"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
