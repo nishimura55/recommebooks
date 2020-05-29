@@ -65,13 +65,13 @@ RSpec.describe '本のシステムテスト', type: :system do
                     click_on '本の題名を検索'
                     page.all('#thmb-book-btn')[0].click
                     click_on '文学・小説'
-                    check 'テストジャンル'
+                    check '文学・小説'
                     fill_in '投稿者の感想', with: 'そうとう面白かった！'
                     click_on '投稿する'
                 end.to change {Book.count}.by(+1)
                 expect(page).to have_content '本を投稿しました'
                 expect(page).to have_content '山'
-                expect(page).to have_content 'テストジャンル'
+                expect(page).to have_content '文学・小説'
                 expect(page).to have_content 'そうとう面白かった！'
                 expect(page).to have_content user.name
                 find(".dropdown-toggle").click
@@ -86,7 +86,7 @@ RSpec.describe '本のシステムテスト', type: :system do
                 click_on '本の題名を検索'
                 page.all('#thmb-book-btn')[1].click
                 click_on '文学・小説'
-                check 'テストジャンル'
+                check '文学・小説'
                 fill_in '投稿者の感想', with: 'そうとう面白かった！'
                 click_on '投稿する'
                 visit user_path(user)
@@ -104,7 +104,7 @@ RSpec.describe '本のシステムテスト', type: :system do
                     click_on '本の題名を検索'
                     page.all('#thmb-book-btn')[1].click
                     click_on '文学・小説'
-                    check 'テストジャンル'
+                    check '文学・小説'
                     click_on '投稿する'
                 end.to change {Book.count}.by(0)
                 expect(page).to have_content '必須項目を入力してください'             

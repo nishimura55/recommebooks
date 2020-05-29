@@ -112,7 +112,7 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
             it '正常に更新ができる' do
                 attach_file 'ユーザー画像', "#{Rails.root}/spec/factories/test_image.jpg"
                 click_on '文学・小説'
-                check 'テストジャンル'
+                check '文学・小説'
                 fill_in 'どんなタイプの本が好き？', with: 'ミステリー系が好き'
                 fill_in '自己紹介', with: '旅好きの大学生です'
                 fill_in 'ユーザー名', with: 'Eテストユーザー'
@@ -120,7 +120,7 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
                 click_button '更新する'
                 expect(page).to have_selector("img[src$='test_image.jpg']")
                 expect(page).to have_content 'プロフィールを更新しました'
-                expect(page).to have_content 'テストジャンル'
+                expect(page).to have_content '文学・小説'
                 expect(page).to have_content 'ミステリー系が好き'
                 expect(page).to have_content '旅好きの大学生です'
                 expect(page).to have_content 'Eテストユーザー'
@@ -131,7 +131,7 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
             context 'ユーザー名とメールアドレスが空欄の場合' do
                 it '更新失敗となる' do
                     click_on '文学・小説'
-                    check 'テストジャンル'
+                    check '文学・小説'
                     fill_in 'どんなタイプの本が好き？', with: 'ミステリー系が好き'
                     fill_in '自己紹介', with: '旅好きの大学生です'
                     fill_in 'ユーザー名', with: ''
@@ -146,7 +146,7 @@ RSpec.describe 'ユーザーのシステムテスト', type: :system do
             context 'パスワードとパスワードの確認が一致しない場合' do
                 it '更新失敗となる' do
                     click_on '文学・小説'
-                    check 'テストジャンル'
+                    check '文学・小説'
                     fill_in 'どんなタイプの本が好き？', with: 'ミステリー系が好き'
                     fill_in '自己紹介', with: '旅好きの大学生です'
                     fill_in 'ユーザー名', with: 'Eテストユーザー'

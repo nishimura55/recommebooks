@@ -1,17 +1,5 @@
 module SessionsHelper
 
-    def logged_in_user
-        unless logged_in?
-            store_location
-            flash[:danger] = "ログインが必要です"
-            redirect_to login_url
-        end
-    end
-
-    def admin_user
-        redirect_to(root_url) unless current_user.admin? 
-    end
-
     def log_in(user)
         session[:user_id] = user.id
     end
@@ -34,15 +22,5 @@ module SessionsHelper
         session.delete(:user_id)
         @current_user = nil
     end
-
-    def store_location
-        session[:forwarding_url] = request.original_url if request.get?
-    end
-
-    def redirect_back_or(default)
-        redirect_to(session[:forwarding_url] || default)
-        session.delete(:forwarding_url)
-    end
-
 
 end
