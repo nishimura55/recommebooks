@@ -26,8 +26,8 @@ class RecommendsController < ApplicationController
 
     def index
         @user = User.find(params[:user_id])
-        @active_recommends = @user.active_recommends.order(created_at: "DESC").paginate(page: params[:page])
-        @passive_recommends = @user.passive_recommends.order(created_at: "DESC").paginate(page: params[:page])
+        @active_recommends = @user.active_recommends.order(created_at: :desc).paginate(page: params[:page])
+        @passive_recommends = @user.passive_recommends.order(created_at: :desc).paginate(page: params[:page])
         @for_passive = params[:for_passive]
     end
 

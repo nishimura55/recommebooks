@@ -52,7 +52,7 @@ RSpec.describe 'つんどく機能のシステムテスト', type: :system do
                 click_on '本の題名を検索'
                 page.all('#thmb-book-btn')[0].click
                 click_on '文学・小説'
-                check 'テストジャンル'
+                check '文学・小説'
                 fill_in '投稿者の感想', with: 'そうとう面白かった！'
                 click_on '投稿する'
             end

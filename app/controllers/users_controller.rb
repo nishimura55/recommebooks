@@ -14,12 +14,12 @@ class UsersController < ApplicationController
         @user = User.find_by(id: params[:id])
         @post_feed_books = @user.books.paginate(page: params[:page])
         @post_feed_reviews = @user.reviews.paginate(page: params[:page])
-        @following = @user.active_relationships.order(created_at: "DESC").map{|active_relationship| active_relationship.followed}.paginate(page: params[:page])
-        @followers = @user.passive_relationships.order(created_at: "DESC").map{|passive_relationship| passive_relationship.follower}.paginate(page: params[:page])
+        @following = @user.following.order("relationships.created_at DESC").paginate(page: params[:page])
+        @followers = @user.followers.order("relationships.created_at DESC").paginate(page: params[:page])
         if logged_in? && current_user?(@user)
             @time_line_feed_books = current_user.time_line_feed_books.paginate(page: params[:page]) 
             @time_line_feed_reviews = current_user.time_line_feed_reviews.paginate(page: params[:page]) 
-            @favorite_books = @user.favorites.order(created_at: "DESC").map{|favorite| favorite.book}.paginate(page: params[:page])
+            @favorite_books = @user.favorites.order(created_at: :desc).map(&:book).paginate(page: params[:page])
         end
     end
 
@@ -79,8 +79,16 @@ class UsersController < ApplicationController
         end
 
         def set_genre
-            @genre = { "1": "文学・小説", "2": "社会・ビジネス", "3": "趣味・実用", "4": "芸術・教養・エンタメ",
-                       "5": "旅行・地図", "6": "暮らし・健康", "7": "図鑑・百科事典", "8": "こども", "9": "コミック" } 
+            #@genre = { "1": "文学・小説", "2": "社会・ビジネス", "3": "趣味・実用", "4": "芸術・教養・エンタメ",
+            #           "5": "旅行・地図", "6": "暮らし・健康", "7": "図鑑・百科事典", "8": "こども", "9": "コミック" } 
+            @genre = {}
+            d = 0
+            Genre.all.each do |genre|
+                if genre.division != d
+                    @genre[genre.division.to_s] = genre.name
+                    d += 1
+                end
+            end
         end
 
 end
