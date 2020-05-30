@@ -25,6 +25,7 @@ RSpec.describe 'フォロー機能のシステムテスト', type: :system do
 
         it 'フォローされたユーザーの詳細ページに反映される' do
             wait_for_ajax
+            sleep 1
             visit user_path(user2)
             expect(page).to have_button 'フォロー解除'
             click_on 'フォロワー'
