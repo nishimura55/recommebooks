@@ -16,7 +16,9 @@ namespace :unicorn do
 
   def reload_unicorn
     execute :kill, "$(< #{fetch(:unicorn_pid)})"
-    execute :bundle, :exec, "unicorn_rails -c #{fetch(:unicorn_config)} -E #{fetch(:rails_env)} -D"
+    within current_path do
+      execute :bundle, :exec, "unicorn_rails -c #{fetch(:unicorn_config)} -E #{fetch(:rails_env)} -D"
+    end
   end
 
   def force_stop_unicorn
