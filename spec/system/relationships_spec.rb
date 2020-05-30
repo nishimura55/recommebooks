@@ -16,6 +16,7 @@ RSpec.describe 'フォロー機能のシステムテスト', type: :system do
 
         it 'フォローした内容がマイページに反映される' do
             wait_for_ajax
+            sleep 1
             visit user_path(user1)
             expect(page).to have_link book1.title, href: book_path(book1)
             expect(page).to have_link book2.title, href: book_path(book2)
@@ -37,8 +38,10 @@ RSpec.describe 'フォロー機能のシステムテスト', type: :system do
 
         it 'フォロー解除した内容がマイページに反映される' do
             wait_for_ajax
+            sleep 1
             click_on 'フォロー解除'
             wait_for_ajax
+            sleep 1
             visit user_path(user1)
             expect(page).to have_link book1.title, href: book_path(book1)
             expect(page).not_to have_link book2.title, href: book_path(book2)
@@ -48,8 +51,10 @@ RSpec.describe 'フォロー機能のシステムテスト', type: :system do
 
         it 'フォローされたユーザーの詳細ページに反映される' do
             wait_for_ajax
+            sleep 1
             click_on 'フォロー解除'
             wait_for_ajax
+            sleep 1
             visit user_path(user1)
             visit user_path(user2)
             expect(page).to have_content 'フォローする'
@@ -59,6 +64,7 @@ RSpec.describe 'フォロー機能のシステムテスト', type: :system do
     describe 'フォロー通知のテスト' do
         it 'フォローの通知がされる' do
             wait_for_ajax
+            sleep 1
             log_out
             log_in_as(user2)
             visit notifications_path
