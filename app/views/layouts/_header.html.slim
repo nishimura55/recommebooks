@@ -13,7 +13,7 @@ nav.navbar.navbar-expand-lg.navbar-light.header-top
       - if logged_in?
         li.nav-item.active.notice
           = link_to(notifications_path) do
-            - if unchecked_notifications.any?
+            - if unchecked_notifications
               span.fa-stack
                 i.fa.fa-bell.fa-lg.fa-stack-2x.new style="font-size: 2.0em;" 
                 i.fa.fa-circle.n-circle.fa-stack-1x
