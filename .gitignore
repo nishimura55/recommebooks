@@ -34,4 +34,4 @@ yarn-debug.log*
 
 /mysql/mysql_data
 
-#/public/uploads/user/image
+/public/uploads/user/image
