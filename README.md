@@ -26,6 +26,7 @@ https ~
 - Nginx (Webサーバー)
 
 ## 4. インフラ構成図
+![Untitled Diagram](https://user-images.githubusercontent.com/61367038/83350090-8e783d80-a374-11ea-8e33-1450a5daac2f.png)
 
 ## 5. テーブル設計図
 <img width="909" alt="recommebooks" src="https://user-images.githubusercontent.com/61367038/82334587-2431d580-9a23-11ea-9c91-6d67d579a821.png">
