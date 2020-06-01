@@ -5,7 +5,7 @@ div class="my-active-recommend card #{recommend.status == 1 ? 'border-primary' :
         - if recommend.recommended.image?
           = image_tag recommend.recommended.image_url(:thumb3), class: "user-image"
         - else
-          = image_tag 'userlogo.png', size: '30x30', class: "user-image"
+          = image_tag 'userlogo2.png', size: '30x30', class: "user-image"
         = link_to recommend.recommended.name, user_path(recommend.recommended), class: "user-name"
         a さんへのレコメンド
       .col-xl-5

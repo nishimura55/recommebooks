@@ -5,7 +5,7 @@
         - if user.image?
           = image_tag user.image_url(:thumb2), size: '60x60', class: "user-image"
         - else
-          = image_tag 'userlogo.png', size: '60x60', class: "user-image"
+          = image_tag 'userlogo2.png', size: '60x60', class: "user-image"
     .col-sm-8
       = link_to user.name, user_path(user), class: "user-name"
 #user-overview
