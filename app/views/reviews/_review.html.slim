@@ -11,7 +11,7 @@
         - if review.user.image?
           = image_tag review.user.image_url(:thumb3), class: "thumb-user-image"
         - else
-          = image_tag 'userlogo.png', size: '30x30', class: "thumb-user-image"
+          = image_tag 'userlogo2.png', size: '30x30', class: "thumb-user-image"
         = link_to review.user.name, user_path(review.user), class: "post-user-name"
         a さん
         - if review.title?

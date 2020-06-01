@@ -4,7 +4,7 @@
       - if review.user.image?
         = image_tag review.user.image_url(:thumb3), class: "user-image"
       - else
-        = image_tag 'userlogo.png', size: '30x30', class: "user-image"
+        = image_tag 'userlogo2.png', size: '30x30', class: "user-image"
       a あなたの投稿(
       = time_ago_in_words(review.created_at)
       a 前)

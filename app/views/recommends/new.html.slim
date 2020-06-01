@@ -15,7 +15,7 @@
             - if current_user.image?
               = image_tag current_user.image_url(:thumb1), class: "user-image", height: '200px'
             - else
-              =image_tag 'userlogo.png', class: "user-image", height: '200px'
+              =image_tag 'userlogo2.png', class: "user-image", height: '200px'
             h4 あなた
         .col-lg-1.arrow-space.left.fa-3x
           .fa.fa-arrow-right.d-none.d-lg-block
@@ -54,7 +54,7 @@
               - if @user.image?
                 = image_tag @user.image_url(:thumb1), class: "user-image", height: '200px'
               - else
-                =image_tag 'userlogo.png', class: "user-image", height: '200px'
+                =image_tag 'userlogo2.png', class: "user-image", height: '200px'
               h4 #{@user.name}さん
             - if @book.present?
               = link_to 'ユーザーを変更', recommends_users_path(book_id: @book.id), class: "btn-primary btn rechose"
