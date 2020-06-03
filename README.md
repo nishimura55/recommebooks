@@ -1,5 +1,5 @@
 # RecommeBooks (レコメブックス)
-<img width="818" alt="main-logo" src="https://user-images.githubusercontent.com/61367038/82335118-d9648d80-9a23-11ea-968a-8f495f7a7b3c.png">
+<img width="794" alt="スクリーンショット 2020-06-03 22 24 41" src="https://user-images.githubusercontent.com/61367038/83641890-1a929b00-a5e9-11ea-91ec-e2eece7a69bd.png">
 
 ## 1. サービス概要
 レコメブックスは**ユーザー同士で本をレコメンドしあうSNSサービス**です。  
@@ -11,7 +11,7 @@
 本との新たな出会いの場となるようなサービスを目指しています。
 
 ## 2. URL
-https ~  
+https://www.recommebooks.com     
 **複数のテストユーザー**からテストログインが可能です。レコメンド機能の確認にお使いください。
 
 ## 3. 技術スタック
