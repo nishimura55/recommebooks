@@ -24,7 +24,6 @@ class User < ApplicationRecord
     has_many :passive_recommends, class_name:  "Recommend",
                                      foreign_key: "recommended_id",
                                      dependent:   :destroy
-    has_many :recommenders, through: :passive_recommends, source: :recommender
 
     has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
     has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
@@ -66,12 +65,10 @@ class User < ApplicationRecord
     end
 
     def save_genres(tag_ids)
-        current_tag_ids = self.genres.pluck(:id) unless self.genres.nil?
+        current_tag_ids = self.genre_ids unless self.genres.nil?
         new_tag_ids = tag_ids - current_tag_ids
-        user_genres.where.not(genre_id: tag_ids).delete_all   
-        new_tag_ids.each do |new_tag_id|
-          self.genres << Genre.find_by(id: new_tag_id)
-        end
+        user_genres.where.not(genre_id: tag_ids).delete_all
+        self.genres << Genre.find(new_tag_ids)
     end
 
     def create_notification_follow!(current_user)
