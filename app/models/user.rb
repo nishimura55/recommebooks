@@ -45,11 +45,13 @@ class User < ApplicationRecord
     mount_uploader :image, ImageUploader
 
     def time_line_feed_books
-        Book.where(user_id: Relationship.where(follower: self).select(:followed_id)).or(books)
+        # Book.where(user_id: Relationship.where(follower: self).select(:followed_id)).or(books)
+        Book.where(user: following).or(books)
     end
 
     def time_line_feed_reviews
-        Review.where(user_id: Relationship.where(follower: self).select(:followed_id)).or(reviews)
+        # Review.where(user_id: Relationship.where(follower: self).select(:followed_id)).or(reviews)
+        Review.where(user: following).or(reviews)
     end
 
     def follow(other_user)
