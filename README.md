@@ -1,18 +1,12 @@
-# RecommeBooks (レコメブックス)
-<img width="794" alt="スクリーンショット 2020-06-03 22 24 41" src="https://user-images.githubusercontent.com/61367038/83641890-1a929b00-a5e9-11ea-91ec-e2eece7a69bd.png">
-
 ## 1. サービス概要
-レコメブックスは**ユーザー同士で本をレコメンドしあうSNSサービス**です。  
+レコメブックスはユーザー同士で本をレコメンドしあうSNSサービスです。  
 本をレコメンドした相手から本の評価をもらうことができ、  
 評価が「面白かった！」であった場合はレコメンドしたユーザーと本にポイントがたまります。  
 ユーザーをフォローして投稿(本・レビュー)をタイムラインで確認することにより、  
 そのユーザーにぴったりの本をレコメンドすることができます。  
-ポイント機能や称号機能によりユーザー同士のレコメンドを活性化させ、  
-本との新たな出会いの場となるようなサービスを目指しています。
 
 ## 2. URL
-https://www.recommebooks.com     
-**複数のテストユーザー**からテストログインが可能です。レコメンド機能の確認にお使いください。
+~~https://www.recommebooks.com~~
 
 ## 3. 技術スタック
 ### 言語・フレームワーク
@@ -22,7 +16,7 @@ https://www.recommebooks.com
 - Docker  
 - MySQL
 ### テスト環境
-- RSpec (modelspec・requestspec・systemspec) 合計207examples  
+- RSpec (modelspec・requestspec・systemspec) 
 - CircleCI (自動テスト)
 ### デプロイ
 - CircleCI × Capistrano (自動デプロイ)
